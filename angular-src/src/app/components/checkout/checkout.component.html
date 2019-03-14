@@ -1,0 +1,185 @@
+<div class=stepper-container>
+    <ng-template [ngIf]="loading">
+        <div class="loading-screen">
+            <mat-spinner class="loading-icon"></mat-spinner>
+        </div>
+    </ng-template>
+
+    <!--
+
+    -->
+    <mat-horizontal-stepper [@.disabled]="true" [linear]=true labelPosition="bottom" #stepper>
+
+        <ng-template matStepperIcon="number" let-index="index">
+            <ng-template [ngIf]="index===0">
+                <mat-icon>local_shipping</mat-icon>
+            </ng-template>
+            <ng-template [ngIf]="index===1">
+                <mat-icon>payment</mat-icon>
+            </ng-template>
+            <ng-template [ngIf]="index===2">
+                <mat-icon>done</mat-icon>
+            </ng-template>
+
+        </ng-template>
+
+        <!-- STEP 1 -->
+        <mat-step [completed]=addressValidated editable=false>
+            <ng-template matStepLabel>Address</ng-template>
+
+            <div class="address-container">
+                <!--<button class="return-button">Return to Cart</button>-->
+                <h3 class="form-title">Shipping Address</h3>
+                <form (ngSubmit)="submitAddress()" #addressForm="ngForm" class="address-form" id="address-form">
+
+                    <!-- Name -->
+                    <div class="form-block">
+                        <div class="address-field-top">Name:</div>
+                        <input [(ngModel)]="model.name" class="address-input" type="text" name="name">
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-block">
+                        <div class="address-field-top">Email:</div>
+                        <input [(ngModel)]="model.email" class="address-input" type="text" name="email">
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-block">
+                        <div class="address-field-top">Phone:</div>
+                        <input [(ngModel)]="model.phone" class="address-input" type="text" name="phone">
+                    </div>
+
+                    <!-- Street 1 -->
+                    <div class="form-block">
+                        <div class="address-field-top">Address:</div>
+
+                        <input [(ngModel)]="model.street1" class="address-input" type="text" name="street1">
+                        <div class="address-field-bottom">Street 1</div>
+
+                        <!-- Street 2 -->
+                        <input [(ngModel)]="model.street2" class="address-input" type="text" name="street2">
+                        <div class="address-field-bottom">Street 2</div>
+
+                        <!-- City -->
+                        <input [(ngModel)]="model.city" class="address-input" type="text" name="city">
+                        <div class="address-field-bottom">City</div>
+
+                        <!-- State -->
+                        <input [(ngModel)]="model.state" class="address-input" type="text" name="state">
+                        <div class="address-field-bottom">State</div>
+
+                        <!-- Zip -->
+                        <input [(ngModel)]="model.zip" class="address-input" type="text" name="zip">
+                        <div class="address-field-bottom">Zipcode</div>
+
+                        <!-- Country -->
+                        <input [(ngModel)]="model.country" class="address-input" type="text" name="country">
+                        <div class="address-field-bottom">Country</div>
+
+                    </div>
+
+                    <div class="submit-div submit-background">
+                        <!-- Submit -->
+
+                        <button type=submit #submitButton class="submit-button grey-button">Continue to Payment</button>
+
+                    </div>
+
+                </form>
+            </div>
+
+        </mat-step>
+
+        <!-- STEP 2 -->
+        <mat-step [completed]=payStepComplete editable=false state=payment>
+            <ng-template matStepLabel>Payment</ng-template>
+
+
+            <div class="centered-content-container">
+                <div id="left-panel">
+                    <div class="grid">
+                        <div *ngFor="let prod of CartService.cart.products; index as i" class="product-box">
+                            <img src="{{prod.product.images[0]}}">
+                            <p class="product-name">{{prod.product.name}}</p>
+                            <p class="price">${{prod.product.price}}</p>
+                            <p class="size">Size: {{prod.selectedSize}}</p>
+                            <p class="qty">Qty: {{prod.quantity}}</p>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <br />
+                <div id="right-panel">
+                    <div class="subtotal-box">
+                        <div class="subt-row">
+                            <p class="subt-name">Subtotal </p><span
+                                class="subt-value">${{CartService.subtotal.toFixed(2)}}</span>
+                        </div>
+                        <div class="subt-row">
+                            <p class="subt-name">Tax </p><span class="subt-value">${{CartService.tax.toFixed(2)}}</span>
+                        </div>
+
+                        <div class="subt-row shipping-row">
+                            <p class="subt-name">Shipping </p>
+                            <!--<span class="subt-value">${{CartService.shipping.toFixed(2)}}</span>-->
+
+                            <mat-form-field class=size appearance=legacy>
+                                <mat-select required [(ngModel)]="CartService.selected_shipping_rate" name="shipping"
+                                    (selectionChange)="CartService.setShipping(CartService.selected_shipping_rate)">
+                                    <mat-option *ngFor="let rate of shippingRates" [value]="rate">${{rate.rate}}
+                                        ({{rate.delivery_days}} day) {{rate.carrier}} {{rate.service}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <!--
+                                <select id="selector" required [(ngModel)]="CartService.selected_shipping_rate" name="shipping" class="wheel"
+                                (change)="CartService.setShipping(CartService.selected_shipping_rate)">
+                                <option *ngFor="let rate of shippingRates" [ngValue]="rate">{{rate.carrier}} {{rate.service}} ({{rate.delivery_days}} day) ${{rate.rate}}</option>
+                            </select>
+
+                              -->
+
+
+                        </div>
+
+
+                        <!--
+                        <div class="subt-row">
+                            <p class="subt-name">Shipping </p><span class="subt-value">${{CartService.shipping.toFixed(2)}}</span>
+                        </div>
+                        -->
+
+                        <div class="total-row">
+                            <p class="total-name">Total </p><span
+                                class="total-value">${{CartService.total.toFixed(2)}}</span>
+                        </div>
+
+
+                    </div>
+
+                    <ng-template [ngIf]="addressValidated" class="paypal">
+                        <br>
+                        <app-paypal></app-paypal>
+                    </ng-template>
+
+                </div>
+            </div>
+
+        </mat-step>
+
+        <!-- STEP 3 -->
+        <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+
+            <app-thanks></app-thanks>
+
+        </mat-step>
+
+    </mat-horizontal-stepper>
+
+
+
+</div>

@@ -1,0 +1,39 @@
+<div class=main>
+ 
+  
+  <form #contactUsForm="ngForm" class=form [formGroup]="FormGroup" (ngSubmit)=onSubmit()>
+      <h1 class=title>Contact Us</h1>
+ 
+    <mat-form-field class="half" appearance=outline>
+      <mat-label>Name</mat-label>
+        <input matInput required formControlName=name>
+      </mat-form-field>
+     
+      <mat-form-field class="half" appearance=outline>
+          <mat-label>Phone Number</mat-label>
+            <input matInput required formControlName=phone>
+          </mat-form-field>
+      <mat-form-field class="full" appearance=outline>
+          <mat-label>Email</mat-label>
+            <input matInput required formControlName=email>
+          </mat-form-field>
+      
+          
+              <mat-form-field class="full" appearance=outline>
+                  <mat-label>Message</mat-label>
+                    <textarea cdkTextareaAutosize matInput required formControlName=message></textarea>
+                  </mat-form-field>
+                  <div class=submit-background>
+                      <button class="submit-button purple-button" type="submit" [disabled]="!FormGroup.valid">Submit</button>
+
+                  </div>
+
+              </form>
+
+            
+
+</div>
+<app-footer>
+</app-footer>
+
+

@@ -1,0 +1,34 @@
+<div class="main">
+  <div class="header">
+    <img class="header-image" src="{{header}}">
+    <h3 class="title">{{title}}</h3>
+  </div>
+  
+  <div class="center-panel">
+  
+    <div class="grid">
+      <div *ngFor="let prod of productArray; index as i" class="product-box">
+        <a class=image-link routerLink="/detail/{{prod.stub}}"><img class="product-image" src="{{prod.images[0]}}"></a>
+        <a routerLink="/detail/{{prod.stub}}" class="product-name">{{prod.name}}</a>
+        <p class="price">${{prod.price}}</p>
+      </div>
+
+      <div *ngFor="let prod of soldOutProductArray; index as i" class="product-box">
+          <div class=image-link>
+            <div class=sold-out-overlay>
+                <img class="product-image" src="{{prod.images[0]}}">
+                <img class="sold-out-text" src='../../../assets/icons/sold_out.svg'>
+                <!--
+                <p class=sold-out-text>Sold Out</p>
+
+                -->
+            </div>
+          </div>
+          <p class="product-name">{{prod.name}}</p>
+          <p class="price">${{prod.price}}</p>
+        </div>
+      
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

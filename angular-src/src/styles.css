@@ -1,0 +1,113 @@
+/*
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+*/
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+
+
+
+/* Buttons */
+
+.submit-background {
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+
+background-image: radial-gradient(circle, #24243e 0%, #302b63 66%, #0f0c29 160%);
+
+}
+
+.purple-button {
+  display: inline-block;
+  cursor: pointer;
+  color:  hsl(0, 0%, 100%);
+  
+  font-family: "Lato";
+  text-align: center;
+  
+  
+  background-color: transparent;
+  background-image: radial-gradient(circle, #24243e 0%, #302b63 66%, #0f0c29 160%);
+
+
+  background-position: center;
+  background-size: 100%;
+ background-repeat: no-repeat;
+ 
+  
+  transition: background .8s; 
+ /* transition-timing-function: ease-in-out; */
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1), 2px -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.purple-button:active {
+  background-size: 0%;
+  transition: background 0s;
+}
+
+
+.grey-button {
+  display: inline-block;
+  color:  hsl(0, 0%, 100%);
+  
+  font-family: "Lato";
+  text-align: center;
+  
+  
+  background-color: transparent;
+  background-image: radial-gradient(circle, #24243e 0%, #302b63 66%, #0f0c29 160%);
+
+
+  background-position: center;
+  background-size: 100%;
+ background-repeat: no-repeat;
+ 
+  
+  transition: background .8s; 
+ /* transition-timing-function: ease-in-out; */
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1), 2px -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.grey-button:active {
+  background-size: 0%;
+  transition: background 0s;
+}
+
+
+
+/* SnackBar Notifications */
+.snackbar-success {
+    background-color: white;
+    color: #24243e;
+   
+    letter-spacing: .75px;
+    font-family: 'Lato';
+}
+
+  .snackbar-success .mat-simple-snackbar-action  {
+    font-family: 'Lato';
+    color: #302b63;
+    background: transparent;
+  }
+  
+  .snackbar-error {
+    background-color: red;
+    color: white;
+    z-index: 1000;
+    letter-spacing: .75px;
+    font-family: 'Lato';
+  }

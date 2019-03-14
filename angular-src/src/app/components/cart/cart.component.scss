@@ -1,0 +1,540 @@
+.main {
+  margin-top: 66px;
+  width: 100%;
+  min-height: 100vh;
+  .centered-content-container {
+    font-family: "Montserrat";
+    font-weight: 100;
+    color: black;
+    #left-panel {
+      display: inline-block;
+      float: left;
+      font-size: 20px;
+      .title {
+        text-align: center;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      .grid {
+        display: block;
+        float: left;
+        margin: 0;
+        .product-box {
+          display: inline-block;
+          vertical-align: top;
+          width: inherit;
+          margin-bottom: 10px;
+          text-align: left;
+          letter-spacing: 1px;
+          box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.2);
+          .image-container {
+            display: inline-block;
+            vertical-align: top;
+            width: 150px;
+            height: 150px;
+            a {
+              img {
+                width: 140px;
+                height: 140px;
+                padding: 5px;
+              }
+            }
+          }
+          .text-container {
+            display: inline-block;
+            vertical-align: top;
+            width: calc(100% - 155px);
+            margin-left: 5px;
+
+            .product-name {
+              width: 100%;
+              font-size: 14px;
+              margin: 0px;
+              padding: 0px;
+              text-decoration: none;
+              color: black;
+            }
+            .price {
+              display: inline-block;
+              vertical-align: top;
+              width: 100%;
+              font-size: 12px;
+              margin: 0px;
+              padding: 0px;
+              margin-bottom: 10px;
+            }
+            .size {
+              display: inline-block;
+              vertical-align: top;
+
+              width: 100%;
+              font-size: 12px;
+              margin: 0px;
+              padding: 0px;
+              padding-bottom: 10px;
+            }
+            .qty {
+              display: inline-block;
+              font-size: 12px;
+              margin: 0px;
+              padding: 0px;
+              border: 1px solid #302b63;
+              border-radius: 3px;
+             
+              .icon-button-container {
+                display: inline-block;
+                width: 25px;
+
+                button {
+                  display: inline-block;
+                  height: 25px;
+                  width: 25px;
+                  font-size: 20px;
+                  padding: 0px;
+                  line-height: 25px;
+                }
+              }
+              .qty-text {
+                display: inline-block;
+                vertical-align: top;
+                height: 25px;
+                line-height: 25px;
+                width: 50px;
+                margin: 0px;
+                padding: 0px;
+                text-align: center;
+                font-size: 14px;
+                
+                color: #302b63;
+                background: white;
+               
+              }
+            }
+          }
+          .remove-button {
+            float: right;
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            margin: 0px;
+            padding: 0px;
+
+            font-family: "Montserrat";
+
+            font-size: 14px;
+
+            border: none;
+            background: white;
+            color: purple;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    #right-panel {
+      display: block;
+      float: right;
+
+      padding-bottom: 50px;
+      .subtotal-box {
+        .subt-row {
+          display: block;
+
+          .subt-name {
+            float: left;
+            text-align: end;
+            margin: 0.25vw;
+          }
+          .subt-value {
+            float: right;
+            margin: 0.25vw;
+          }
+        }
+        .total-row {
+          float: left;
+
+          margin: 0.25vw;
+          font-size: 14px;
+
+          .total-name {
+            float: left;
+          }
+          .total-value {
+            float: right;
+          }
+        }
+      }
+
+      .submit-background {
+        .checkout-button {
+          display: block;
+          float: left;
+
+          width: 200px;
+          height: 45px;
+
+          font-size: 14px;
+
+          padding: 0px;
+          font-family: "Montserrat";
+          font-weight: 900;
+          letter-spacing: 1px;
+
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .main {
+    .centered-content-container {
+      #left-panel {
+        display: block;
+
+        width: 90%;
+        margin-left: 5%;
+
+        font-size: 20px;
+        .title {
+          width: 100%;
+        }
+        .grid {
+          width: 100%;
+
+          /*
+          .product-box {
+            height: 110px;
+            .product-name {
+              font-size: 14px;
+              padding: 5px;
+              padding-bottom: 0px;
+              margin: 0px;
+              width: 43%;
+              height: 18px;
+            }
+            .price {
+              font-size: 12px;
+              width: 60%;
+              height: 15px;
+              margin: 0px;
+              padding: 5px;
+              padding-bottom: 0px;
+            }
+            .size {
+              font-size: 12px;
+              margin: 0px;
+              padding: 5px;
+
+              padding-bottom: 0px;
+              height: 40px;
+              line-height: 40px;
+              width: 30%;
+            }
+            .qty {
+              float: right;
+              width: 30%;
+
+              margin: 0px;
+              height: 40px;
+              line-height: 40px;
+
+              padding: 5px;
+
+              font-size: 12px;
+            }
+          }
+          */
+        }
+      }
+
+      #right-panel {
+        display: block;
+        float: left;
+
+        width: 95vw;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        background: white;
+        .subtotal-box {
+          display: block;
+          width: 90vw;
+          height: auto;
+          margin: 2vw;
+          margin-top: 3vh;
+          margin-left: 0;
+          border: 0px solid black;
+
+          box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.2);
+          .subt-row {
+            display: block;
+            float: left;
+            width: 90vw;
+            height: auto;
+            margin-top: 0.25em;
+            font-size: 1em;
+          }
+
+          .total-row {
+            display: block;
+            float: left;
+            width: 90vw;
+            height: auto;
+            margin-top: 1em;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            .total-name {
+              text-align: start;
+
+              margin: 0.25vw;
+              font-size: 18px;
+            }
+            .total-value {
+              text-align: start;
+
+              margin: 0.25vw;
+              font-size: 18px;
+            }
+          }
+        }
+
+        .submit-background {
+          .checkout-button {
+          }
+        }
+      }
+    }
+  }
+
+  img {
+    margin: 0px;
+    padding: 5px;
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .main {
+    .centered-content-container {
+      width: 900px;
+      background: none;
+      margin-left: calc((100vw - 900px) / 2);
+
+      #left-panel {
+        display: inline;
+
+        width: 550px;
+        height: auto;
+        margin-left: auto;
+        padding: 25px;
+        font-size: 20px;
+        .title {
+          width: 550px;
+          text-align: center;
+          padding-top: 35px;
+          padding-bottom: 3px;
+          font-size: 16px;
+          text-transform: uppercase;
+
+          font-family: "Montserrat";
+          font-weight: 100;
+          letter-spacing: 2px;
+          color: black;
+        }
+        .grid {
+          display: block;
+          float: left;
+          width: 550px;
+          margin: 0;
+
+          border: 0px solid black;
+
+          height: auto;
+          background: none;
+
+
+          /*
+          .product-box {
+            display: block;
+            background: none;
+            float: left;
+            width: inherit;
+            height: 150px;
+            margin-right: 0vw;
+            margin-bottom: 5px;
+
+            font-family: "Montserrat";
+            font-weight: 100;
+            text-align: start;
+
+            letter-spacing: 1px;
+
+            border: 0px solid black;
+            box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.2);
+            .product-name {
+              display: block;
+              background: none;
+              float: left;
+              width: 350px;
+
+              height: 15px;
+              margin-top: 10px;
+              padding: 5px;
+
+              text-decoration: none;
+              font-size: 14px;
+              font-family: "Montserrat";
+              font-weight: thin;
+              color: black;
+            }
+            .price {
+              display: block;
+              float: left;
+              background: none;
+              width: 350px;
+              height: 20px;
+
+              margin: 0;
+              padding: 5px;
+              padding-top: 0;
+
+              font-size: 12px;
+            }
+            .size {
+              display: block;
+              background: none;
+              float: left;
+              width: 350px;
+              height: 20px;
+
+              margin: 0px;
+              padding: 5px;
+
+              font-size: 12px;
+            }
+            .qty {
+              display: block;
+              background: none;
+              float: left;
+              width: 350px;
+              height: 20px;
+
+              margin: 0px;
+              padding: 5px;
+
+              font-size: 12px;
+            }
+            .remove-button {
+              display: inline-block;
+              float: right;
+              width: 25px;
+              height: 25px;
+              margin: 0px;
+              padding: 0vw;
+
+              font-family: "Montserrat";
+
+              font-size: 13px;
+              text-align: center;
+              cursor: pointer;
+
+              border: none;
+              background: none;
+
+              border: 0px solid rgba(0, 0, 0, 0.2);
+              color: purple;
+            }
+          }
+
+          */
+        }
+      }
+      #right-panel {
+        display: block;
+        float: left;
+        width: 300px;
+        background: none;
+        margin: 0;
+        height: auto;
+        font-family: "Montserrat";
+        font-weight: 100;
+        letter-spacing: 1px;
+        color: black;
+        .subtotal-box {
+          display: block;
+          width: 280px;
+          height: 200px;
+          margin: 10px;
+          margin-top: 100px;
+
+          background: none;
+          .subt-row {
+            float: left;
+            background: none;
+            width: 270px;
+            height: 20px;
+            font-size: 14px;
+            margin: 5px;
+            .subt-name {
+              background: none;
+              float: left;
+
+              height: 20px;
+              width: 75px;
+              margin: 0px;
+            }
+            .subt-value {
+              float: right;
+              text-align: start;
+              height: 20px;
+              width: 75px;
+              margin: 0px;
+              text-align: end;
+              background: none;
+            }
+          }
+
+          .total-row {
+            background: none;
+            float: left;
+            width: 270px;
+            height: 25px;
+            margin: 5px;
+            margin-top: 75px;
+
+            .total-name {
+              background: none;
+              float: left;
+              text-align: end;
+              height: 25px;
+              width: 75px;
+              margin: 0px;
+              font-size: 18px;
+            }
+
+            .total-value {
+              background: none;
+              float: right;
+              text-align: end;
+              height: 25px;
+              width: 75px;
+              margin: 0px;
+              font-size: 16px;
+            }
+          }
+        }
+
+        .submit-background {
+          .checkout-button {
+          }
+        }
+      }
+    }
+  }
+
+ 
+}

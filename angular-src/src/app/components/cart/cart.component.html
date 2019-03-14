@@ -1,0 +1,79 @@
+<div class="main">
+
+    <div class="centered-content-container">
+        <div id="left-panel">
+            <h3 class="title">Cart</h3>
+            <div class="grid">
+                <div *ngFor="let prod of CartService.cart.products; index as i" class="product-box">
+                    <div class=image-container>
+                        <a href="{{prod.product.location}}"><img src="{{prod.product.images[0]}}"></a>
+                    </div>
+                    <div class="text-container">
+                        <a href="products" class="product-name">{{prod.product.name}}</a>
+                        <p class="price">${{prod.product.price}}</p>
+                        <p class="size">Size: {{prod.selectedSize}}</p>
+
+                        
+                        <!--<p class="qty">Qty: {{prod.quantity}}</p>
+                        -->
+                            <div class="qty submit-background">
+                            <div class=icon-button-container>
+                                <button class=purple-button (click)=changeQty(i,prod.quantity-1)>-</button>
+                            </div>
+                            <p class=qty-text>{{prod.quantity}}</p>
+                            <div class=icon-button-container>
+                                <button class=purple-button (click)=changeQty(i,prod.quantity+1)>+</button>
+                                <!--
+  <button mat-icon-button color="accent">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                                -->
+                              
+                                     
+
+                            </div>
+                        </div>
+                        <!--
+      <mat-form-field class=qty appearance=outline>
+                            <mat-label>Qty</mat-label>
+                            <input matInput required [(ngModel)]="prod.quantity" name="quantity"
+                                (change)=removeProduct(i)>
+                        </mat-form-field>
+
+        -->
+
+                    </div>
+                    <!--
+                    <button class="remove-button" (click)="removeProduct(i)">X</button>
+
+                    -->
+                </div>
+            </div>
+        </div>
+
+        <div id="right-panel">
+            <div class="subtotal-box">
+                <div class="subt-row">
+                    <p class="subt-name">Subtotal </p><span
+                        class="subt-value">${{CartService.subtotal.toFixed(2)}}</span>
+                </div>
+                <div class="subt-row">
+                    <p class="subt-name">Tax </p><span class="subt-value">${{CartService.tax.toFixed(2)}}</span>
+                </div>
+                <div class="subt-row">
+                    <p class="subt-name">Shipping </p><span class="subt-value">TBD</span>
+                </div>
+                <div class="total-row">
+                    <p class="total-name">Total </p><span class="total-value">${{CartService.total.toFixed(2)}}</span>
+                </div>
+            </div>
+
+            <div class=submit-background>
+                <button class="checkout-button purple-button" (click)="checkout()">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<app-footer></app-footer>

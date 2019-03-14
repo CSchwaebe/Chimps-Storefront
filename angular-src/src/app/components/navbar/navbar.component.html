@@ -1,0 +1,71 @@
+<div class="navbar">
+
+  <a class="logo" routerLink="/"><img class="logo mobile-logo" src="../../../assets/icons/kat-logo.svg" alt="Kat Logo"></a>
+
+
+  <div class="dropdown-menu-container">
+    <div class="dropdown-item-container" *ngFor="let col of model.data.collections; index as i" (mouseenter)="show(i)" (mouseleave)="show(-1)">
+      <a class="drop-link" routerLink="/{{model.data.collections[i].stub}}">{{col.name}}</a>
+      <div class="dropdown-content" [style.display]="selected === i ? 'inline' : 'none'">
+        <div class="category" *ngFor="let cat of model.data.collections[i].categories">
+          <a class="category-link" routerLink="/{{cat.stub}}">
+            {{ cat.name }}</a>
+          <div class="subcategory" *ngFor="let sub of cat.subcategories">
+            <a class="subcategory-link" routerLink="/{{sub.stub}}">
+              {{ sub.name }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Container that is in the navbar-->
+  <div class="mobile-dropdown-menu-container">
+    <img src='../../../assets/icons/round-menu-24px.svg' id="mobile-dropdown-button" (click)=toggleMobileMenu()>
+  </div>
+
+  <!-- The content that appears if the mobile dopdown button is pressed -->
+  <ng-template [ngIf]="showMobileMenu">
+    <div class="mobile-dropdown-background">
+      <div class="mobile-dropdown-content-container">
+
+        <div class="button-container" *ngFor="let col of model.data.collections; index as i">
+
+          <button class="mobile-collection-button" id="{{col.stub}}"
+            (click)="expandCollectionsMobile($event.target.id)">{{col.name}}</button>
+
+          <div class="dropdown-content {{col.stub}}">
+            <a class="collection-link" href="/{{col.stub}}">View all</a>
+            <div class="category" *ngFor="let cat of model.data.collections[i].categories">
+              <button class="mobile-category-button" id="{{cat.name}}"
+                (click)="expandCategoriesMobile($event.target.id)">{{
+                    cat.name }}</button>
+              <a class="subcategory-link {{cat.name}}" href="/{{cat.stub}}">View
+                all</a>
+
+              <div class="subcategory" *ngFor="let sub of cat.subcategories">
+                <a class="subcategory-link {{cat.name}}" href="/{{sub.stub}}">
+                  {{ sub.name }}</a>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </ng-template>
+
+
+
+  <div class="cart-container">
+    <div class="cart-number-container" [style.background]="(CartService.cartSize === 0) ? 'white' : 'crimson'">
+      <p class="cart-number">{{CartService.cartSize}}</p>
+    </div>
+    <a class="cart" routerLink="/cart"><img class="shopping-cart-icon"
+        src="../../../assets/icons/outline-shopping_cart-24px.svg"></a>
+  </div>
+
+</div>

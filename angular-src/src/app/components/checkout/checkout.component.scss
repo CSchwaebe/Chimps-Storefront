@@ -1,0 +1,727 @@
+.stepper-container {
+  display: inline-block;
+  margin-top: 66px;
+  width: 100%;
+}
+
+.address-container {
+  width: 100%;
+  .form-title {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+
+    padding-bottom: 0px;
+    margin: 0;
+    color: rgb(158, 158, 158);
+    color: rgb(82, 82, 82);
+    font-family: "Montserrat";
+    font-weight: 100;
+    letter-spacing: 1px;
+    font-size: 26px;
+  }
+
+  .address-form {
+    width: 300px;
+    margin-left: calc(50% - 175px);
+    font-family: "Montserrat";
+    font-weight: bold;
+    color: rgb(82, 82, 82);
+
+    padding: 25px;
+    padding-top: 10px;
+    .form-block {
+      display: inline-block;
+      width: 300px;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      .address-field-top {
+        float: left;
+        width: 70px;
+        margin-top: 8px;
+        text-align: left;
+      }
+      .address-field-bottom {
+        float: right;
+
+        margin: -5px;
+        margin-right: 135px;
+        margin-bottom: 0px;
+        width: 75px;
+
+        font-size: 12px;
+        color: rgb(158, 158, 158);
+
+        text-align: left;
+      }
+      .address-input {
+        float: right;
+        height: 20px;
+        margin: 5px;
+        width: 200px;
+      }
+    }
+
+    .submit-div {
+      width: 300px;
+      margin-top: 20px;
+
+      .submit-button {
+        border: none;
+        //background-color: rgb(82, 82, 82);
+        height: 60px;
+        //font-family: "Montserrat";
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 16px;
+        font-weight: 100;
+        width: 300px;
+        //color: white;
+      }
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////////
+
+.main {
+  margin-top: 66px;
+  display: block;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.loading-screen {
+  
+  position: absolute;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: rgba(255, 255, 255, 0.63);
+  z-index: 1000000000;
+  .loading-icon {
+    position: absolute;
+    top: 25%;
+    left: calc(50% - 50px);
+  }
+}
+
+#right-panel {
+  display: block;
+  float: right;
+  width: 30vw;
+  margin-right: 5vw;
+  height: auto;
+  font-family: "Montserrat";
+  font-weight: 100;
+  letter-spacing: 1px;
+  color: black;
+  padding-bottom: 50px;
+  .subtotal-box {
+    display: block;
+    width: 26vw;
+    height: 20vw;
+    margin: 2vw;
+    margin-top: 10vh;
+    margin-left: 0;
+    border: 1px solid black;
+    border: 0px solid rgb(206, 206, 206);
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2);
+    background: none;
+    .subt-row {
+      float: left;
+      width: 26vw;
+      height: auto;
+      font-size: 14px;
+      margin: 0.25vw;
+      .subt-name {
+        float: left;
+        text-align: end;
+        height: auto;
+        width: auto;
+        margin: 0.25vw;
+
+        background: none;
+      }
+
+      .subt-value {
+        float: right;
+        text-align: start;
+        height: auto;
+        width: auto;
+        margin: 0.25vw;
+
+        background: none;
+      }
+    }
+
+    .shipping-row {
+      height: 56.56px;
+      line-height: 56.56px;
+      font-size: 14px;
+      margin: 0px;
+
+      .subt-name {
+        background: none;
+        float: left;
+
+        height: inherit;
+        line-height: 60px;
+        width: auto;
+        margin: 0px;
+      }
+      mat-form-field {
+        width: 180px;
+        float: right;
+        height: 56.56px;
+      }
+    }
+
+    .total-row {
+      float: left;
+      width: 26vw;
+      height: auto;
+      margin: 0.25vw;
+      margin-top: 5vw;
+
+      font-size: 14px;
+
+      .total-name {
+        float: left;
+        text-align: start;
+        height: auto;
+        width: auto;
+        margin: 0.25vw;
+        font-size: 16px;
+      }
+
+      .total-value {
+        float: right;
+        text-align: start;
+        height: auto;
+        width: auto;
+        margin: 0.25vw;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+#left-panel {
+  display: inline-block;
+  float: left;
+  width: 60vw;
+  height: auto;
+  margin-left: 5vw;
+  font-size: 20px;
+  .title {
+    width: 60vw;
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 3px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 100;
+    font-family: "Montserrat";
+    font-weight: 100;
+    letter-spacing: 2px;
+    color: black;
+  }
+  .grid {
+    display: block;
+    float: left;
+    width: 50vw;
+    margin: 0;
+
+    border: 0px solid black;
+
+    height: auto;
+
+    .product-box {
+      display: block;
+      float: left;
+      width: inherit;
+      height: auto;
+      margin-right: 4vw;
+      margin-bottom: 1vh;
+
+      font-family: "Montserrat";
+      font-weight: 100;
+      text-align: start;
+
+      letter-spacing: 1px;
+
+      border: 0px solid black;
+      box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.2);
+
+      img {
+        float: left;
+        margin: 1vw;
+        width: 10vw;
+        height: 10vw;
+      }
+      .product-name {
+        display: block;
+        float: left;
+        width: 30vw;
+
+        height: auto;
+        margin: 0;
+        padding: 1vw;
+        padding-bottom: 0;
+        text-decoration: none;
+        font-size: 0.65em;
+        font-family: "Montserrat";
+        font-weight: thin;
+        color: black;
+      }
+      .price {
+        display: block;
+        float: left;
+        width: 30vw;
+        height: auto;
+
+        margin-top: 0vw;
+        padding: 1vw;
+        padding-top: 0;
+
+        font-size: 0.65em;
+      }
+      .size {
+        display: block;
+        float: left;
+        width: 30vw;
+        height: auto;
+
+        margin-top: 0vw;
+        padding: 1vw;
+        padding-bottom: 0;
+
+        font-size: 0.65em;
+      }
+      .qty {
+        display: block;
+        float: left;
+        width: 30vw;
+        height: auto;
+
+        margin-top: -1vw;
+        padding-left: 1vw;
+
+        font-size: 0.65em;
+      }
+    }
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 1023px) {
+  .main {
+    margin-top: 66px;
+  }
+  #left-panel {
+    display: block;
+
+    width: 100%;
+    margin: 0px;
+    padding-top: 10px;
+    .grid {
+      display: block;
+      float: left;
+      width: inherit;
+      margin: 0;
+      border: 0px solid black;
+      height: auto;
+      .product-box {
+        height: 110px;
+        width: inherit;
+        .product-name {
+          font-size: 14px;
+          padding: 5px;
+          padding-bottom: 0px;
+          margin: 0px;
+          width: 43vw;
+          height: 35px;
+        }
+        .price {
+          font-size: 12px;
+          width: 43vw;
+          height: 15px;
+          margin: 0px;
+          padding: 5px;
+          padding-bottom: 0px;
+        }
+
+        .size {
+          font-size: 12px;
+          margin: 0px;
+          padding: 5px;
+
+          padding-bottom: 0px;
+          height: 15px;
+          width: 50vw;
+        }
+
+        .qty {
+          width: 50vw;
+
+          margin: 0px;
+          height: 15px;
+
+          padding: 5px;
+
+          font-size: 12px;
+        }
+
+        img {
+          margin: 0px;
+          padding: 5px;
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+  }
+
+  #right-panel {
+    display: block;
+    float: left;
+
+    width: 100%;
+    margin: 0px;
+
+    background: white;
+    .subtotal-box {
+      display: block;
+      width: inherit;
+      height: auto;
+      margin: 2vw;
+      margin-top: 3vh;
+      margin-left: 0;
+      border: 0px solid black;
+
+      box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.2);
+      .subt-row {
+        display: block;
+        float: left;
+        width: inherit;
+        height: auto;
+        margin-top: 5px;
+        font-size: 16px;
+      }
+
+      .total-row {
+        display: block;
+        float: left;
+        width: inherit;
+        height: auto;
+        margin-top: 20px;
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 1024px) {
+  .main {
+    margin-top: 66px;
+    display: block;
+    width: 100vw;
+    min-height: 100vh;
+    background: none;
+    justify-content: center;
+  }
+  .centered-content-container {
+    width: 900px;
+    background: none;
+    margin-left: calc((100% - 900px) / 2);
+
+    #left-panel {
+      display: inline;
+
+      width: 550px;
+      height: auto;
+      margin-left: auto;
+      padding: 25px;
+      font-size: 20px;
+
+      .grid {
+        display: block;
+        float: left;
+        width: 550px;
+        margin: 0;
+
+        border: 0px solid black;
+
+        height: auto;
+        background: none;
+        .product-box {
+          display: block;
+          background: none;
+          float: left;
+          width: inherit;
+          height: 150px;
+          margin-right: 0vw;
+          margin-bottom: 5px;
+
+          font-family: "Montserrat";
+          font-weight: 100;
+          text-align: start;
+
+          letter-spacing: 1px;
+
+          border: 0px solid black;
+          box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.2);
+
+          img {
+            float: left;
+            margin: 10px;
+
+            width: 130px;
+            height: auto;
+            max-height: 130px;
+          }
+          .product-name {
+            display: block;
+            background: none;
+            float: left;
+            width: 350px;
+
+            height: 15px;
+            margin-top: 10px;
+            padding: 5px;
+
+            text-decoration: none;
+            font-size: 14px;
+            font-family: "Montserrat";
+            font-weight: thin;
+            color: black;
+          }
+          .price {
+            display: block;
+            float: left;
+            background: none;
+            width: 350px;
+            height: 20px;
+
+            margin: 0;
+            padding: 5px;
+            padding-top: 0;
+
+            font-size: 12px;
+          }
+          .size {
+            display: block;
+            background: none;
+            float: left;
+            width: 350px;
+            height: 20px;
+
+            margin: 0px;
+            padding: 5px;
+
+            font-size: 12px;
+          }
+          .qty {
+            display: block;
+            background: none;
+            float: left;
+            width: 350px;
+            height: 20px;
+
+            margin: 0px;
+            padding: 5px;
+
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    #right-panel {
+      display: block;
+      float: left;
+      width: 300px;
+      background: none;
+      margin: 0;
+      height: auto;
+      font-family: "Montserrat";
+      font-weight: 100;
+      letter-spacing: 1px;
+      color: black;
+
+      .subtotal-box {
+        display: block;
+        width: 280px;
+        height: 200px;
+        margin: 10px;
+
+        background: none;
+
+        .subt-row {
+          float: left;
+          background: none;
+          width: 270px;
+          height: 20px;
+          font-size: 14px;
+          margin: 5px;
+
+          .subt-name {
+            background: none;
+            float: left;
+
+            height: 20px;
+            width: 75px;
+            margin: 0px;
+          }
+
+          .subt-value {
+            float: right;
+            text-align: start;
+            height: 20px;
+            width: 75px;
+            margin: 0px;
+            text-align: end;
+            background: none;
+          }
+        }
+
+        .shipping-row {
+          height: 56.56px;
+          line-height: 56.56px;
+          font-size: 14px;
+          margin: 0px;
+
+          .subt-name {
+            background: none;
+            float: left;
+
+            height: inherit;
+            line-height: inherit;
+            width: 75px;
+            margin: 0px;
+          }
+          mat-form-field {
+            width: 180px;
+            float: right;
+          }
+        }
+
+        .total-row {
+          background: none;
+          float: left;
+          width: 270px;
+          height: 25px;
+          margin: 5px;
+          margin-top: 75px;
+
+          .total-name {
+            background: none;
+            float: left;
+            text-align: end;
+            height: 25px;
+            width: 75px;
+            margin: 0px;
+            font-size: 18px;
+          }
+
+          .total-value {
+            background: none;
+            float: right;
+            text-align: end;
+            height: 25px;
+            width: 75px;
+            margin: 0px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+.address-container {
+    width: 80%;
+    .form-title {
+      height: 50px;
+  
+      padding-top: 30px;
+      padding-bottom: 0px;
+      margin: 0;
+      color: rgb(82, 82, 82);
+      font-family: "Montserrat";
+      font-weight: 100;
+      letter-spacing: 1px;
+      font-size: 26px;
+    }
+  
+    .address-form {
+      width: 300px;
+      margin-left: calc(50vw - 175px);
+      font-family: "Montserrat";
+      font-weight: bold;
+      color: rgb(82, 82, 82);
+  
+      padding: 25px;
+      padding-top: 10px;
+
+      
+      .form-block {
+        display: inline-block;
+        width: 300px;
+        height: auto;
+        margin: 0;
+        padding: 0;
+
+        
+        .address-field-top {
+          float: left;
+          width: 70px;
+          margin-top: 8px;
+          text-align: left;
+        }
+        .address-field-bottom {
+          float: right;
+  
+          margin: -5px;
+          margin-right: 135px;
+          margin-bottom: 0px;
+          width: 75px;
+  
+          font-size: 12px;
+          color: rgb(158, 158, 158);
+  
+          text-align: left;
+        }
+        .address-input {
+          float: right;
+          height: 20px;
+          margin: 5px;
+          width: 200px;
+        }
+      }
+  
+      .submit-div {
+        width: 300px;
+        margin-top: 50px;
+  
+        .submit-button {
+          border: none;
+          background-color: rgb(82, 82, 82);
+          height: 60px;
+          font-family: "Montserrat";
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          font-size: 16px;
+          font-weight: 100;
+          width: 300px;
+          color: white;
+        }
+      }
+    }
+  }
+
+  */

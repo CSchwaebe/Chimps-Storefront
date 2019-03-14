@@ -1,0 +1,296 @@
+.main {
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.title-container {
+    display: inline-block;
+    width: 300px;
+    height: 175px;
+    
+}
+
+.title {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Open Sans";
+    color: rgb(109, 192, 94);
+}
+
+.checkmark {
+    width: 100px;
+    height: 100px;
+    padding: 25px;
+    padding-top: 0px;
+}
+
+.order-container {
+    display: inline-block;
+    width: 90%;
+   
+    margin-bottom: 30px;
+    height: auto;
+    background: white;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
+}
+
+
+.order-headers {
+    display: grid;
+    width: 100%;
+    
+    grid-template-columns: 6fr 1.5fr 1.5fr 3fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: "id id id id"
+                         "name-header size-header quantity-header price-header";
+    height: auto;
+    font-size: 12px;
+    font-family: 'Montserrat';
+    
+}
+
+.id-header-container {
+    display: inline-block;
+    
+    grid-area: id;
+    background: rgb(109, 192, 94);
+}
+.order-id {
+    display: inline-block;
+   
+    font-size: 14px;
+    color: white;
+}
+
+.name-header-container {
+    display: inline-block;
+    grid-area: name-header;
+}
+.product-name-header {
+    display: inline-block;
+    
+}
+
+.size-header-container {
+    display: inline-block;
+    grid-area: size-header;
+}
+.product-size-header {
+    display: inline-block;
+   
+}
+
+
+.quantity-header-container {
+    display: inline-block;
+    grid-area: quantity-header;
+}
+.product-quantity-header {
+    display: inline-block;
+   
+}
+
+.price-header-container {
+    display: inline-block;
+    grid-area: price-header;
+}
+.product-price-header {
+    display: inline-block;
+   
+}
+
+
+
+
+.product-container {
+    display: grid;
+    width: 100%;
+    grid-template-rows: 1fr;
+    grid-template-columns: 6fr 1.5fr 1.5fr 3fr;
+    grid-template-areas: "name size quantity price";
+    height: auto;
+    font-size: 12px;
+    font-family: 'Montserrat';
+}
+
+
+.product-name {
+    grid-area: name;
+}
+
+.product-size {
+    grid-area: size;
+}
+
+.product-quantity {
+    grid-area: quantity;
+}
+
+.product-price {
+    grid-area: price;
+}
+
+
+
+.order-total-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 2fr 1fr .6fr .4fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "emptyL emptyT emptyT empty" 
+                         "emptyL subtotal-label subtotal empty"
+                         "tracking tax-label tax empty" 
+                         "tracking shipping-label shipping empty" 
+                         "tracking total-label total empty";
+    height: 100px;
+    font-size: 12px;
+    font-family: 'Montserrat';
+    border-top: 1px dashed rgb(109, 192, 94);
+    border-top: 1px dashed rgb(158, 158, 158);
+    
+}
+
+.tracking-container {
+    grid-area: tracking;
+    display: inline-block;
+    margin-top: -7px;
+}
+
+.tracking-link {
+    padding: 10px;
+    display: inline-block;
+    background: rgb(121, 55, 245); 
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    letter-spacing: .5px;
+    
+        width: 100px;
+        box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
+
+}
+
+.subtotal-label {
+    grid-area: subtotal-label;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+}
+
+.order-subtotal {
+    grid-area: subtotal;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.tax-label {
+    grid-area: tax-label;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+}
+
+.order-tax {
+    grid-area: tax;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.shipping-label {
+    grid-area: shipping-label;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+}
+
+.order-shipping {
+    grid-area: shipping;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.total-label {
+    grid-area: total-label;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+}
+
+.order-total {
+    grid-area: total;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+}
+
+.empty {
+    grid-area: empty;
+}
+
+.emptyT {
+    grid-area: emptyT;
+}
+
+
+.emptyL {
+    grid-area: emptyL;
+}
+
+
+
+/*
+<div class="order-container" *ngFor="let order of orders; index as i">
+    <p class="order-id">Order #{{order._id}}</p>
+    <p class="product-name-header">Product Name</p>
+    <p class="product-price-header">Size</p>
+    <p class="product-quantity-header">Quantity</p>
+    <p class="product-price-header">Product Price</p>
+    
+    <div *ngFor="let prod of order.products; index as j">
+        <p class="product-name">{{prod.product.name}}</p>
+        <p class="product-price">{{prod.selectedSize}}</p>
+        <p class="product-quantity">{{prod.quantity}}</p>
+        <p class="product-price">{{prod.product.price}}</p>
+    </div>
+
+    <p class="order-subtotal">{{order.subtotal}}</p>
+    <p class="order-tax">{{order.tax}}</p>
+    <p class="order-shipping">{{order.shipping}}</p>
+    <p class="order-total">{{order.total}}</p>
+    <a class="tracking-link" href="{{order.trackingUrl}}" target="_blank">Track Shipment</a>
+</div>
+*/
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+.order-total-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 2fr 1fr .8fr .2fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "emptyL emptyT emptyT empty" 
+                         "emptyL subtotal-label subtotal empty"
+                         "tracking tax-label tax empty" 
+                         "tracking shipping-label shipping empty" 
+                         "tracking total-label total empty";
+    height: 100px;
+    font-size: 12px;
+    font-family: 'Montserrat';
+    
+    
+}
+  
+  
+
+
+}   

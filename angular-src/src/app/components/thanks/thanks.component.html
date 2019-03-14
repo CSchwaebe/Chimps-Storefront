@@ -1,0 +1,46 @@
+<div class="main">
+    <div class="title-container">
+        <img class="checkmark" src="../../../assets/icons/checked.png">
+        <h3 class="title">Thank You!</h3>
+    </div>
+    <!--
+<div class="order-container" *ngFor="let order of model; index as i">
+    <a href="{{order.public_url}}">{{order.tracking}}</a>
+</div>
+-->
+    <div class="center">
+        <div class="order-container" *ngFor="let order of orders; index as i">
+            <div class="order-headers">
+                <div class="id-header-container"><p class="order-id">Order #{{order._id.toUpperCase()}}</p></div>
+                <div class="name-header-container"><p class="product-name-header">Product Name</p></div>
+                <div class="size-header-container"><p class="product-size-header">Size</p></div>
+                <div class="quantity-header-container"><p class="product-quantity-header">Qty</p></div>
+                <div class="price-header-container"><p class="product-price-header">Unit Price</p></div>
+            </div>
+            <div class="product-container" *ngFor="let prod of order.products; index as j">
+                <p class="product-name">{{prod.product.name}}</p>
+                <p class="product-size">{{prod.selectedSize}}</p>
+                <p class="product-quantity">{{prod.quantity}}</p>
+                <p class="product-price">${{prod.product.price.toFixed(2)}}</p>
+            </div>
+            <div class="order-total-container">
+                <p class="subtotal-label">Subtotal: </p>
+                <p class="tax-label">Tax: </p>
+                <p class="shipping-label">Shipping: </p>
+                <p class="total-label">Total: </p>
+                <p class="order-subtotal">${{order.subtotal.toFixed(2)}}</p>
+                <p class="order-tax">${{order.tax.toFixed(2)}}</p>
+                <p class="order-shipping">${{order.shipping.toFixed(2)}}</p>
+                <p class="order-total">${{order.total.toFixed(2)}}</p>
+                <div class="tracking-container">
+                    <a class="tracking-link" href="{{order.trackingUrl}}" target="_blank">Track Order</a>
+                </div>
+                <div class="empty"></div>
+                <div class="emptyT"></div>
+                <div class="emptyC"></div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

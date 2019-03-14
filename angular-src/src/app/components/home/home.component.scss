@@ -1,0 +1,154 @@
+$font-primary: 'Montserrat';
+$font-secondary: 'Open Sans';
+$font-accent: 'Lato';
+
+.padding {
+  width: 100vw;
+  height: 100px;
+  background: white;
+}
+.main {
+  display: block;
+  margin-top: 66px;
+  min-height: 100vh;
+  width: 100vw;
+
+  .slideshow-container {
+    position: relative;
+    height: calc(100vw * .5625);
+    .image {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+
+      width: 100%;
+  
+      opacity: 0;
+      transition-property: opacity;
+      transition-duration: 3s;
+      transition-delay: 0s;
+      transition-timing-function: ease-in-out;
+    }
+
+    .display-image {
+      opacity: 1;
+    }
+  }
+
+  .featured-products-container {
+    width: 100%;
+    .title {
+
+    }
+    .grid {
+      width: 100%;
+      height: auto;
+      overflow: scroll;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
+      .product-box {
+        width: 30%;
+       
+        margin: 1vw;
+        display: inline-block;
+        vertical-align: top;
+      
+       
+        img { //replace
+          width: 100%;
+        }
+
+        .name {
+          display: block;
+          margin: 0px;
+          padding: 0px;
+          width: 100%;
+          height: 20px;
+          background: white;
+          color: black;
+          font-family: $font-accent;
+          font-size: 14px;
+          text-decoration: none;
+        }
+
+        .price {
+          display: block;
+          vertical-align: top;
+          margin: 0px;
+          padding: 0px;
+          width: 100%;
+          height: 20px;
+          background: white;
+          color: black;
+          font-family: $font-accent;
+          font-size: 12px;
+          text-decoration: none;
+
+        }
+      }
+    }
+  }
+
+
+  .featured-groups-container {
+    width: 100%;
+    .title {
+
+    }
+    .grid {
+      width: 100%;
+      height: 100px;
+     
+      
+      .box-container {
+        position: relative;
+        width: 30%;
+        display: inline-block;
+        vertical-align: top;
+        margin: 1vw;
+     
+        .group-box {
+          width: 100%;
+          height: 56px;
+          
+         
+          display: inline-block;
+          vertical-align: top;
+          background: blue;
+          position: relative;
+         
+          div.img { //replace
+            position: absolute;
+            width: 100%;
+            height: 56px;
+           
+          }
+          .name {
+            position: relative;
+            top: 30%;
+            text-decoration: none;
+            color: white;
+  
+          }
+  
+         
+      }
+      
+
+       
+      }
+    }
+  }
+  
+
+}
+
+
+
+@media only screen and (max-width: 450px) {
+  .main {
+    margin-top: 66px;
+  }
+
+}

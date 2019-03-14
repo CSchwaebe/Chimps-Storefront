@@ -1,0 +1,427 @@
+$color-dark-blue: hsl(239, 100%, 9%);
+$color-silver: hsl(0, 0%, 62%);
+$color-white-blue: hsl(239, 43%, 99%);
+
+button:focus {
+  outline: 0;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: inline-grid;
+  width: 100vw;
+  grid-template-columns: 66px auto 66px; /*calc(100vw - 132px)*/
+  grid-template-rows: 66px;
+  grid-template-areas: "left center right";
+
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.2);
+  font-family: "Lato";
+  font-weight: 100;
+
+  background: $color-white-blue;
+  z-index: 100000;
+
+  .mobile-dropdown-menu-container {
+    display: none;
+  }
+
+  /* The center part of the navbar */
+  .dropdown-menu-container {
+    grid-area: center;
+    text-align: center;
+    .dropdown-item-container {
+      display: inline-block;
+
+      .drop-link {
+        display: inline-block;
+        vertical-align: top;
+        min-width: 150px;
+        height: 66px;
+        line-height: 66px;
+
+        font-weight: 100;
+        font-size: 12px;
+        text-align: center;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: black;
+        &:hover {
+          font-weight: 700;
+        }
+      }
+
+      .dropdown-content {
+        display: none;
+        position: fixed;
+        top: 66px;
+        left: 0;
+        width: 100vw;
+
+        background: #1d1d1d;
+        opacity: 0.99;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.18);
+
+        .category {
+          display: inline-block;
+          vertical-align: top;
+          min-height: 200px;
+          min-width: 10vw;
+          padding-left: 10px;
+          padding-right: 10px;
+          padding-bottom: 20px;
+
+          font-weight: 100;
+          text-align: left;
+
+          top: 66px;
+
+          .category-link {
+            display: block;
+
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin: 0;
+            color: rgb(0, 231, 231);
+
+            text-decoration: none;
+            font-size: 10px;
+            font: "Montserrat";
+            font-weight: 100;
+            letter-spacing: 3px;
+            text-align: left;
+
+            text-transform: uppercase;
+
+            &:hover {
+              font-weight: 700;
+            }
+          }
+        }
+
+        .subcategory {
+          .subcategory-link {
+            font-family: "Montserrat";
+            display: block;
+            font-size: 10px;
+            color: white;
+            padding-top: 0px;
+            padding-bottom: 10px;
+            margin: 0px;
+            text-decoration: none;
+            letter-spacing: 2px;
+            font-weight: 100;
+            &:hover {
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* The right side of the navbar */
+  .logo {
+    grid-area: left;
+
+    width: 66px;
+    height: 66px;
+  }
+
+  /* THe right side of the navbar */
+  .cart-container {
+    grid-area: right;
+
+    .cart-number-container {
+      position: absolute;
+
+      top: 6px;
+      right: 8px;
+      width: 20px;
+      height: 20px;
+      border-radius: 30px;
+      background: red;
+
+      .cart-number {
+        margin: 0;
+        color: white;
+        font-size: 12px;
+        line-height: 20px;
+        font-weight: bold;
+      }
+    }
+
+    .cart {
+      display: inline-block;
+      position: fixed;
+      top: 0;
+      right: 0;
+
+      height: 66px;
+      width: 66px;
+      margin: 0;
+
+      .shopping-cart-icon {
+        display: inline-block;
+        padding: 18px;
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+}
+
+/* FOR MOBILE AND IPAD */
+@media only screen and (max-width: 1024px) {
+  .navbar {
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    top: 0;
+
+    /* The center part of the navbar */
+    .logo {
+      grid-area: center;
+    }
+
+    /* The right side of the navbar */
+    .dropdown-menu-container {
+      display: none;
+    }
+
+    /* The container for the Menu Button */
+    .mobile-dropdown-menu-container {
+      display: inline-block;
+      grid-area: left;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 66px;
+      width: 66px;
+      background-color: inherit;
+      #mobile-dropdown-button {
+        width: 34px;
+        height: 34px;
+        padding: 16px;
+      }
+    }
+
+    /* The background for the mobile menu */
+    .mobile-dropdown-background {
+      display: block;
+      position: fixed;
+      top: 66px;
+      left: 0;
+      width: 100vw;
+
+      min-height: 90vh;
+      height: auto;
+      background: #1d1d1d;
+
+      .mobile-dropdown-content-container {
+        height: calc(100vh - 66px);
+        overflow-y: scroll;
+        background: #1d1d1d;
+
+        .button-container {
+          display: grid;
+
+          .mobile-collection-button {
+            position: relative;
+            display: block;
+            height: 66px;
+            /*overflow: hidden;*/
+            width: 100vw;
+            border: none;
+            background: #1d1d1d;
+            /*box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);*/
+
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: "Montserrat";
+            font-size: 16px;
+            letter-spacing: 3px;
+            font-weight: 100;
+            color: whitesmoke;
+          }
+
+          .dropdown-content {
+            display: inline-block;
+            position: relative;
+            top: 1px;
+
+            background: purple;
+
+            opacity: 0.95;
+
+            width: 100vw;
+
+            padding: 0;
+            margin: 0px;
+
+            justify-content: center;
+
+            max-height: 0px;
+            padding: 0;
+            font-size: 0px;
+
+            transition-property: max-height font-size;
+            transition-duration: 0.4s;
+            transition-delay: 0s;
+            transition-timing-function: linear;
+            transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+            visibility: hidden;
+            /*display: none;*/
+
+            .collection-link {
+              border: none;
+              background-color: inherit;
+              visibility: inherit;
+              display: inherit;
+              width: 100vw;
+              margin: 0px;
+
+              padding-top: 18px;
+              padding-bottom: 18px;
+
+              color: white;
+
+              text-decoration: none;
+              font-size: inherit;
+              font-family: "Montserrat";
+              font-weight: 100;
+
+              text-transform: uppercase;
+              letter-spacing: 3px;
+              text-align: center;
+
+              font-size: inherit;
+            }
+
+            .category {
+              min-height: 0px;
+              font-weight: 100;
+              text-align: center;
+              display: inline-block;
+              margin: 0px;
+              padding: 0px;
+              width: 100vw;
+              visibility: inherit;
+              display: inherit;
+
+              .mobile-category-button {
+                border: none;
+                background-color: inherit;
+                visibility: inherit;
+                /*display: block;*/
+                display: inherit;
+                width: 100vw;
+                margin: 0px;
+
+                padding: 18px;
+
+                color: white;
+
+                text-decoration: none;
+                font-size: inherit;
+                font-family: "Montserrat";
+                font-weight: 100;
+
+                text-transform: uppercase;
+                letter-spacing: 3px;
+
+                font-size: inherit;
+              }
+
+              .subcategory-link {
+                display: block;
+
+                font-size: 10px;
+                color: white;
+
+                background: rgb(116, 1, 116);
+                margin-top: 0px;
+
+                margin-bottom: 0px;
+
+                text-decoration: none;
+                font-weight: 100;
+                text-transform: uppercase;
+                font-family: "Montserrat";
+                letter-spacing: 2px;
+
+                max-height: 0;
+                padding: 0px;
+                font-size: 0;
+
+                transition-property: max-height font-size padding;
+                transition-duration: 0.4s;
+                transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+              }
+
+              .display-subcategory-link {
+                padding: 15px;
+                max-height: 100px;
+
+                font-size: 10px;
+              }
+
+              .subcategory {
+                background: green;
+                .subcategory-link {
+                  display: block;
+
+                  font-size: 10px;
+                  color: white;
+
+                  background: rgb(116, 1, 116);
+                  margin-top: 0px;
+
+                  margin-bottom: 0px;
+
+                  text-decoration: none;
+                  font-weight: 100;
+                  text-transform: uppercase;
+                  font-family: "Montserrat";
+                  letter-spacing: 2px;
+
+                  max-height: 0;
+                  padding: 0px;
+                  font-size: 0;
+
+                  transition-property: max-height font-size padding;
+                  transition-duration: 0.4s;
+                  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+                }
+
+                .display-subcategory-link {
+                  padding: 15px;
+                  max-height: 100px;
+
+                  font-size: 10px;
+                }
+              }
+            }
+          }
+
+          .display-category-link {
+            font-size: 11px;
+            max-height: 2000px;
+
+            width: 100vw;
+            text-align: left;
+
+            visibility: visible;
+            /*display: inline-block;*/
+          }
+        }
+      }
+    }
+  }
+}

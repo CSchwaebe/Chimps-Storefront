@@ -1,0 +1,63 @@
+<!-- Slideshow container -->
+<div class="main">
+
+  <div class=slideshow-container>
+    <img *ngFor="let img of slideshow.images; index as i" src="{{img}}" class="image"
+      [class.display-image]="activeImage === i">
+  </div>
+  <ng-template [ngIf]=featuredProducts>
+    <div class=featured-products-container>
+      <h2 class=title>{{featuredProductsTitle}}</h2>
+      <div class=grid>
+        <div class=product-box *ngFor="let prod of products; index as i">
+          <img src={{prod.images[0]}}>
+          <a class=name routerLink="/detail/{{prod.stub}}">{{prod.name}}</a>
+          <a class=price routerLink="/detail/{{prod.stub}}">${{prod.price}}</a>
+        </div>
+        
+      </div>
+
+    </div>
+  </ng-template>
+  <ng-template [ngIf]=featuredGroups>
+    <div class=featured-groups-container>
+      <h2 class=title>{{featuredGroupsTitle}}</h2>
+      <div class=grid>
+        <div class=box-container>
+            <div class=group-box>
+                <div class=img>
+                    
+                </div>
+                <a class=name routerLink="/">Group Name</a>
+               
+              </div>
+        </div>
+        <div class=box-container>
+        <div class=group-box>
+          <div class=img>
+             
+          </div>
+          <a class=name routerLink="/">Group Name</a>
+          
+        </div>
+        </div>
+
+      
+    </div>
+
+</div>
+</ng-template>
+
+<div class=padding></div>
+
+</div>
+
+<app-footer></app-footer>
+
+<!-- The dots/circles
+  <div style="text-align:center">
+    <span class="dot" (click)="currentSlide(1)"></span> 
+    <span class="dot" (click)="currentSlide(2)"></span> 
+    <span class="dot" (click)="currentSlide(3)"></span> 
+  </div>
+   -->
