@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Home, HomeResponse } from '../interfaces/home';
+import { Home, HomeResponse } from '../models/admin/home';
 import { environment } from '../../environments/environment';
 
 

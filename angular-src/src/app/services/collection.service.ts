@@ -1,6 +1,7 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Collection, CollectionResponse, AllCollectionsResponse } from '../interfaces/collection';
+import { Collection, CollectionResponse, AllCollectionsResponse } from 'src/app/models/admin/collection';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -8,11 +9,14 @@ import { environment } from '../../environments/environment';
 })
 export class CollectionService {
 
-  url: string = environment.baseURL + 'api/collection/';
-
+  url: string = environment.baseURL + 'api/collections/';
+  
   constructor(private http: HttpClient) { }
 
-  
+
+  /////////////////////////////////////////////////////////////////
+  //            NEW UNIVERSAL METHODS
+  /////////////////////////////////////////////////////////////////
   async get(stub: string) {
     return new Promise<Collection>(async (resolve, reject) => {
       this.http.get(this.url + stub).subscribe((res: CollectionResponse) => {
@@ -20,10 +24,17 @@ export class CollectionService {
       });
     })
   }
+
+  async getById(id: string) {
+    return new Promise<Collection>(async (resolve, reject) => {
+      this.http.get(this.url + 'id/' + id).subscribe((res: CollectionResponse) => {
+        resolve(res.data);
+      });
+    })
+  }
   
   async update(col: Collection) {
     return new Promise<Collection>(async (resolve, reject) => {
-      console.log(col)
       this.http.post(this.url + 'update', col).subscribe((res: CollectionResponse) => {
         resolve(res.data);
       });
@@ -38,7 +49,7 @@ export class CollectionService {
     })
   }
 
-  async getAll() {
+  async getAll() {    
     return new Promise<Collection[]>(async (resolve, reject) => {
       this.http.get(this.url).subscribe((res: AllCollectionsResponse) => {
         resolve(res.data);
@@ -46,7 +57,7 @@ export class CollectionService {
     })
   }
 
-  async getActive() {
+  async getActive(type: string) {
     return new Promise<Collection[]>(async (resolve, reject) => {
       this.http.get(this.url).subscribe((res: AllCollectionsResponse) => {
         if (res.data != null) {
@@ -62,7 +73,7 @@ export class CollectionService {
     })
   }
 
-  async getInactive() {
+  async getInactive(type: string) {
     return new Promise<Collection[]>(async (resolve, reject) => {
       this.http.get(this.url).subscribe((res: AllCollectionsResponse) => {
         if (res.data != null) {
@@ -79,29 +90,21 @@ export class CollectionService {
   }
 
   async deactivate(col: Collection) {
-    //console.log(col);
+   
     return new Promise<Collection>(async (resolve, reject) => {
       this.http.post(this.url + 'deactivate', col).subscribe((res: CollectionResponse) => {
-        //console.log(res.data);
         resolve(res.data);
       });
     })
   }
 
-  /*
-  async deactivate(col: Collection) {
+  async delete(col: Collection) {
     return new Promise<Collection>(async (resolve, reject) => {
-      this.http.delete(this.url + col.name).subscribe((res: CollectionResponse) => {
+      this.http.post(this.url + 'delete', col).subscribe((res: CollectionResponse) => {
         resolve(res.data);
       });
     })
   }
-*/
-
-
-
 
 }
-
-
 

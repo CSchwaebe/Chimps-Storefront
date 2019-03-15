@@ -47,20 +47,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
 
   async getProducts() {
-    let tmpProductArray = await this.ProductService.getAll(this.router.url);
+    let tmpProductArray = await this.ProductService.getActive(this.router.url);
 
     let active = [];
     for (let i = 0; i < tmpProductArray.length; i++) {
-
-      /*
-      if (tmpProductArray[i].active === null || tmpProductArray[i].active === undefined)
-        active.push(tmpProductArray[i])
-        */
-
-      if (!tmpProductArray[i].active)
-        continue;
-       
-      //Checking to see if its sole out
+   
+      //Checking to see if its sold out
       // If every vairant has a quantity of 0, then its sold
       // If any variant has a quantity greater than 0, not sold out
       let soldOut = true;
@@ -76,7 +68,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
         continue;
       }
       // END SOLD OUT LOGIC 
-
 
       //NOW We are left with only active, in stock products
       active.push(tmpProductArray[i])

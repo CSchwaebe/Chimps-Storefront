@@ -1,50 +1,55 @@
 <div class="background">
-  <div class="container">
-    <div class="image-container">
-      <div class="big-image-container">
-        <img class="big-image" src="{{selectedImage}}">
-      </div>
-      <div class="small-image-container" *ngFor="let img of images; index as i">
-        <img class="small-image" src="{{img}}" (click)="changeImage(i)">
-      </div>
-    </div>
 
-    <div class="product-box">
-      <p class="product-name">{{model.product.name}}</p>
-      <p class="price">${{model.product.price}}</p>
-
-
-      <ng-template [ngIf]="model.selectedSize && availableQty[availableQty.length - 1] < 10">
-        <p class=limited-quantity>Only {{availableQty[availableQty.length - 1]}} left!</p>
-      </ng-template>
-      <form (ngSubmit)="onSubmit()" #addProductForm="ngForm" class="product-form" id="add-product-form">
-        <div class=selectors>
-          <mat-form-field class=size appearance=outline>
-            <mat-label>Size</mat-label>
-            <mat-select required [(ngModel)]="model.selectedSize" name="selected-size"
-              (selectionChange)="getAvailableQty(model.selectedSize)">
-              <mat-option *ngFor="let size of sizes" [value]="size">{{size}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field class=qty appearance=outline>
-            <mat-label>Qty</mat-label>
-            <mat-select required [(ngModel)]="model.quantity" name="quantity"
-              (selectionChange)="getAvailableQty(model.selectedSize)">
-              <mat-option *ngFor="let qty of availableQty" [value]="qty">{{qty}}</mat-option>
-            </mat-select>
-          </mat-form-field>
+  <ng-template [ngIf]=model.product>
+      <div class="container">
+          <div class="image-container">
+            <div class="big-image-container">
+              <img class="big-image" src="{{selectedImage}}">
+            </div>
+            <div class="small-image-container" *ngFor="let img of images; index as i">
+              <img class="small-image" src="{{img}}" (click)="changeImage(i)">
+            </div>
+          </div>
+      
+          <div class="product-box">
+            <p class="product-name">{{model.product.name}}</p>
+            <p class="price">${{model.product.price}}</p>
+      
+      
+            <ng-template [ngIf]="model.selectedSize && availableQty[availableQty.length - 1] < 10">
+              <p class=limited-quantity>Only {{availableQty[availableQty.length - 1]}} left!</p>
+            </ng-template>
+            <form (ngSubmit)="onSubmit()" #addProductForm="ngForm" class="product-form" id="add-product-form">
+              <div class=selectors>
+                <mat-form-field class=size appearance=outline>
+                  <mat-label>Size</mat-label>
+                  <mat-select required [(ngModel)]="model.selectedSize" name="selected-size"
+                    (selectionChange)="getAvailableQty(model.selectedSize)">
+                    <mat-option *ngFor="let size of sizes" [value]="size">{{size}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+      
+                <mat-form-field class=qty appearance=outline>
+                  <mat-label>Qty</mat-label>
+                  <mat-select required [(ngModel)]="model.quantity" name="quantity"
+                    (selectionChange)="getAvailableQty(model.selectedSize)">
+                    <mat-option *ngFor="let qty of availableQty" [value]="qty">{{qty}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+      
+              <p class="description">{{model.product.description}}</p>
+      
+              <div class=submit-background>
+                <button type="submit" class="add-to-cart purple-button">ADD TO CART</button>
+              </div>
+            </form>
+          </div>
+      
         </div>
 
-        <p class="description">{{model.product.description}}</p>
-
-        <div class=submit-background>
-          <button type="submit" class="add-to-cart purple-button">ADD TO CART</button>
-        </div>
-      </form>
-    </div>
-
-  </div>
+  </ng-template>
+  
 </div>
 
 <app-footer></app-footer>

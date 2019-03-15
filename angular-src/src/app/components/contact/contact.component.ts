@@ -10,6 +10,7 @@ export class ContactComponent implements OnInit {
   //email = new FormControl('', [Validators.required, Validators.email]);
   FormGroup: FormGroup;
   constructor( private FormBuilder: FormBuilder) { 
+    window.scrollTo(0,0);
 
     this.FormGroup = this.FormBuilder.group({
       name: ['', Validators.required],
@@ -21,6 +22,7 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
+   
   }
 
   onSubmit() {

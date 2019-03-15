@@ -14,7 +14,8 @@ export class ThanksComponent implements OnInit {
 
   model: Tracking;
   orders: Order[] = [];
-  orderIDArray: String[] = [];
+  order: Order;
+  orderID: string;
 
   constructor(public OrderService: OrderService,
               private LocalStorageService: LocalStorageService) {
@@ -22,11 +23,17 @@ export class ThanksComponent implements OnInit {
    }
 
   async ngOnInit() {
-    this.orderIDArray = this.LocalStorageService.retrieve('orders');
+    console.log('App Thanks Init')
+    this.orderID = this.LocalStorageService.retrieve('order');
+    this.order = await this.OrderService.getById(this.orderID);
+
+
+    /*
     for (let i = this.orderIDArray.length - 1; i >= 0; i--) {
       console.log(i)
       this.orders.push(await this.OrderService.getById(this.orderIDArray[i]));
     }
+    */
   }
 
 

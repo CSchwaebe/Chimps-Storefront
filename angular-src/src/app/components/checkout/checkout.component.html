@@ -173,8 +173,9 @@
         <!-- STEP 3 -->
         <mat-step>
             <ng-template matStepLabel>Done</ng-template>
-
-            <app-thanks></app-thanks>
+            <ng-template [ngIf]="payStepComplete">
+                <app-thanks></app-thanks>
+            </ng-template>
 
         </mat-step>
 

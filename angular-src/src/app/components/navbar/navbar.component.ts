@@ -1,14 +1,10 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
-import { CollectionService } from '../../services/collection.service';
-import { CategoryService } from '../../services/category.service';
+import { CollectionService } from 'src/app/services/collection.service';
 
-import { Collection } from '../../interfaces/collection';
-//import { Category } from '../../interfaces/category';
-import { NavbarData } from '../../interfaces/navbarData';
-import { Navbar } from '../../models/navbar';
+import { Collection } from 'src/app/models/admin/collection';
+import { Navbar, Col, Cat } from '../../models/navbar';
 import { CartService } from '../../services/cart.service';
-import { SubcategoryService } from '../../services/subcategory.service';
 
 
 @Component({
@@ -23,43 +19,68 @@ export class NavbarComponent implements OnInit {
   previousCategoryId: string = '';
   previousCollectionId: string = '';
 
- data: NavbarData = {
-   collections: undefined,
- };
-  
+  allGroups: Collection[];
+
  model: Navbar = new Navbar();
 
   constructor(public sessionStorage: SessionStorageService,
               private CollectionService: CollectionService,
-              private CategoryService: CategoryService,
-              private SubcategoryService: SubcategoryService,
               public CartService: CartService) {}
 
   async ngOnInit() {
-  
+   
    let tmp = this.sessionStorage.retrieve('navbar');
-    if (tmp === null) {
+    if (tmp) 
+      this.model = tmp;
+     else 
       await this.getData();
-    } else {
-      this.data = tmp;
-      this.model = new Navbar(tmp);
-    }
+    
     
 
   }
 
   async getData() {
-   this.data.collections = await this.CollectionService.getActive();
-   for (let i = 0; i < this.data.collections.length; i++) {
-     this.data.collections[i].categories = await this.CategoryService.getActive(this.data.collections[i].name)
-     
-     for (let j = 0; j < this.data.collections[i].categories.length; j++) {
-      this.data.collections[i].categories[j].subcategories = await this.SubcategoryService.getActive(this.data.collections[i].name, this.data.collections[i].categories[j].name);
-    }
-   }
-   
-   this.sessionStorage.store('navbar', this.data);
-   this.model = new Navbar(this.data);
+    this.model.collections = [];
+    this.allGroups =  await this.CollectionService.getAll();
+    let collections: Collection[] = this.allGroups.filter((collection, index, collectionArray) => {
+      return (collection.type === 'Collection' && collection.active);
+    });
+    let categories: Collection[] = this.allGroups.filter((collection, index, collectionArray) => {
+      return (collection.type === 'Category' && collection.active);
+    });
+    let subcategories: Collection[] = this.allGroups.filter((collection, index, collectionArray) => {
+      return (collection.type === 'Subcategory' && collection.active);
+    });
+
+    let subs: Collection[] =[];
+    let cats: Cat[] = [];
+    collections.forEach((collection) => {
+      categories.forEach((category) => {
+        if (category.shop === collection.name) {
+          subcategories.forEach((subcategory) => {
+            if (subcategory.shop === collection.name && subcategory.category === category.name)
+              subs.push(subcategory)
+          });
+          cats.push({
+            category: category,
+            isOpen: false,
+            subcategories: subs,
+          })
+          subs = [];
+        }
+      });
+
+      this.model.collections.push({
+        collection: collection,
+        categories: cats,
+        isOpen: false,
+      })
+      cats = [];
+      subs = [];
+    });
+
+    this.sessionStorage.store('navbar', this.model);
+    return
   }
 
   show(index: number) {
@@ -71,7 +92,6 @@ export class NavbarComponent implements OnInit {
     this.previousCollectionId = '';
 
     this.showMobileMenu = !this.showMobileMenu;
-    console.log(this.previousCategoryId + this.previousCollectionId);
   }
 
   expandCollectionsMobile(id) {
@@ -134,7 +154,6 @@ export class NavbarComponent implements OnInit {
 
   private openCollectionMobile(id: string) {
     let elements = <HTMLCollectionOf<HTMLElement>>document.getElementsByClassName(id);
-    console.log(elements);
     for (let i = 0; i < elements.length; i++) {
       elements[i].classList.toggle('display-category-link');
     }

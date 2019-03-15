@@ -1,15 +1,17 @@
 <!-- Slideshow container -->
 <div class="main">
 
+  <ng-template [ngIf]=model>
+
   <div class=slideshow-container>
     <img *ngFor="let img of slideshow.images; index as i" src="{{img}}" class="image"
       [class.display-image]="activeImage === i">
   </div>
-  <ng-template [ngIf]=featuredProducts>
+  <ng-template [ngIf]=model.featuredProducts>
     <div class=featured-products-container>
       <h2 class=title>{{featuredProductsTitle}}</h2>
       <div class=grid>
-        <div class=product-box *ngFor="let prod of products; index as i">
+        <div class=product-box *ngFor="let prod of model.featuredProducts; index as i">
           <img src={{prod.images[0]}}>
           <a class=name routerLink="/detail/{{prod.stub}}">{{prod.name}}</a>
           <a class=price routerLink="/detail/{{prod.stub}}">${{prod.price}}</a>
@@ -19,34 +21,27 @@
 
     </div>
   </ng-template>
-  <ng-template [ngIf]=featuredGroups>
-    <div class=featured-groups-container>
+  <ng-template [ngIf]=model.featuredCollections>
+    <div class=featured-collections-div>
       <h2 class=title>{{featuredGroupsTitle}}</h2>
       <div class=grid>
-        <div class=box-container>
-            <div class=group-box>
-                <div class=img>
-                    
-                </div>
-                <a class=name routerLink="/">Group Name</a>
-               
+        <div class=collection-container *ngFor="let col of model.featuredCollections; index as i">
+            <div class=collection-box>
+              <div class=overlay></div>
+                <img src={{col.image}}>
+                <a class=name routerLink="{{col.stub}}">{{col.name}}</a>
               </div>
         </div>
-        <div class=box-container>
-        <div class=group-box>
-          <div class=img>
-             
-          </div>
-          <a class=name routerLink="/">Group Name</a>
-          
-        </div>
-        </div>
+        
 
       
     </div>
 
 </div>
 </ng-template>
+
+</ng-template>  
+
 
 <div class=padding></div>
 

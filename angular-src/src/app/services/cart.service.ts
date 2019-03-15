@@ -210,7 +210,7 @@ export class CartService {
     
     let tmp = await this.OrderService.post(order);
     //let stored = this.LocalStorageService.retrieve('orders');
-    this.LocalStorageService.store('orders', [tmp._id]);
+    await this.LocalStorageService.store('order', tmp._id);
 
     /*
     if (stored === null)

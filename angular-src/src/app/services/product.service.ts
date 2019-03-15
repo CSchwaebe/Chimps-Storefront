@@ -33,6 +33,16 @@ export class ProductService {
     })
   }
 
+
+  async getActive(location: string) {
+    return new Promise<Product[]>(async (resolve, reject) => {
+      console.log(this.url + 'api/products/active' + location);
+      this.http.get(this.url + 'api/products/active' + location).subscribe((res: AllProductResponse) => {
+        resolve(res.data);    
+      });
+    })
+  }
+
   async getFeatured() {
     return new Promise<Product[]>(async (resolve, reject) => {
       this.http.get(this.url + 'api/products/featured').subscribe((res: AllProductResponse) => {

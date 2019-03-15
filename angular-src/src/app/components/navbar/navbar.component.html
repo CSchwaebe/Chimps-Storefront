@@ -4,12 +4,12 @@
 
 
   <div class="dropdown-menu-container">
-    <div class="dropdown-item-container" *ngFor="let col of model.data.collections; index as i" (mouseenter)="show(i)" (mouseleave)="show(-1)">
-      <a class="drop-link" routerLink="/{{model.data.collections[i].stub}}">{{col.name}}</a>
+    <div class="dropdown-item-container" *ngFor="let col of model.collections; index as i" (mouseenter)="show(i)" (mouseleave)="show(-1)">
+      <a class="drop-link" routerLink="/{{col.collection.stub}}">{{col.collection.name}}</a>
       <div class="dropdown-content" [style.display]="selected === i ? 'inline' : 'none'">
-        <div class="category" *ngFor="let cat of model.data.collections[i].categories">
-          <a class="category-link" routerLink="/{{cat.stub}}">
-            {{ cat.name }}</a>
+        <div class="category" *ngFor="let cat of col.categories">
+          <a class="category-link" routerLink="/{{cat.category.stub}}">
+            {{ cat.category.name }}</a>
           <div class="subcategory" *ngFor="let sub of cat.subcategories">
             <a class="subcategory-link" routerLink="/{{sub.stub}}">
               {{ sub.name }}</a>
@@ -29,22 +29,22 @@
     <div class="mobile-dropdown-background">
       <div class="mobile-dropdown-content-container">
 
-        <div class="button-container" *ngFor="let col of model.data.collections; index as i">
+        <div class="button-container" *ngFor="let col of model.collections; index as i">
 
-          <button class="mobile-collection-button" id="{{col.stub}}"
-            (click)="expandCollectionsMobile($event.target.id)">{{col.name}}</button>
+          <button class="mobile-collection-button" id="{{col.collection.stub}}"
+            (click)="expandCollectionsMobile($event.target.id)">{{col.collection.name}}</button>
 
-          <div class="dropdown-content {{col.stub}}">
-            <a class="collection-link" href="/{{col.stub}}">View all</a>
-            <div class="category" *ngFor="let cat of model.data.collections[i].categories">
-              <button class="mobile-category-button" id="{{cat.name}}"
+          <div class="dropdown-content {{col.collection.stub}}">
+            <a class="collection-link" routerLink="/{{col.collection.stub}}" (click)=toggleMobileMenu()>View all</a>
+            <div class="category" *ngFor="let cat of col.categories">
+              <button class="mobile-category-button" id="{{cat.category.stub}}"
                 (click)="expandCategoriesMobile($event.target.id)">{{
-                    cat.name }}</button>
-              <a class="subcategory-link {{cat.name}}" href="/{{cat.stub}}">View
+                    cat.category.name }}</button>
+              <a class="subcategory-link {{cat.category.stub}}" routerLink="/{{cat.category.stub}}" (click)=toggleMobileMenu()>View
                 all</a>
 
               <div class="subcategory" *ngFor="let sub of cat.subcategories">
-                <a class="subcategory-link {{cat.name}}" href="/{{sub.stub}}">
+                <a class="subcategory-link {{cat.category.stub}}" routerLink="/{{sub.stub}}" (click)=toggleMobileMenu()>
                   {{ sub.name }}</a>
               </div>
 

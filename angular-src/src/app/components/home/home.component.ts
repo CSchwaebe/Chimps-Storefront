@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 //import { Slideshow } from '../../interfaces/slideshow'
 import { SessionStorageService } from 'ngx-webstorage';
 import { HomeService } from '../../services/home.service';
-import { Home, Slideshow } from '../../interfaces/home'
+import { Home, Slideshow } from 'src/app/models/admin/home'
 import { TitleService } from 'src/app/services/title.service';
 import { Product } from 'src/app/models/admin/product';
 import { ProductService } from 'src/app/services/product.service';
@@ -22,11 +22,10 @@ export class HomeComponent implements OnInit {
 
   featuredProducts: boolean = true;
   featuredProductsTitle: string = 'Featured Products';
-  products: Product[];
-
+ model: Home;
 
   featuredGroups: boolean = true;
-  featuredGroupsTitle: string = 'Featured Groups';
+  featuredGroupsTitle: string = 'Collections';
 
 
   constructor(private SessionStorage: SessionStorageService,
@@ -34,18 +33,16 @@ export class HomeComponent implements OnInit {
     public TitleService: TitleService,
     private ProductService: ProductService) {
     this.TitleService.setTitle(this.shopName);
+    window.scrollTo(0,0);
   }
 
 
   async ngOnInit() {
     this.initSlideshow();
-    this.getProducts();
+    this.model = await this.HomeService.get();
+
   }
 
- async getProducts() {
-   console.log('hello');
-   this.products = await this.ProductService.getFeatured();
- }
 
   async initSlideshow() {
     let tmp = this.SessionStorage.retrieve('homeSlideshow');
