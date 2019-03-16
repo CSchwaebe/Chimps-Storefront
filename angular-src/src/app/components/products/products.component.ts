@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { ProductService } from '../../services/product.service';
-import { Product } from '../../interfaces/product';
+import { Product } from 'src/app/models/admin/product';
 import { HeaderService } from '../../services/header.service';
 import { Subscription } from 'rxjs';
 import { TitleService } from 'src/app/services/title.service';

@@ -1,4 +1,4 @@
-import { Address } from '../../interfaces/shipping'
+import { Address } from 'src/app/models/shipping'
 
 export class AddressModel {
     public name: string;

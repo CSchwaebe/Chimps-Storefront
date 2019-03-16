@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-//import { Slideshow } from '../../interfaces/slideshow'
 import { SessionStorageService } from 'ngx-webstorage';
 import { HomeService } from '../../services/home.service';
 import { Home, Slideshow } from 'src/app/models/admin/home'
@@ -67,6 +66,10 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.autoSlideshow();
     }, 9000); // Change image every 9 seconds
+  }
+
+  collectionImageResize(imageURL: string) {
+    return imageURL.replace('w_1600', 'w_405');
   }
 
 }

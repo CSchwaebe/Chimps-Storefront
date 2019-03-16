@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ShippingService } from '../../services/shipping.service';
-import { Tracking } from '../../interfaces/shipping';
-import { OrderService } from '../../services/order.service';
-import { Order } from '../../interfaces/order';
+import { Tracking } from 'src/app/models/shipping';
+import { OrderService } from 'src/app/services/order.service';
+import { Order } from 'src/app/models/admin/order';
 import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({

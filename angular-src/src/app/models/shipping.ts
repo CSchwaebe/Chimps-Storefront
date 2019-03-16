@@ -55,6 +55,3 @@ export interface Rate {
 export interface ShippingRefundResponse {
     data: string
 }
-
-
-

@@ -4,7 +4,7 @@ import { Cart } from '../../models/cart'; ///must use models so they are separte
 import { CartService } from '../../services/cart.service';
 import { ShippingService } from '../../services/shipping.service';
 import { ProductService } from '../../services/product.service';
-import { Product } from '../../interfaces/product';
+import { Product } from 'src/app/models/admin/product';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TitleService } from 'src/app/services/title.service';

@@ -17,13 +17,22 @@ export class SnackbarService {
   /**
    * Displays a Success Message
    */
-  onSuccess() {
-    this.snackBar.open('Success!', null, {
-      duration: 2000,
-      horizontalPosition: 'right',
-      verticalPosition: 'bottom',
-      panelClass: ['snackbar-success'],
-    });
+  onSuccess(message?: string, duration?: number) {
+    if (message && duration)
+      this.snackBar.open(message, null, {
+        duration: duration,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom',
+        panelClass: ['snackbar-success'],
+      });
+    else
+      this.snackBar.open('Success!', null, {
+        duration: 2000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom',
+        panelClass: ['snackbar-success'],
+      });
+
   }
 
   /**
@@ -40,7 +49,7 @@ export class SnackbarService {
 
 
     snacky.onAction().subscribe(() => {
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
       this.Router.navigate(['/cart']);
     });
   }

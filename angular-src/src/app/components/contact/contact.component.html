@@ -1,6 +1,15 @@
 <div class=main>
  
-  
+  <ng-template [ngIf]=messageSent>
+      <div class="title-container">
+          <img class="checkmark" src="../../../assets/icons/checked.png">
+          <h3 class="title">Message Sent!</h3>
+      </div>
+  </ng-template>
+    
+
+  <ng-template [ngIf]=!messageSent>
+   
   <form #contactUsForm="ngForm" class=form [formGroup]="FormGroup" (ngSubmit)=onSubmit()>
       <h1 class=title>Contact Us</h1>
  
@@ -29,6 +38,8 @@
                   </div>
 
               </form>
+               
+  </ng-template>
 
             
 

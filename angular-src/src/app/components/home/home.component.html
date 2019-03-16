@@ -28,7 +28,7 @@
         <div class=collection-container *ngFor="let col of model.featuredCollections; index as i">
             <div class=collection-box>
               <div class=overlay></div>
-                <img src={{col.image}}>
+                <img src={{collectionImageResize(col.image)}}>
                 <a class=name routerLink="{{col.stub}}">{{col.name}}</a>
               </div>
         </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
-import { Address, AddressResponse, ShipmentResponse, TempShipment, Tracking, TrackingResponse, Rate, ShippingRefundResponse } from '../interfaces/shipping';
+import { Address, AddressResponse, ShipmentResponse, TempShipment, Tracking, TrackingResponse, Rate, ShippingRefundResponse } from 'src/app/models/shipping';
 import { LocalStorageService } from 'ngx-webstorage';
 import { environment } from '../../environments/environment';
 

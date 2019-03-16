@@ -1,9 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-//import { Product } from '../../interfaces/product';
 import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
-import { CartProduct } from '../../models/cartProduct'; //see below
-//import { Cart } from '../../models/cart'; ///must use models so they are separte items in memory
+import { CartProduct } from '../../models/cartProduct'; 
 import { CartService } from '../../services/cart.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { TitleService } from 'src/app/services/title.service';

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { LoginService } from './login.service';
 import { HttpClient } from '@angular/common/http';
-import { Order, OrderResponse, MultipleOrderResponse } from '../interfaces/order';
+import { Order, OrderResponse, MultipleOrderResponse } from 'src/app/models/admin/order';
 import { environment } from '../../environments/environment';
 
 
@@ -13,8 +12,7 @@ export class OrderService {
   url: string = environment.baseURL + 'api/orders/'
   order: Order;
 
-  constructor(private LoginService: LoginService,
-              private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   async post(order: Order) {
     return new Promise<Order>(async (resolve, reject) => {

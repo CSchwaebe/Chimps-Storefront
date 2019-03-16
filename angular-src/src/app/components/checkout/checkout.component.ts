@@ -2,14 +2,12 @@ import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/co
 import { CartProduct } from '../../models/cartProduct'; //see below
 import { Cart } from '../../models/cart'; ///must use models so they are separte items in memory
 import { CartService } from '../../services/cart.service';
-import { Address, TempShipment, Rate } from '../../interfaces/shipping';
+import { Address, TempShipment, Rate } from 'src/app/models/shipping';
 import { ShippingService } from '../../services/shipping.service';
 import { ProductService } from '../../services/product.service';
-import { Product } from '../../interfaces/product';
 import { LoadingScreenService } from 'src/app/services/loading-screen.service';
 import { Subscription } from 'rxjs';
 import { MatStepper } from '@angular/material/stepper';
-import { delay } from 'q';
 import { TitleService } from 'src/app/services/title.service';
 
 @Component({

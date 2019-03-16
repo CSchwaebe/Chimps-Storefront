@@ -14,8 +14,6 @@ import { ProductsComponent } from './components/products/products.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CollectionService } from './services/collection.service';
-import { LoginComponent } from './components/login/login.component';
-import { AuthGuard } from './guards/auth.guard';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { ThanksComponent } from './components/thanks/thanks.component';
 import { ShippingService } from './services/shipping.service';
@@ -51,10 +49,6 @@ const appRoutes: Routes = [
     component: ThanksComponent
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
     path: 'contact',
     component: ContactComponent
   },
@@ -85,7 +79,6 @@ const appRoutes: Routes = [
     ProductsComponent,
     ProductDetailComponent,
     CartComponent,
-    LoginComponent,
     PaypalComponent,
     ThanksComponent,
     IterableNumberPipe,

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PayPalConfig, PayPalEnvironment, PayPalIntegrationType } from 'ngx-paypal'
 import { CartService } from '../../services/cart.service';
 import { ShippingService } from '../../services/shipping.service';
-import { Tracking } from '../../interfaces/shipping'
+import { Tracking } from 'src/app/models/shipping';
 import { LoadingScreenService } from 'src/app/services/loading-screen.service';
 
 @Component({

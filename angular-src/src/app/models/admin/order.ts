@@ -1,5 +1,5 @@
-import { CartProduct } from '../models/cartProduct'; ///must use models so they are separte items in memory
-import { Address } from './shipping';
+import { CartProduct } from '../cartProduct'; ///must use models so they are separte items in memory
+import { Address } from '../shipping';
 
 export interface Order {
     _id?: string,

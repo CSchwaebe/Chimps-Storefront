@@ -3,93 +3,104 @@ $color-silver: hsl(0, 0%, 62%);
 $color-white-blue: hsl(239, 43%, 99%);
 
 .main {
-    padding-top: 66px;
-    text-align: center;
-    width: 100vw;
-    min-height: 100vh;
-    
-    form {
-        margin-top: 50px;
-        padding-bottom: 25px;
-        margin-bottom: 50px;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-        display: inline-block;
-        width: 80%;
-        background:  $color-white-blue;
-        .title {
-        color: $color-dark-blue;
-        }
-        mat-form-field {
-           display: inline-block;
-           
-        }
+  padding-top: 66px;
+  text-align: center;
+  width: 100vw;
+  min-height: 100vh;
 
-      
+  .title-container {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 50px;
+    width: 300px;
+    height: 175px;
 
-        .submit-button {
-            width: 200px;
-            height: 50px;
-            font-family: 'Montserrat';
-            font-size: 16px;
-            letter-spacing: 1px;
-
-            box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
-
-            padding: 0px;
-            margin: 0px;
-        }
+    .title {
+      margin: 0px;
+      padding: 0px;
+      font-family: "Open Sans";
+      color: rgb(109, 192, 94);
     }
+
+    .checkmark {
+      width: 100px;
+      height: 100px;
+      padding: 25px;
+      padding-top: 0px;
+    }
+  }
+
+  form {
+    margin-top: 50px;
+    padding-bottom: 25px;
+    margin-bottom: 50px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    width: 80%;
+    background: $color-white-blue;
+    .title {
+      color: $color-dark-blue;
+    }
+    mat-form-field {
+      display: inline-block;
+    }
+
+    .submit-button {
+      width: 200px;
+      height: 50px;
+      font-family: "Montserrat";
+      font-size: 16px;
+      letter-spacing: 1px;
+
+      box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
+
+      padding: 0px;
+      margin: 0px;
+    }
+  }
 }
 
 @media only screen and (max-width: 991px) {
-    .main {
-        .title {
-    
-        }
-        form {
-    
-            mat-form-field {
-               width: 80%;
-            }
-    
-            .submit-button {
-                
-            }
-        }
+  .main {
+    .title {
     }
+    form {
+      mat-form-field {
+        width: 80%;
+      }
 
+      .submit-button {
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: 992px) {
-.main {
-    
+  .main {
     .title {
-
     }
     form {
-       width: 767px;
-        mat-form-field {
-           
-        }
+      width: 767px;
+      mat-form-field {
+      }
 
-        mat-form-field.half {
-            display: inline-block;
-            width: 40%;
-           margin-left: 5%;
-           margin-right: 5%;
-        }
+      mat-form-field.half {
+        display: inline-block;
+        width: 40%;
+        margin-left: 5%;
+        margin-right: 5%;
+      }
 
-        mat-form-field.full {
-            display: inline-block;
-            width: 90%;
-        }
+      mat-form-field.full {
+        display: inline-block;
+        width: 90%;
+      }
 
-        .submit-button {
-            width: 250px;
-            height: 50px;
-            font-size: 16px;
-
-        }
+      .submit-button {
+        width: 250px;
+        height: 50px;
+        font-size: 16px;
+      }
     }
-}
+  }
 }

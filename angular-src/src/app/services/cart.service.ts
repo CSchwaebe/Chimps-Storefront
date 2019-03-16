@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { SessionStorageService, LocalStorageService } from 'ngx-webstorage';
-import { Cart } from '../models/cart';
-import { CartProduct } from '../models/cartProduct';
-import { Product } from '../models/admin/product';
-import { Address, TempShipment, Rate, Tracking } from '../interfaces/shipping';
-import { Order } from '../interfaces/order';
+import { Cart } from 'src/app/models/cart';
+import { CartProduct } from 'src/app/models/cartProduct';
+import { Product } from 'src/app/models/admin/product';
+import { Address, TempShipment, Rate, Tracking } from 'src/app/models/shipping';
+import { Order } from 'src/app/models/admin/order';
 import { OrderService } from './order.service';
 import Big from 'big.js'
 import { Router } from '@angular/router';
 import { LoadingScreenService } from '../services/loading-screen.service'
-import { Variant } from '../interfaces/product';
+import { Variant } from 'src/app/models/admin/product';
 import { ProductService } from './product.service';
 import { Subject } from 'rxjs';
 
