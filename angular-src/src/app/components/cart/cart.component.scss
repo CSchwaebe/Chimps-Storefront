@@ -46,14 +46,23 @@
             vertical-align: top;
             width: calc(100% - 155px);
             margin-left: 5px;
+            
 
             .product-name {
+              
               width: 100%;
               font-size: 14px;
               margin: 0px;
+              margin-top: 10px;
               padding: 0px;
               text-decoration: none;
               color: black;
+              
+              display: inline-block;
+              vertical-align: top;
+              white-space: nowrap; 
+              overflow: hidden;
+              text-overflow: ellipsis;
             }
             .price {
               display: inline-block;

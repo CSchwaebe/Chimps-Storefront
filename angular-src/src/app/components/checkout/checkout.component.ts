@@ -9,6 +9,8 @@ import { LoadingScreenService } from 'src/app/services/loading-screen.service';
 import { Subscription } from 'rxjs';
 import { MatStepper } from '@angular/material/stepper';
 import { TitleService } from 'src/app/services/title.service';
+import { MailingListService } from 'src/app/services/mailing-list.service';
+import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
 
 @Component({
   selector: 'app-checkout',
@@ -37,6 +39,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     country: '',
     verify: ['delivery']
   };
+  addToMailingList: boolean = true;
   shippingRates: Rate[];
   subscription: Subscription;
   loading: boolean = false;
@@ -46,7 +49,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     public ShippingService: ShippingService,
     private ProductService: ProductService,
     public LoadingScreenService: LoadingScreenService,
-    public TitleService: TitleService) {
+    public TitleService: TitleService,
+    private MailingListService: MailingListService) {
       this.TitleService.setTitle('Checkout');
       
     this.subscription = this.CartService.getPaymentStatus().subscribe(paymentStatus => {
@@ -133,6 +137,14 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       console.log(this.stepper.selectedIndex)
     }, 1);
 
+    if (this.addToMailingList) {
+      this.MailingListService.post({
+        name: this.model.name,
+        email: this.model.email,
+        phone: this.model.phone,
+      })
+    }
+     
     this.LoadingScreenService.off();
   }
 

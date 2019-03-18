@@ -5,9 +5,7 @@
         </div>
     </ng-template>
 
-    <!--
 
-    -->
     <mat-horizontal-stepper [@.disabled]="true" [linear]=true labelPosition="bottom" #stepper>
 
         <ng-template matStepperIcon="number" let-index="index">
@@ -79,6 +77,9 @@
 
                     </div>
 
+                    <mat-checkbox class=checbox color='primary' checked=true [(ngModel)]=addToMailingList
+                        [ngModelOptions]="{standalone: true}"></mat-checkbox>
+                    <span class=checkbox-text> Sign up for exclusive deals and product updates</span>
                     <div class="submit-div submit-background">
                         <!-- Submit -->
 

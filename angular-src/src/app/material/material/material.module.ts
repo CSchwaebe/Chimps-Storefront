@@ -18,8 +18,10 @@ import {
   MatStepperModule,
   MatRippleModule,
   MatSelectModule,
+  MatCheckboxModule,
 
   MatSnackBarModule,
+  MatCheckboxChange,
 
 
 } from '@angular/material';
@@ -40,6 +42,7 @@ import {
 
     MatRippleModule,
     MatSelectModule,
+    MatCheckboxModule,
 
     MatSnackBarModule,
 
