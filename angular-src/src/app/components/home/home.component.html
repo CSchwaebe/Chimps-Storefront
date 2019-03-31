@@ -7,12 +7,14 @@
     <img *ngFor="let img of slideshow.images; index as i" src="{{img}}" class="image"
       [class.display-image]="activeImage === i">
   </div>
-  <ng-template [ngIf]=model.featuredProducts>
+  <ng-template [ngIf]=model.featuredProducts&&model.featuredProducts.length>
     <div class=featured-products-container>
       <h2 class=title>{{featuredProductsTitle}}</h2>
       <div class=grid>
         <div class=product-box *ngFor="let prod of model.featuredProducts; index as i">
-          <img src={{prod.images[0]}}>
+          <a class=image-link routerLink="/detail/{{prod.stub}}">
+            <img src={{prod.images[0]}}>
+          </a>
           <a class=name routerLink="/detail/{{prod.stub}}">{{prod.name}}</a>
           <a class=price routerLink="/detail/{{prod.stub}}">${{prod.price}}</a>
         </div>
@@ -21,7 +23,7 @@
 
     </div>
   </ng-template>
-  <ng-template [ngIf]=model.featuredCollections>
+  <ng-template [ngIf]=model.featuredCollections&&model.featuredCollections.length>
     <div class=featured-collections-div>
       <h2 class=title>{{featuredGroupsTitle}}</h2>
       <div class=grid>

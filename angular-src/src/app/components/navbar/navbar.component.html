@@ -1,6 +1,6 @@
 <div class="navbar">
 
-  <a class="logo" routerLink="/"><img class="logo mobile-logo" src="../../../assets/icons/kat-logo.svg" alt="Kat Logo"></a>
+  <a class="logo" routerLink="/" (click)=closeMobileMenu()><img class="logo mobile-logo" src="../../../assets/icons/kat-logo.svg" alt="Kat Logo"></a>
 
 
   <div class="dropdown-menu-container">
@@ -64,7 +64,7 @@
     <div class="cart-number-container" [style.background]="(CartService.cartSize === 0) ? 'white' : 'crimson'">
       <p class="cart-number">{{CartService.cartSize}}</p>
     </div>
-    <a class="cart" routerLink="/cart"><img class="shopping-cart-icon"
+    <a class="cart" routerLink="/cart" (click)=closeMobileMenu()><img class="shopping-cart-icon"
         src="../../../assets/icons/outline-shopping_cart-24px.svg"></a>
   </div>
 

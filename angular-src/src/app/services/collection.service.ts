@@ -89,6 +89,22 @@ export class CollectionService {
     })
   }
 
+  async getFeatured() {
+    return new Promise<Collection[]>(async (resolve, reject) => {
+      this.http.get(this.url).subscribe((res: AllCollectionsResponse) => {
+        if (res.data) {
+          let ret: Collection[] = [];
+          for (let i = 0; i < res.data.length; i++) {
+            if (res.data[i].featured)
+              ret.push(res.data[i]);
+          }
+          resolve(ret);
+        } else
+          resolve(res.data);
+      });
+    })
+  }
+
   async deactivate(col: Collection) {
    
     return new Promise<Collection>(async (resolve, reject) => {

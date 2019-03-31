@@ -24,7 +24,8 @@ export class ProductDetailComponent implements OnInit {
     private ProductService: ProductService,
     public CartService: CartService,
     private SnackbarService: SnackbarService,
-    public TitleService: TitleService) {
+    public TitleService: TitleService,
+    private Router: Router) {
 
     this.model.selectedSize = undefined;
     this.model.quantity = 1;
@@ -38,7 +39,12 @@ export class ProductDetailComponent implements OnInit {
 
   async getProduct() {
     this.model.product = await this.ProductService.get(this.router.url.substr(this.router.url.lastIndexOf('/') + 1));
-    
+   
+    //If the product isn't active then the page shouldnt exist
+    if (!this.model.product.active) {
+      this.Router.navigate(['/']);
+      return;
+    }
     for (let i = 0; i < this.model.product.inventory.length; i++) {
       if (this.model.product.inventory[i].quantity > 0) {
         this.sizes.push(this.model.product.inventory[i].size);

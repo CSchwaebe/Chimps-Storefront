@@ -15,7 +15,7 @@ import { TitleService } from 'src/app/services/title.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit, OnDestroy {
-  storeName:string = 'Big Kat Original';
+  storeName: string = 'Big Kat Original';
   cart: Cart;
   paymentRecieved: boolean = false;
   subscription: Subscription;
@@ -30,6 +30,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    window.scrollTo(0,0);
 
   }
 

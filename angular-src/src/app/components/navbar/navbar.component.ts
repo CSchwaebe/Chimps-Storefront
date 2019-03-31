@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 import { CollectionService } from 'src/app/services/collection.service';
 
 import { Collection } from 'src/app/models/admin/collection';
@@ -23,20 +22,11 @@ export class NavbarComponent implements OnInit {
 
  model: Navbar = new Navbar();
 
-  constructor(public sessionStorage: SessionStorageService,
-              private CollectionService: CollectionService,
+  constructor(private CollectionService: CollectionService,
               public CartService: CartService) {}
 
   async ngOnInit() {
-   
-   let tmp = this.sessionStorage.retrieve('navbar');
-    if (tmp) 
-      this.model = tmp;
-     else 
-      await this.getData();
-    
-    
-
+    await this.getData(); 
   }
 
   async getData() {
@@ -79,7 +69,6 @@ export class NavbarComponent implements OnInit {
       subs = [];
     });
 
-    this.sessionStorage.store('navbar', this.model);
     return
   }
 
@@ -92,6 +81,14 @@ export class NavbarComponent implements OnInit {
     this.previousCollectionId = '';
 
     this.showMobileMenu = !this.showMobileMenu;
+  }
+
+
+  closeMobileMenu() {
+    this.previousCategoryId = '';
+    this.previousCollectionId = '';
+
+    this.showMobileMenu = false;
   }
 
   expandCollectionsMobile(id) {

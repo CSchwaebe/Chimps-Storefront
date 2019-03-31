@@ -5,6 +5,7 @@ import { Home, Slideshow } from 'src/app/models/admin/home'
 import { TitleService } from 'src/app/services/title.service';
 import { Product } from 'src/app/models/admin/product';
 import { ProductService } from 'src/app/services/product.service';
+import { CollectionService } from 'src/app/services/collection.service';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   featuredProducts: boolean = true;
   featuredProductsTitle: string = 'Featured Products';
- model: Home;
+  model: Home;
 
   featuredGroups: boolean = true;
   featuredGroupsTitle: string = 'Collections';
@@ -30,7 +31,9 @@ export class HomeComponent implements OnInit {
   constructor(private SessionStorage: SessionStorageService,
     private HomeService: HomeService,
     public TitleService: TitleService,
-    private ProductService: ProductService) {
+    private ProductService: ProductService,
+    private CollectionService: CollectionService,
+    ) {
     this.TitleService.setTitle(this.shopName);
     window.scrollTo(0,0);
   }
@@ -39,7 +42,15 @@ export class HomeComponent implements OnInit {
   async ngOnInit() {
     this.initSlideshow();
     this.model = await this.HomeService.get();
+    this.getFeatured();
+    console.log(this.model)
+  }
 
+  async getFeatured() {
+    console.log(await this.ProductService.getFeatured());
+    console.log(await this.CollectionService.getFeatured());
+    this.model.featuredProducts = await this.ProductService.getFeatured();
+    this.model.featuredCollections = await this.CollectionService.getFeatured();
   }
 
 
