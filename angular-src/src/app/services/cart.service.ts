@@ -85,10 +85,10 @@ export class CartService {
   }
 
   updateItemQuantity(index: number, newQuantity: number) {
-    console.log(this.cartSize);
-    console.log(this.cart.products[index].quantity)
+   //console.log(this.cartSize);
+    //console.log(this.cart.products[index].quantity)
     this.cartSize = +this.cartSize - +this.cart.products[index].quantity;
-    console.log(this.cartSize);
+    //console.log(this.cartSize);
     this.cart.products[index].quantity = newQuantity;
     this.cartSize = +this.cartSize + +newQuantity;
 
@@ -146,11 +146,11 @@ export class CartService {
 
   //GETTERS AND SETTERS
   setShipping(rateObject: Rate) {
-    console.log(rateObject);
+    //console.log(rateObject);
     this.shipping = +Number(+rateObject.rate).toFixed(2);
     this.selected_shipping_rate = rateObject;
-    console.log(this.selected_shipping_rate);
-    console.log(this.shipping);
+    //console.log(this.selected_shipping_rate);
+    //console.log(this.shipping);
     this.calcTotal();
   }
 
