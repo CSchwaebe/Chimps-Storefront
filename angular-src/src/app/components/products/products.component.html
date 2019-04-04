@@ -8,8 +8,8 @@
   
     <div class="grid">
       <div *ngFor="let prod of productArray; index as i" class="product-box">
-        <a class=image-link routerLink="/detail/{{prod.stub}}"><img class="product-image" src="{{prod.images[0]}}"></a>
-        <a routerLink="/detail/{{prod.stub}}" class="product-name">{{prod.name}}</a>
+        <a class=image-link routerLink="/detail/{{prod.stub + '-' + prod._id}}"><img class="product-image" src="{{prod.images[0]}}"></a>
+        <a routerLink="/detail/{{prod.stub + '-' + prod._id}}" class="product-name">{{prod.name}}</a>
         <p class="price">${{prod.price}}</p>
       </div>
 

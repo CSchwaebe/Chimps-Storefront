@@ -6,7 +6,7 @@
             <div class="grid">
                 <div *ngFor="let prod of CartService.cart.products; index as i" class="product-box">
                     <div class=image-container>
-                        <a routerLink="{{'/detail/' + prod.product.stub}}"><img src="{{prod.product.images[0]}}"></a>
+                        <a routerLink="{{'/detail/' + prod.product.stub + '-' + prod.product._id}}"><img src="{{prod.product.images[0]}}"></a>
                     </div>
                     <div class="text-container">
                         <p class="product-name">{{prod.product.name}}</p>

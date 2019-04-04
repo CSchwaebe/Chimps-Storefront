@@ -97,6 +97,7 @@ $text-color: black;
 
         .limited-quantity {
           margin: 0px;
+          margin-left: 5px;
           text-align: left;
           color: red;
         }
@@ -186,6 +187,9 @@ $text-color: black;
           .price {
             width: 290px;
           }
+          .color {
+            width: 290px;
+          }
 
           .product-form {
             div.selectors {
@@ -199,12 +203,10 @@ $text-color: black;
               }
             }
 
-            .color {
-              width: 290px;
-            }
+            
 
             .description {
-              width: 280px;
+              width: 300px;
             }
 
             .submit-background {
@@ -256,6 +258,9 @@ $text-color: black;
           .price {
             width: 440px;
           }
+          .color {
+            width: 440px;
+          }
 
           .product-form {
             div.selectors {
@@ -267,12 +272,10 @@ $text-color: black;
             }
 
 
-          .color {
-            width: 440px;
-          }
+         
 
             .description {
-              width: 430px;
+              width: 450px;
             }
 
             .submit-background {
@@ -324,6 +327,9 @@ $text-color: black;
           .price {
             width: 490px;
           }
+          .color {
+            width: 490px;
+          }
 
           .product-form {
             div.selectors {
@@ -334,12 +340,10 @@ $text-color: black;
               }
             }
 
-            .color {
-              width: 490px;
-            }
+           
 
             .description {
-              width: 480px;
+              width: 500px;
             }
 
             .submit-background {
@@ -396,6 +400,9 @@ $text-color: black;
           .price {
             width: 390px;
           }
+          .color {
+            width: 390px;
+          }
 
           .product-form {
             div.selectors {
@@ -406,9 +413,7 @@ $text-color: black;
               }
             }
 
-            .color {
-              width: 390px;
-            }
+            
 
             .description {
               width: 400px;

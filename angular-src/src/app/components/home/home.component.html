@@ -12,11 +12,11 @@
       <h2 class=title>{{featuredProductsTitle}}</h2>
       <div class=grid>
         <div class=product-box *ngFor="let prod of model.featuredProducts; index as i">
-          <a class=image-link routerLink="/detail/{{prod.stub}}">
+          <a class=image-link routerLink="/detail/{{prod.stub + '-' + prod._id}}">
             <img src={{prod.images[0]}}>
           </a>
-          <a class=name routerLink="/detail/{{prod.stub}}">{{prod.name}}</a>
-          <a class=price routerLink="/detail/{{prod.stub}}">${{prod.price}}</a>
+          <a class=name routerLink="/detail/{{prod.stub + '-' + prod._id}}">{{prod.name}}</a>
+          <a class=price routerLink="/detail/{{prod.stub + '-' + prod._id}}">${{prod.price}}</a>
         </div>
         
       </div>

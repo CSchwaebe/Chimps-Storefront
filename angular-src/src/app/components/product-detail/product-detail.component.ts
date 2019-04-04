@@ -38,8 +38,9 @@ export class ProductDetailComponent implements OnInit {
   }
 
   async getProduct() {
-    this.model.product = await this.ProductService.get(this.router.url.substr(this.router.url.lastIndexOf('/') + 1));
-   
+    //this.model.product = await this.ProductService.get(this.router.url.substr(this.router.url.lastIndexOf('/') + 1));
+    this.model.product = await this.ProductService.getById(this.router.url.substr(this.router.url.lastIndexOf('-') + 1));
+
     //If the product isn't active then the page shouldnt exist
     if (!this.model.product.active) {
       this.Router.navigate(['/']);
