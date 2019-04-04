@@ -271,3 +271,30 @@ $font-accent: "Lato";
     }
   }
 }
+
+.image-link {
+  .sold-out-overlay {
+    width: inherit;
+    background: rgba(255, 255, 255, 0.801);
+    position: relative;
+    .sold-out-text {
+      width: inherit;
+      margin: 0px;
+      padding: 0px;
+      color: red;
+      position: absolute;
+      font-weight: 700;
+      font-size: 24px;
+      top: 10%;
+      left: 0%;
+    }
+    .product-image {
+      width: inherit;
+      margin: 0px;
+      opacity: .6;
+    }
+  }
+  .product-image {
+    margin: 0px;
+  }
+}

@@ -83,4 +83,14 @@ export class HomeComponent implements OnInit {
     return imageURL.replace('w_1600', 'w_405');
   }
 
+  soldOut(product: Product) {
+      for (let j = 0; j < product.inventory.length; j++) {
+        if (product.inventory[j].quantity > 0) {
+          return false;
+        }
+      }
+      return true;
+
+  }
+
 }
