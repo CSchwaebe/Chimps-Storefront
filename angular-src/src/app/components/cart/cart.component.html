@@ -6,47 +6,26 @@
             <div class="grid">
                 <div *ngFor="let prod of CartService.cart.products; index as i" class="product-box">
                     <div class=image-container>
-                        <a href="{{prod.product.location}}"><img src="{{prod.product.images[0]}}"></a>
+                        <a routerLink="{{'/detail/' + prod.product.stub}}"><img src="{{prod.product.images[0]}}"></a>
                     </div>
                     <div class="text-container">
-                        <a href="products" class="product-name">{{prod.product.name}}</a>
+                        <p class="product-name">{{prod.product.name}}</p>
                         <p class="price">${{prod.product.price}}</p>
                         <p class="size">Size: {{prod.selectedSize}}</p>
 
-                        
-                        <!--<p class="qty">Qty: {{prod.quantity}}</p>
-                        -->
-                            <div class="qty submit-background">
+                        <div class="qty submit-background">
                             <div class=icon-button-container>
                                 <button class=purple-button (click)=changeQty(i,prod.quantity-1)>-</button>
                             </div>
                             <p class=qty-text>{{prod.quantity}}</p>
                             <div class=icon-button-container>
                                 <button class=purple-button (click)=changeQty(i,prod.quantity+1)>+</button>
-                                <!--
-  <button mat-icon-button color="accent">
-                                    <mat-icon>add</mat-icon>
-                                </button>
-                                -->
-                              
-                                     
-
                             </div>
                         </div>
-                        <!--
-      <mat-form-field class=qty appearance=outline>
-                            <mat-label>Qty</mat-label>
-                            <input matInput required [(ngModel)]="prod.quantity" name="quantity"
-                                (change)=removeProduct(i)>
-                        </mat-form-field>
 
-        -->
 
                     </div>
-                    <!--
-                    <button class="remove-button" (click)="removeProduct(i)">X</button>
 
-                    -->
                 </div>
             </div>
         </div>

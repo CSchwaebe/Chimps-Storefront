@@ -30,7 +30,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
     })
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    window.scrollTo(0,0);
+  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

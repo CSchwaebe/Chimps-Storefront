@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 import { MatStepper } from '@angular/material/stepper';
 import { TitleService } from 'src/app/services/title.service';
 import { MailingListService } from 'src/app/services/mailing-list.service';
-import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
+import * as countryList from 'country-list';
 
 @Component({
   selector: 'app-checkout',
@@ -44,6 +44,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   loading: boolean = false;
   loadingSubscription: Subscription;
+
+  countryOptions = countryList.getNames();
 
   constructor(public CartService: CartService,
     public ShippingService: ShippingService,

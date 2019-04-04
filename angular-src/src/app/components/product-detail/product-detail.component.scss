@@ -79,6 +79,22 @@ $text-color: black;
           letter-spacing: 1px;
         }
 
+        .color {
+          display: block;
+          float: left;
+
+          height: auto;
+          margin: 0px;
+          padding: 5px;
+          padding-top: 10px;
+          font-family: $font-primary;
+          font-size: 14px;
+          text-align: start;
+          color: $text-color;
+          text-decoration: none;
+          letter-spacing: 1px;
+        }
+
         .limited-quantity {
           margin: 0px;
           text-align: left;
@@ -111,9 +127,10 @@ $text-color: black;
             display: inline-block;
             height: auto;
             margin: 0;
-            padding: 10px;
-            font-family: $font-secondary;
-            font-size: 14px;
+            //padding: 10px;
+            padding-top: 0px;
+            font-family: $font-primary;
+            //font-size: 14px;
             text-align: start;
             color: $text-color;
             text-decoration: none;
@@ -182,6 +199,10 @@ $text-color: black;
               }
             }
 
+            .color {
+              width: 290px;
+            }
+
             .description {
               width: 280px;
             }
@@ -245,6 +266,11 @@ $text-color: black;
               }
             }
 
+
+          .color {
+            width: 440px;
+          }
+
             .description {
               width: 430px;
             }
@@ -306,6 +332,10 @@ $text-color: black;
 
               .qty {
               }
+            }
+
+            .color {
+              width: 490px;
             }
 
             .description {
@@ -376,9 +406,13 @@ $text-color: black;
               }
             }
 
+            .color {
+              width: 390px;
+            }
+
             .description {
               width: 400px;
-              padding: 10px 0px 10px 0px;
+              //padding: 10px 0px 10px 0px;
             }
 
             .submit-background {

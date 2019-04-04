@@ -13,9 +13,9 @@
       
           <div class="product-box">
             <p class="product-name">{{model.product.name}}</p>
-            <p class="price">${{model.product.price}}</p>
-      
-      
+            <p class="price">${{model.product.price}}</p>           
+            <p class="color">{{model.product.color}}</p>
+
             <ng-template [ngIf]="model.selectedSize && availableQty[availableQty.length - 1] < 10">
               <p class=limited-quantity>Only {{availableQty[availableQty.length - 1]}} left!</p>
             </ng-template>
@@ -37,9 +37,10 @@
                   </mat-select>
                 </mat-form-field>
               </div>
-      
-              <p class="description">{{model.product.description}}</p>
-      
+              
+              <quill-editor class=description [(ngModel)]=model.product.description [ngModelOptions]="{standalone: true}" 
+              [modules]="{toolbar: false}" theme=bubble readOnly=true format=object placeholder=''></quill-editor>
+
               <div class=submit-background>
                 <button type="submit" class="add-to-cart purple-button">ADD TO CART</button>
               </div>

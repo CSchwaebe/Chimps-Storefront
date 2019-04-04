@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { QuillModule } from 'ngx-quill';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -94,6 +95,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     NgxPayPalModule,
+    QuillModule,
     NgxWebstorageModule.forRoot()
   ],
   providers: [

@@ -4,6 +4,9 @@ import { CartService } from '../../services/cart.service';
 import { ShippingService } from '../../services/shipping.service';
 import { Tracking } from 'src/app/models/shipping';
 import { LoadingScreenService } from 'src/app/services/loading-screen.service';
+import { environment } from 'src/environments/environment';
+import * as countryList from 'country-list';
+
 
 @Component({
   selector: 'app-paypal',
@@ -20,6 +23,7 @@ export class PaypalComponent implements OnInit {
               public LoadingScreenService: LoadingScreenService,
               ) {
     //console.log(this.CartService.address);
+    //environment.baseURL
   }
 
   ngOnInit() {
@@ -30,10 +34,11 @@ export class PaypalComponent implements OnInit {
     this.generateItemList();
     console.log('Paypal Init');
 
-    this.payPalConfig = new PayPalConfig(PayPalIntegrationType.ClientSideREST, PayPalEnvironment.Sandbox, {
+    this.payPalConfig = new PayPalConfig(PayPalIntegrationType.ClientSideREST, environment.paypal_environment, {
       commit: true,
       client: {
-        sandbox: 'AXT1w71kl8AN0_iuOdk6rqp2ZM99oKnAOaDKIeS2ZouUdc7M3bswncF5BH5ajQ8nk1aYzS_lUQg3MrCh',
+        sandbox: environment.paypal_id,
+        production: environment.paypal_id
       },
       button: {
         label: 'paypal',
@@ -59,8 +64,8 @@ export class PaypalComponent implements OnInit {
         console.log(err);
       },
       onClick: () => {
+        console.log(countryList.getCode(this.CartService.address.country));
         console.log('onClick');
-       
         //console.log(this.CartService.selected_shipping_rate)
         console.log(this.payPalConfig.transactions[0].amount.details.shipping);
         console.log(this.CartService.total)
@@ -91,7 +96,7 @@ export class PaypalComponent implements OnInit {
             line1: this.CartService.address.street1,
             line2: this.CartService.address.street2,
             city: this.CartService.address.city,
-            country_code: 'US',
+            country_code: countryList.getCode(this.CartService.address.country),
             postal_code: this.CartService.address.zip,
             phone: this.CartService.address.phone,
             state: this.CartService.address.state
