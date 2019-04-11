@@ -47,8 +47,8 @@ export class HomeComponent implements OnInit {
   }
 
   async getFeatured() {
-    console.log(await this.ProductService.getFeatured());
-    console.log(await this.CollectionService.getFeatured());
+    //console.log(await this.ProductService.getFeatured());
+    //console.log(await this.CollectionService.getFeatured());
     this.model.featuredProducts = await this.ProductService.getFeatured();
     this.model.featuredCollections = await this.CollectionService.getFeatured();
   }

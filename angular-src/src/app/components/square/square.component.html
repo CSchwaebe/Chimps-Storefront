@@ -1,0 +1,55 @@
+<!-- link to the SqPaymentForm library -->
+
+<!-- link to the local SqPaymentForm initialization -->
+
+<div class=container>
+  <div id="sq-walletbox">
+    <!-- Placeholder for Apple Pay for Web button -->
+
+    <!-- Placeholder for Masterpass button -->
+
+
+    <!-- Placeholder for Google Pay button
+          <button id="sq-apple-pay"></button>
+          <button id="sq-masterpass"></button>
+          <button id="sq-google-pay" class="button-google-pay"></button>
+      -->
+    <div id="sq-walletbox-divider">
+      <span id="sq-walletbox-divider-label">Or</span>
+      <hr />
+    </div>
+  </div>
+  <!--action="http://localhost:3000/square" method="post"-->
+  <div id="sq-ccbox">
+    <form #nonceForm="ngForm" id="nonce-form" novalidate (ngSubmit)=onSubmi()>
+
+      <div id="sq-card-number" class=square-input></div>
+      <div class=third>
+        <div id="sq-cvv" class=square-input></div>
+      </div>
+
+      <div class=third>
+        <div id="sq-expiration-date" class=square-input></div>
+      </div>
+
+      <div class=third>
+        <!--
+<label for="sq-postal-code">Postal Code</label>
+        -->
+        <div id="sq-postal-code" class=square-input></div>
+      </div>
+
+
+
+      
+      <button type=button id="sq-creditcard" class="submit-button" (click)="requestCardNonce($event)">Pay</button>
+
+
+
+      <input type="hidden" id="sq-id" name="sq-id">
+      <input type="hidden" id="card-nonce" name="nonce">
+
+
+    </form>
+
+  </div>

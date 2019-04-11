@@ -105,17 +105,19 @@
                     <div class="grid">
                         <div *ngFor="let prod of CartService.cart.products; index as i" class="product-box">
                             <img src="{{prod.product.images[0]}}">
-                            <p class="product-name">{{prod.product.name}}</p>
-                            <p class="price">${{prod.product.price}}</p>
-                            <p class="size">Size: {{prod.selectedSize}}</p>
-                            <p class="qty">Qty: {{prod.quantity}}</p>
+                            <div class=text-container>
+                                    <p class="product-name">{{prod.product.name}}</p>
+                                    <p class="price">${{prod.product.price}}</p>
+                                    <p class="size">Size: {{prod.selectedSize}}</p>
+                                    <p class="qty">Qty: {{prod.quantity}}</p>
+                            </div>  
                         </div>
 
                     </div>
 
 
                 </div>
-                <br />
+               
                 <div id="right-panel">
                     <div class="subtotal-box">
                         <div class="subt-row">
@@ -163,11 +165,16 @@
 
 
                     </div>
+                    <app-square></app-square>
 
+                    <!--
+
+                   
                     <ng-template [ngIf]="addressValidated" class="paypal">
                         <br>
-                        <app-paypal></app-paypal>
+                         <app-paypal></app-paypal>
                     </ng-template>
+                     -->
 
                 </div>
             </div>

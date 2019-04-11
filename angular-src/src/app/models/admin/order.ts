@@ -1,14 +1,13 @@
 import { CartProduct } from '../cartProduct'; ///must use models so they are separte items in memory
 import { Address } from '../shipping';
+import { SquareTransactionResponse } from './square';
+
 
 export interface Order {
     _id?: string,
     address: Address,
-    //name: string,
-    //email: string,
-    //phone: string,
     products: CartProduct[],
-    transactionId: string,
+    payment: Payment,
     subtotal: number,
     tax: number,
     taxRate: number,
@@ -29,6 +28,20 @@ export interface Order {
     readableCreatedAt?: string
 }
 
+/////////////////////////////////////////////////
+// ORDER PAYMENT DETAILS 
+/////////////////////////////////////////////////
+
+export interface Payment {
+    processor: string,
+    square?: SquareTransactionResponse,
+    paypal_txID?: string,
+}
+
+/////////////////////////////////////////////////
+// ORDER Return  
+/////////////////////////////////////////////////
+
 export interface Return {
     return_initiated: boolean,
     return_received: boolean,
@@ -36,7 +49,9 @@ export interface Return {
     refund_type: string,
     refund_shipping: boolean,
     refund_shipping_amount: number,
+    refund_tax: number,
     refund_amount: number,
+
     //refunded_products: CartProduct[],
     //restocked_products: CartProduct[],
     refunded: boolean,

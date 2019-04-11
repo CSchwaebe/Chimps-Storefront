@@ -23,7 +23,7 @@ body {
   margin: 0px;
   padding: 0px;
 
-background-image: radial-gradient(circle, #24243e 0%, #302b63 66%, #0f0c29 160%);
+ background-image: radial-gradient(circle, #24243e 0%, #302b63 66%, #0f0c29 160%);
 
 }
 
@@ -127,3 +127,5 @@ background-image: radial-gradient(circle, #24243e 0%, #302b63 66%, #0f0c29 160%)
 .ql-editor {
   padding: 0px;
 }
+
+/* Square */

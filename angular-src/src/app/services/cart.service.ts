@@ -12,6 +12,7 @@ import { LoadingScreenService } from '../services/loading-screen.service'
 import { Variant } from 'src/app/models/admin/product';
 import { ProductService } from './product.service';
 import { Subject } from 'rxjs';
+import { SquareTransactionResponse } from '../models/admin/square';
 
 @Injectable({
   providedIn: 'root'
@@ -164,7 +165,7 @@ export class CartService {
 
 
 
-  async onPayment(tracking: Tracking, transactionId: string) {
+  async onPayment_Paypal(tracking: Tracking, transactionId: string) {
    //REMOVES ITEMS FROM DB
    for (let i = 0; i < this.cart.products.length; i++) {
     let s: Variant = this.cart.products[i].product.inventory.find((variant) => {
@@ -180,7 +181,10 @@ export class CartService {
     let order: Order = {
       address: this.address,
       products: this.cart.products,
-      transactionId: transactionId,
+      payment: {
+        processor: 'Paypal',
+        paypal_txID: transactionId
+      },
       subtotal: this.subtotal,
       tax: this.tax,
       taxRate: this.taxRate,
@@ -201,6 +205,7 @@ export class CartService {
         refund_type: 'None',
         refund_shipping: false,
         refund_shipping_amount: 0,
+        refund_tax: 0,
         refund_amount: 0,
         refunded: false,
         notes: ''
@@ -226,6 +231,75 @@ export class CartService {
     
     //this.Router.navigate(['thankyou']);
   }
+
+
+  async onPayment_Square(tracking: Tracking, transaction: SquareTransactionResponse) {
+    //REMOVES ITEMS FROM DB
+    for (let i = 0; i < this.cart.products.length; i++) {
+     let s: Variant = this.cart.products[i].product.inventory.find((variant) => {
+       //eventually need to update for color too
+       return (variant.size === this.cart.products[i].selectedSize);
+     });
+ 
+     s.quantity -= this.cart.products[i].quantity;
+     await this.ProductService.update(this.cart.products[i].product);
+    }
+    //END REMOVE ITEM FROM DB
+ 
+     let order: Order = {
+       address: this.address,
+       products: this.cart.products,
+       payment: {
+         processor: 'Square',
+         square: transaction
+       },
+       subtotal: this.subtotal,
+       tax: this.tax,
+       taxRate: this.taxRate,
+       shipping: this.shipping,
+       total: this.total,
+       cost: this.calcCost(),
+       shipped: false,
+       shipmentId: this.selected_shipping_rate.shipment_id,
+       shippingCarrier: this.selected_shipping_rate.carrier,
+       shippingMethod: this.selected_shipping_rate.service,
+       trackingNumber: tracking.tracking,
+       trackingUrl: tracking.public_url,
+       shippingLabel: tracking.shippingLabel,
+       return: {
+         return_initiated: false,
+         return_received: false,
+         return_reason: '',
+         refund_type: 'None',
+         refund_shipping: false,
+         refund_shipping_amount: 0,
+         refund_tax: 0,
+         refund_amount: 0,
+         refunded: false,
+         notes: ''
+       }
+     }
+ 
+     
+     let tmp = await this.OrderService.post(order);
+     //let stored = this.LocalStorageService.retrieve('orders');
+     await this.LocalStorageService.store('order', tmp._id);
+ 
+     /*
+     if (stored === null)
+       this.LocalStorageService.store('orders', [tmp._id]);
+     else {
+       stored.push(tmp._id)
+       this.LocalStorageService.store('orders', stored)
+     }
+     */
+     //this.paid = true;
+     this.paid.next(true);
+     this.clear();
+     
+     //this.Router.navigate(['thankyou']);
+   }
+ 
 
   calcCost() {
     let cost = new Big(0);

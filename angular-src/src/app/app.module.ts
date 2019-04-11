@@ -27,6 +27,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { LoadingScreenService } from './services/loading-screen.service';
 import { TitleService } from './services/title.service';
 import { ContactComponent } from './components/contact/contact.component';
+import { SquareComponent } from './components/square/square.component';
+import { CartService } from './services/cart.service';
 
 const appRoutes: Routes = [
   {
@@ -58,6 +60,10 @@ const appRoutes: Routes = [
     component: ProductDetailComponent
   },
   {
+    path: 'square',
+    component: SquareComponent
+  },
+  {
     path: ':collection',
     component: ProductsComponent
   },
@@ -69,6 +75,7 @@ const appRoutes: Routes = [
     path: ':collection/:category/:subcategory',
     component: ProductsComponent
   },
+
 ]
 
 @NgModule({
@@ -84,7 +91,8 @@ const appRoutes: Routes = [
     ThanksComponent,
     IterableNumberPipe,
     CheckoutComponent,
-    ContactComponent
+    ContactComponent,
+    SquareComponent
   ],
   imports: [
     MaterialModule,
@@ -103,7 +111,8 @@ const appRoutes: Routes = [
     ShippingService,
     SnackbarService,
     LoadingScreenService,
-    TitleService
+    TitleService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })

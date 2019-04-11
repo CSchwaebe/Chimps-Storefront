@@ -64,7 +64,8 @@ export class CartComponent implements OnInit, OnDestroy {
     }
 
     window.scrollTo(0, 0);
-    this.Router.navigate(['/checkout']);
+    window.location.assign('/checkout');
+   // this.Router.navigateByUrl('http://localhost:4200/checkout');
   }
 
   /**

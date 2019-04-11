@@ -53,7 +53,7 @@ export class PaypalComponent implements OnInit {
         console.log(transactionId)
         let obj: Tracking = await this.ShippingService.buyShipment(this.CartService.selected_shipping_rate);
        
-        await this.CartService.onPayment(obj, transactionId);
+        await this.CartService.onPayment_Paypal(obj, transactionId);
        
       },
       onCancel: (data, actions) => {
