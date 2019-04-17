@@ -37,13 +37,16 @@
                   </mat-select>
                 </mat-form-field>
               </div>
+
+              
               
               <quill-editor class=description [(ngModel)]=model.product.description [ngModelOptions]="{standalone: true}" 
               [modules]="{toolbar: false}" theme=bubble readOnly=true format=object placeholder=''></quill-editor>
 
               <div class=submit-background>
-                <button type="submit" class="add-to-cart purple-button">ADD TO CART</button>
-              </div>
+                  <button type="submit" class="add-to-cart purple-button">ADD TO CART</button>
+                </div>
+             
             </form>
           </div>
       

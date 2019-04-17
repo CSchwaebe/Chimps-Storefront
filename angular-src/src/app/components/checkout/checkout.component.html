@@ -72,11 +72,15 @@
                         <div class="address-field-bottom">Postal Code</div>
 
                         <!-- Country -->
-                        <input [(ngModel)]="model.country" class="address-input" type="text" name="country">
+                        <select [(ngModel)]="model.country" class="address-input" type="text" name="country" style="    background: transparent;
+                        height: 30px;
+                        width: 206px;
+                        margin: 10px 5px 7px 10px;"> 
+                            <option *ngFor="let country of countryOptions" [value]=country>{{country}}</option>
+                        </select>
                         <div class="address-field-bottom">Country</div>
-
-
-
+                        
+    
 
                     </div>
 
@@ -86,7 +90,7 @@
                     <div class="submit-div submit-background">
                         <!-- Submit -->
 
-                        <button type=submit #submitButton class="submit-button grey-button">Continue to Payment</button>
+                        <button type=submit #submitButton class="submit-button grey-button" [disabled]="!model.country">Continue to Payment</button>
 
                     </div>
 

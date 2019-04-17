@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 
 import {
 
+  MatAutocompleteModule,
 
   MatInputModule,
 
@@ -30,7 +31,8 @@ import {
   exports: [
     // A11yModule,
     MatButtonModule,
-    
+    MatAutocompleteModule,
+
 
     MatStepperModule,
     MatIconModule,

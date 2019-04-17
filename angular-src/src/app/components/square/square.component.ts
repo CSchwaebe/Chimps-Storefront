@@ -7,6 +7,7 @@ import { Tracking } from 'src/app/models/shipping';
 import { ShippingService } from 'src/app/services/shipping.service';
 import { LoadingScreenService } from 'src/app/services/loading-screen.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
+import { environment } from 'src/environments/environment';
 
 declare var SqPaymentForm: any;
 
@@ -16,8 +17,8 @@ declare var SqPaymentForm: any;
   styleUrls: ['./square.component.scss']
 })
 export class SquareComponent implements OnInit, AfterViewInit {
-  locationId = 'CBASEFEwclskyf3o1G8FCJZ7QUQgAQ';
-  applicationId = 'sandbox-sq0idp-i_Y-gJtmfoCaaUYbitVuIQ'
+  locationId = environment.square_locationID;
+  applicationId = environment.square_applicationID;
   paymentForm; //this is our payment form object
   nonce: any;
 
@@ -241,7 +242,6 @@ export class SquareComponent implements OnInit, AfterViewInit {
   async onSubmit() {
    //casting so .value will work
     this.LoadingScreenService.on();
-    console.log(' on Submit ')
     
     let nonce = (<HTMLInputElement>document.getElementById('card-nonce')).value; 
     
@@ -255,6 +255,7 @@ export class SquareComponent implements OnInit, AfterViewInit {
     // START SQUARE ADDRESS
     let first = this.CartService.address.name.indexOf(' ');
     let last = this.CartService.address.name.lastIndexOf(' ') + 1;
+
     let address: SquareAddress = {
       first_name: this.CartService.address.name.substring(0, first),
      last_name: this.CartService.address.name.substring(last),
@@ -265,6 +266,7 @@ export class SquareComponent implements OnInit, AfterViewInit {
      postal_code: this.CartService.address.zip,
      country: countryList.getCode(this.CartService.address.country)
     }
+    console.log(address);
     //END
 
     let payment: SquarePayment = {
@@ -275,7 +277,7 @@ export class SquareComponent implements OnInit, AfterViewInit {
     }
 
     let squareTransactionResponse: SquareTransactionResponse = await this.SquareService.processPayment(payment);
-   console.log(squareTransactionResponse);
+    console.log(squareTransactionResponse);
     if (squareTransactionResponse.error) {
       this.LoadingScreenService.off();
       this.SnackbarService.onError(squareTransactionResponse.error, 5000);

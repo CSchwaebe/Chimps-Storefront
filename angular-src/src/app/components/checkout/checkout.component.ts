@@ -6,7 +6,7 @@ import { Address, TempShipment, Rate } from 'src/app/models/shipping';
 import { ShippingService } from '../../services/shipping.service';
 import { ProductService } from '../../services/product.service';
 import { LoadingScreenService } from 'src/app/services/loading-screen.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { MatStepper } from '@angular/material/stepper';
 import { TitleService } from 'src/app/services/title.service';
 import { MailingListService } from 'src/app/services/mailing-list.service';
@@ -46,6 +46,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   loadingSubscription: Subscription;
 
   countryOptions = countryList.getNames();
+  
+
 
   constructor(public CartService: CartService,
     public ShippingService: ShippingService,
@@ -79,10 +81,10 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   }
 
-
   
   ngOnInit() {
 
+   
   }
 
   ngOnDestroy() {

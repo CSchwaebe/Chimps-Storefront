@@ -1,6 +1,9 @@
+<ng-template [ngIf]=productArray.length>
 <div class="main">
   <div class="header">
-    <img class="header-image" src="{{header}}">
+    <ng-template [ngIf]=header>
+        <img class="header-image" src="{{header}}">
+    </ng-template>
     <h3 class="title">{{title}}</h3>
   </div>
   
@@ -27,4 +30,6 @@
     </div>
   </div>
 </div>
+
 <app-footer></app-footer>
+</ng-template>

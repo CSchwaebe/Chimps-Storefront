@@ -43,7 +43,7 @@ button:focus {
         line-height: 66px;
 
         font-weight: 100;
-        font-size: 12px;
+        font-size: 14px;
         text-align: center;
         letter-spacing: 1px;
         text-transform: uppercase;
@@ -88,9 +88,8 @@ button:focus {
             color: rgb(0, 231, 231);
 
             text-decoration: none;
-            font-size: 10px;
+            font-size: 12px;
             font: "Montserrat";
-            font-weight: 100;
             letter-spacing: 3px;
             text-align: left;
 
@@ -104,16 +103,15 @@ button:focus {
 
         .subcategory {
           .subcategory-link {
-            font-family: "Montserrat";
+            font-family: "Lato";
             display: block;
-            font-size: 10px;
+            font-size: 12px;
             color: white;
             padding-top: 0px;
             padding-bottom: 10px;
             margin: 0px;
             text-decoration: none;
             letter-spacing: 2px;
-            font-weight: 100;
             &:hover {
               font-weight: 700;
             }
