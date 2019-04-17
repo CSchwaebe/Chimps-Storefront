@@ -11,6 +11,7 @@ import { MatStepper } from '@angular/material/stepper';
 import { TitleService } from 'src/app/services/title.service';
 import { MailingListService } from 'src/app/services/mailing-list.service';
 import * as countryList from 'country-list';
+import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
 
 @Component({
   selector: 'app-checkout',
@@ -36,7 +37,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     city: '',
     state: '',
     zip: '',
-    country: '',
+    country: 'United States',
     verify: ['delivery']
   };
   addToMailingList: boolean = true;
@@ -104,7 +105,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     //PROBLEM - WHAT IF TEMP SHIPMENT is wrong, does it retun null or waht????
     let tempShipment: TempShipment = await this.ShippingService.createShipment(this.model, weight);
 
-    if (tempShipment === null) {
+    if (this.model.country !== "United States" || tempShipment === null) {
       this.LoadingScreenService.off();
       alert('We were unable to veriy your address. Please ensure that it is correct and try again.')
       this.submitButton.nativeElement.disabled = false;

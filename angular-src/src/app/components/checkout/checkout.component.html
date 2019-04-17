@@ -72,13 +72,19 @@
                         <div class="address-field-bottom">Postal Code</div>
 
                         <!-- Country -->
-                        <select [(ngModel)]="model.country" class="address-input" type="text" name="country" style="    background: transparent;
+                        <input [(ngModel)]="model.country" class="address-input" type="text" name="country" readonly>
+                        <div class="address-field-bottom" style="width: auto; margin-right: 105px;">Country (US only)</div>
+
+                        <!--
+<select [(ngModel)]="model.country" class="address-input" type="text" name="country" style="    background: transparent;
                         height: 30px;
                         width: 206px;
                         margin: 10px 5px 7px 10px;"> 
                             <option *ngFor="let country of countryOptions" [value]=country>{{country}}</option>
                         </select>
                         <div class="address-field-bottom">Country</div>
+                        -->
+                        
                         
     
 
