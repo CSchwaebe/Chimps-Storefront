@@ -281,12 +281,10 @@ export class SquareComponent implements OnInit, AfterViewInit {
     if (squareTransactionResponse.error) {
       this.LoadingScreenService.off();
       this.SnackbarService.onError(squareTransactionResponse.error, 5000);
-    }
-      
-      
-    else {
-      let tracking: Tracking = await this.ShippingService.buyShipment(this.CartService.selected_shipping_rate);
-      let response = await this.CartService.onPayment_Square(tracking, squareTransactionResponse);  
+    } else {
+      //FOUND IT
+      //let tracking: Tracking = await this.ShippingService.buyShipment(this.CartService.selected_shipping_rate);
+      let response = await this.CartService.onPayment_Square(squareTransactionResponse);  
     }
    
   }

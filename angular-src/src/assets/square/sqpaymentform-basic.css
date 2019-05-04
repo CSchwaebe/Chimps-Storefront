@@ -49,13 +49,15 @@ fieldset {
 }
 
 .third {
-  float: left;
+  /*float: left;*/
+  display: inline-block;
   width: calc((100% - 32px) / 3);
   padding: 0;
   margin: 0 16px 16px 0;
 }
 
 .third:last-of-type {
+  display: inline-block;
   margin-right: 0;
 }
 

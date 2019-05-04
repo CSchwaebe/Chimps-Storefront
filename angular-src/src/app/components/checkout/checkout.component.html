@@ -138,9 +138,10 @@
                             <p class="subt-name">Tax </p><span class="subt-value">${{CartService.tax.toFixed(2)}}</span>
                         </div>
 
-                        <div class="subt-row shipping-row">
-                            <p class="subt-name">Shipping </p>
-                            <!--<span class="subt-value">${{CartService.shipping.toFixed(2)}}</span>-->
+                        <div class="subt-row"> <!--shipping-row-->
+                            <p class="subt-name">Shipping </p><span class="subt-value">${{CartService.shipping.toFixed(2)}}</span>
+                           
+<!--
 
                             <mat-form-field class=size appearance=legacy>
                                 <mat-select required [(ngModel)]="CartService.selected_shipping_rate" name="shipping"
@@ -149,24 +150,14 @@
                                         ({{rate.delivery_days}} day) {{rate.carrier}} {{rate.service}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
-
-                            <!--
-                                <select id="selector" required [(ngModel)]="CartService.selected_shipping_rate" name="shipping" class="wheel"
-                                (change)="CartService.setShipping(CartService.selected_shipping_rate)">
-                                <option *ngFor="let rate of shippingRates" [ngValue]="rate">{{rate.carrier}} {{rate.service}} ({{rate.delivery_days}} day) ${{rate.rate}}</option>
-                            </select>
-
-                              -->
+-->
+                           
 
 
                         </div>
 
 
-                        <!--
-                        <div class="subt-row">
-                            <p class="subt-name">Shipping </p><span class="subt-value">${{CartService.shipping.toFixed(2)}}</span>
-                        </div>
-                        -->
+                        
 
                         <div class="total-row">
                             <p class="total-name">Total </p><span

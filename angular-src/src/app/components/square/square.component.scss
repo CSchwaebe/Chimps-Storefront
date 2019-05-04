@@ -6,14 +6,14 @@
 }
 
 .third {
-  float: left;
+  //float: left;
   width: calc((100% - 32px) / 3);
   padding: 0;
   margin: 0 16px 16px 0;
 }
 
 .third:last-of-type {
-  float: left;
+  //float: left;
   margin-right: 0;
 }
 

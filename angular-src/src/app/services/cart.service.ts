@@ -147,9 +147,13 @@ export class CartService {
 
   //GETTERS AND SETTERS
   setShipping(rateObject: Rate) {
-    //console.log(rateObject);
-    this.shipping = +Number(+rateObject.rate).toFixed(2);
+    //console.log(rateObject); 
     this.selected_shipping_rate = rateObject;
+
+    this.shipping = +((+rateObject.rate).toFixed(2));
+    this.shipping = +(new Big(rateObject.rate).toFixed(0));
+    
+
     //console.log(this.selected_shipping_rate);
     //console.log(this.shipping);
     this.calcTotal();
@@ -165,6 +169,7 @@ export class CartService {
 
 
 
+  
   async onPayment_Paypal(tracking: Tracking, transactionId: string) {
    //REMOVES ITEMS FROM DB
    for (let i = 0; i < this.cart.products.length; i++) {
@@ -192,12 +197,13 @@ export class CartService {
       total: this.total,
       cost: this.calcCost(),
       shipped: false,
+      shippingRate: this.selected_shipping_rate,
       shipmentId: this.selected_shipping_rate.shipment_id,
       shippingCarrier: this.selected_shipping_rate.carrier,
       shippingMethod: this.selected_shipping_rate.service,
-      trackingNumber: tracking.tracking,
-      trackingUrl: tracking.public_url,
-      shippingLabel: tracking.shippingLabel,
+      trackingNumber: null,
+      trackingUrl: null,
+      shippingLabel: null,
       return: {
         return_initiated: false,
         return_received: false,
@@ -233,7 +239,7 @@ export class CartService {
   }
 
 
-  async onPayment_Square(tracking: Tracking, transaction: SquareTransactionResponse) {
+  async onPayment_Square(transaction: SquareTransactionResponse) {
     //REMOVES ITEMS FROM DB
     for (let i = 0; i < this.cart.products.length; i++) {
      let s: Variant = this.cart.products[i].product.inventory.find((variant) => {
@@ -260,12 +266,16 @@ export class CartService {
        total: this.total,
        cost: this.calcCost(),
        shipped: false,
+       shippingRate: this.selected_shipping_rate,
        shipmentId: this.selected_shipping_rate.shipment_id,
        shippingCarrier: this.selected_shipping_rate.carrier,
        shippingMethod: this.selected_shipping_rate.service,
-       trackingNumber: tracking.tracking,
-       trackingUrl: tracking.public_url,
-       shippingLabel: tracking.shippingLabel,
+       //trackingNumber: tracking.tracking,
+       //trackingUrl: tracking.public_url,
+       //shippingLabel: tracking.shippingLabel,
+       trackingNumber: null,
+       trackingUrl: null,
+       shippingLabel: null,
        return: {
          return_initiated: false,
          return_received: false,
@@ -297,7 +307,6 @@ export class CartService {
      this.paid.next(true);
      this.clear();
      
-     //this.Router.navigate(['thankyou']);
    }
  
 
