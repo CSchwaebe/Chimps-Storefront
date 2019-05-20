@@ -9,7 +9,11 @@
   </div>
   <ng-template [ngIf]=model.featuredProducts&&model.featuredProducts.length>
     <div class=featured-products-container>
-      <h2 class=title>{{featuredProductsTitle}}</h2>
+      
+<h2 class=title></h2>
+      <!--
+        {{featuredProductsTitle}}
+      -->
       <div class=grid>
         <div class=product-box *ngFor="let prod of model.featuredProducts; index as i">
           <ng-template [ngIf]=soldOut(prod)>

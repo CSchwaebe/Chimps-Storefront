@@ -8,6 +8,7 @@ import { ShippingService } from 'src/app/services/shipping.service';
 import { LoadingScreenService } from 'src/app/services/loading-screen.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { environment } from 'src/environments/environment';
+import { Big } from 'big.js';
 
 declare var SqPaymentForm: any;
 
@@ -245,9 +246,10 @@ export class SquareComponent implements OnInit, AfterViewInit {
     
     let nonce = (<HTMLInputElement>document.getElementById('card-nonce')).value; 
     
+    let amt = +(new Big(this.CartService.total).times(100).toFixed(0));
 
     let money = {
-      amount: (this.CartService.total * 100),
+      amount: amt,
       currency: 'USD'
     }
    
