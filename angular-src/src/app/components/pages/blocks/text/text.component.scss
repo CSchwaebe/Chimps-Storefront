@@ -1,0 +1,16 @@
+.block {
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  //min-height: 200px;
+  //width: 40%;
+  //padding: 20px;
+  margin-bottom: 20px;
+
+  .quill-wrapper {
+    min-height: 100px;
+    .quill-editor {
+    }
+  }
+
+}

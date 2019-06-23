@@ -1,0 +1,40 @@
+$color-dark-grey: hsl(0, 0%, 32.2%); //rgb(82, 82, 82);
+$color-background: white;
+$color-text: #1d1d1d;
+$font-primary: "Montserrat";
+$font-secondary: "Open Sans";
+
+button:active {
+  outline: none;
+}
+
+div.main {
+  margin-top: 66px;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+
+  div.page-container {
+    //box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 100px;
+    div.title-container {
+      width: 100%;
+      text-align: center;
+      h1.title {
+        width: 100%;
+        padding: 20px 0px;
+      
+      /*color: rgb(158, 158, 158);*/
+        color: $color-dark-grey;
+        font-family: $font-primary;
+        font-weight: 100;
+        letter-spacing: 1px;
+        font-size: 32px;
+      }
+    }
+    div.content-container {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

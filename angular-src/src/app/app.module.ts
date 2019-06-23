@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { QuillModule } from 'ngx-quill';
+import { EmbedVideo } from 'ngx-embed-video';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -29,6 +30,15 @@ import { TitleService } from './services/title.service';
 import { ContactComponent } from './components/contact/contact.component';
 import { SquareComponent } from './components/square/square.component';
 import { CartService } from './services/cart.service';
+
+import { VideoComponent } from './components/pages/blocks/video/video.component';
+import { TextComponent } from './components/pages/blocks/text/text.component';
+import { PageComponent } from './components/pages/page/page/page.component';
+import { BlockDirective } from './components/pages/directives/block.directive';
+import { ImageComponent } from './components/pages/blocks/image/image.component';
+import { SpacerComponent } from './components/pages/blocks/spacer/spacer.component';
+import { BlockService } from './services/block.service';
+import { PageService } from './services/page.service';
 
 const appRoutes: Routes = [
   {
@@ -64,6 +74,10 @@ const appRoutes: Routes = [
     component: SquareComponent
   },
   {
+    path: 'pages/:stub',
+    component: PageComponent
+  },
+  {
     path: ':collection',
     component: ProductsComponent
   },
@@ -92,8 +106,15 @@ const appRoutes: Routes = [
     IterableNumberPipe,
     CheckoutComponent,
     ContactComponent,
-    SquareComponent
+    SquareComponent,
+    VideoComponent,
+    TextComponent,
+    PageComponent,
+    BlockDirective,
+    ImageComponent,
+    SpacerComponent
   ],
+  entryComponents: [ TextComponent, VideoComponent, ImageComponent, SpacerComponent ],
   imports: [
     MaterialModule,
     BrowserAnimationsModule,
@@ -104,7 +125,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     NgxPayPalModule,
     QuillModule,
-    NgxWebstorageModule.forRoot()
+    NgxWebstorageModule.forRoot(),
+    EmbedVideo.forRoot(),
   ],
   providers: [
     CollectionService,
@@ -112,7 +134,9 @@ const appRoutes: Routes = [
     SnackbarService,
     LoadingScreenService,
     TitleService,
-    CartService
+    CartService,
+    BlockService,
+    PageService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,18 @@
+<div class="block draggable-item"  [ngStyle]=data.style>
+
+  
+  <div class=video-container>
+      <div class=url [innerHtml]="yt_iframe_html">
+
+        </div>
+  </div>
+  
+
+  <div class=text>
+     <div class=quill-wrapper-{{data.sortOrder}}>
+
+      <quill-editor overflow=visible [(ngModel)]=data.text [ngModelOptions]='{standalone: true}' class=quill-editor format=html theme=bubble bounds=.quill-wrapper-{{data.sortOrder}} placeholder='' readOnly=true></quill-editor>
+    </div>
+  </div>
+
+</div>

@@ -1,4 +1,4 @@
-<ng-template [ngIf]=productArray.length>
+<ng-template [ngIf]="productArray.length || soldOutProductArray.length">
 <div class="main">
   <div class="header">
     <ng-template [ngIf]=header>

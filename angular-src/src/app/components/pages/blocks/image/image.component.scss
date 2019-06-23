@@ -1,0 +1,55 @@
+$color-dark-blue: hsl(239, 100%, 9%);
+$color-silver: hsl(0, 0%, 62%);
+$color-white-blue: hsl(239, 43%, 99%);
+
+.block {
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+    //min-height: 200px;
+    //width: 40%;
+    //padding: 20px;
+    margin-bottom: 20px;
+
+.image-div {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    //margin: 0 5% 5% 5%;
+    //margin-top: 0;
+    height: auto;
+
+    div.thumbnail {
+      width: 100%;
+
+      div.thumbnail-container {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+
+        img {
+          display: inline-block;
+          width: 100%;
+        }
+
+        button {
+          display: inline-block;
+          width: 120px;
+          height: 30px;
+          margin-top: 20px;
+          font-size: 12px;
+          line-height: 30px;
+          border: none;
+          border-radius: 10px;
+          font-weight: bold;
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), -2px 2px 4px rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+        }
+      }
+    }
+
+   
+  }
+
+
+}

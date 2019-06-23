@@ -4,6 +4,8 @@ import { CollectionService } from 'src/app/services/collection.service';
 import { Collection } from 'src/app/models/admin/collection';
 import { Navbar, Col, Cat } from '../../models/navbar';
 import { CartService } from '../../services/cart.service';
+import { PageService } from 'src/app/services/page.service';
+import { Category } from 'src/app/models/admin/category';
 
 
 @Component({
@@ -23,7 +25,8 @@ export class NavbarComponent implements OnInit {
  model: Navbar = new Navbar();
 
   constructor(private CollectionService: CollectionService,
-              public CartService: CartService) {}
+              public CartService: CartService,
+              private PageService: PageService) {}
 
   async ngOnInit() {
     await this.getData(); 
@@ -69,7 +72,62 @@ export class NavbarComponent implements OnInit {
       subs = [];
     });
 
+    await this.getPages()
     return
+  }
+
+  async getPages() {
+    let pages = await this.PageService.getAll();
+    for (let i = 0; i < pages.length; i++) {
+      if (pages[i].menu.location === 'Main') {
+        switch (pages[i].menu.level) {
+          case 'Collection': 
+          let col: Col = {
+            page: pages[i],
+            isOpen: false,
+            categories: null,
+          } 
+          this.model.collections.push(col);
+          break;
+          case 'Category': 
+          let cat: Cat = {
+            page: pages[i],
+            isOpen: false,
+            subcategories: null,
+          } 
+
+          for (let i = 0; i < this.model.collections.length; i++) {
+            if (this.model.collections[i].collection.name === pages[i].menu.shop) {
+              this.model.collections[i].categories.push(cat);
+              break;
+            }
+          }
+          break;
+
+
+          case 'Subcategory':
+
+          for (let i = 0; i < this.model.collections.length; i++) {
+            if (this.model.collections[i].collection.name === pages[i].menu.shop) {
+             for (let j = 0; j < this.model.collections[i].categories.length; j++) {
+              if (this.model.collections[i].categories[j].category.name === pages[i].menu.category) {
+                if (this.model.collections[i].categories[j].subcategoryPages)
+                  this.model.collections[i].categories[j].subcategoryPages.push(pages[i]);
+                else {
+                  this.model.collections[i].categories[j].subcategoryPages = [];
+                  this.model.collections[i].categories[j].subcategoryPages.push(pages[i]);
+                }
+              }
+              break;
+             }
+            }
+          }
+        
+          break;
+        }
+      }
+    }
+
   }
 
   show(index: number) {

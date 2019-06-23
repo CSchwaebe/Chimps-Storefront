@@ -49,6 +49,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
 
   async getProducts() {
+    this.soldOutProductArray = [];
+    this.productArray = [];
+    
     let tmpProductArray = await this.ProductService.getActive(this.router.url);
 
     let active = [];
