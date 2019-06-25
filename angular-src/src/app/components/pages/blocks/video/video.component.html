@@ -11,7 +11,7 @@
   <div class=text>
      <div class=quill-wrapper-{{data.sortOrder}}>
 
-      <quill-editor overflow=visible [(ngModel)]=data.text [ngModelOptions]='{standalone: true}' class=quill-editor format=html theme=bubble bounds=.quill-wrapper-{{data.sortOrder}} placeholder='' readOnly=true></quill-editor>
+      <quill-editor overflow=visible [(ngModel)]=data.text [ngModelOptions]='{standalone: true}' class=quill-editor format=object theme=bubble bounds=.quill-wrapper-{{data.sortOrder}} placeholder='' readOnly=true  [modules]="{toolbar: false}" ></quill-editor>
     </div>
   </div>
 

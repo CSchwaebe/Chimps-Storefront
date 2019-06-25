@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PageService } from 'src/app/services/page.service';
+import { Page } from 'src/app/components/pages/models/page';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  storeName: string = 'Big Kat Original';
+  pages: Page[];
 
-  ngOnInit() {
+  constructor(private PageService: PageService) { }
+
+  async ngOnInit() {
+    this.pages = [];
+    let pages = await this.PageService.getAll();
+    for (let i = 0; i < pages.length; i++) {
+      if (pages[i].menu.location === 'Footer')
+        this.pages.push(pages[i]);
+    }
   }
 
 }

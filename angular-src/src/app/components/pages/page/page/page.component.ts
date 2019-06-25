@@ -1,4 +1,4 @@
-import { Component, OnInit, ComponentFactoryResolver, Input, ViewChild, ViewContainerRef, AfterViewChecked, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, Input, ViewChild, ViewContainerRef, OnDestroy } from '@angular/core';
 import { Block } from '../../types/block';
 import { BlockDirective } from '../../directives/block.directive';
 import { BlockService } from 'src/app/services/block.service';
@@ -7,7 +7,7 @@ import { Page } from '../../models/page';
 import { PageService } from 'src/app/services/page.service';
 import { Subscription } from 'rxjs';
 import { SnackbarService } from 'src/app/services/snackbar.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { Collection } from 'src/app/models/admin/collection';
 import { CollectionService } from 'src/app/services/collection.service';
 
@@ -17,7 +17,7 @@ import { CollectionService } from 'src/app/services/collection.service';
   styleUrls: ['./page.component.scss']
 })
 
-export class PageComponent implements OnInit, AfterViewInit {
+export class PageComponent implements OnInit, OnDestroy {
   /*@Input()*/
   model: Page = {
     title: undefined,
@@ -28,6 +28,9 @@ export class PageComponent implements OnInit, AfterViewInit {
       level: undefined,
     }
   }
+
+  previousModel: String = 'desktop';
+  desktopWidths: string[] = [];
 
   blocks: Block[];
   viewContainerRef: ViewContainerRef;
@@ -52,7 +55,7 @@ export class PageComponent implements OnInit, AfterViewInit {
   videoURL: string = '';
 
   subscription: Subscription;
-
+  routerSubscription: Subscription;
 
   @ViewChild(BlockDirective) blockDirective: BlockDirective;
 
@@ -67,9 +70,19 @@ export class PageComponent implements OnInit, AfterViewInit {
       this.model.blocks = this.PageService.blocks;
       this.loadComponents();
     });
+
+    this.routerSubscription = this.Router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd)
+          this.load();
+    })
   }
 
+
   async ngOnInit() {
+    console.log('ngOnInit');
+  }
+
+  async load() {
     this.PageService.blocks = [];
     this.getCollections();
     this.viewContainerRef = this.blockDirective.viewContainerRef;
@@ -80,6 +93,18 @@ export class PageComponent implements OnInit, AfterViewInit {
       this.loadComponents();
     else {
     }
+
+    window.addEventListener("resize", () => {
+      this.resize();
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    this.routerSubscription.unsubscribe();
+    window.removeEventListener("resize", () => {
+
+    })
   }
 
   async checkForPage() {
@@ -97,18 +122,35 @@ export class PageComponent implements OnInit, AfterViewInit {
         await this.PageService.addBlock(this.BlockService.attachComponentToData(blocks[i].data.type, blocks[i].data))
         console.log("added block " + i)
       }
+      this.saveWidths();      
+      this.resize();
       return true;
     } else
       return false;
 
   }
 
-  ngAfterViewInit() {
-
+  resize() {
+    if (window.innerWidth < 768 && this.previousModel === 'desktop') {
+      for (let i = 0; i < this.model.blocks.length; i++) {
+        this.model.blocks[i].data.style.width = '100%';
+      }
+      this.previousModel = 'mobile';
+     //this.loadComponents();
+    } else if (window.innerWidth >= 768 && this.previousModel === 'mobile') {
+      for (let i = 0; i < this.model.blocks.length; i++) {
+        this.model.blocks[i].data.style.width = this.desktopWidths[i];
+      }
+      this.previousModel = 'desktop';
+      //this.loadComponents();
+    }
   }
 
-  ngOnDestroy() {
-
+  saveWidths() {
+    this.desktopWidths = [];
+    for (let i = 0; i < this.model.blocks.length; i++) {
+      this.desktopWidths.push(this.model.blocks[i].data.style.width);
+    }
   }
 
   loadComponents() {

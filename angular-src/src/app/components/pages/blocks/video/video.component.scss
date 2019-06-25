@@ -6,7 +6,7 @@
     width: 80%;
     //padding: 20px;
     
-    margin-bottom: 20px;
+    margin-bottom: 5vh;
 
 
     .video-container {
@@ -117,4 +117,19 @@
 
 .ql-tooltip {
     left: 0px;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+  div.block {
+
+    .video-container {
+      width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+
+    }
+    
+  }
 }

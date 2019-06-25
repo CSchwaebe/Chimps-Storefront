@@ -38,3 +38,11 @@ div.main {
     }
   }
 }
+
+@media only screen and (max-width: 767px) {
+  div.main {
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}

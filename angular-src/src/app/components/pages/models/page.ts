@@ -1,11 +1,15 @@
 import { Block } from '../types/block';
 
-export interface Page {
-    title: string;
-    stub: string;
-    blocks: Block[];
-    menu: Menu,
-    _id?: string;
+export class Page {
+    public title: string;
+    public stub: string;
+    public blocks: Block[];
+    public menu: Menu;
+    public _id?: string;
+
+    constructor() {
+       
+    }
 }
 
 export interface Menu {

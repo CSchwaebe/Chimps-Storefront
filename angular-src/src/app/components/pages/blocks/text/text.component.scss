@@ -5,7 +5,7 @@
   //min-height: 200px;
   //width: 40%;
   //padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 5vh;
 
   .quill-wrapper {
     min-height: 100px;
@@ -14,3 +14,16 @@
   }
 
 }
+
+
+
+@media only screen and (max-width: 767px) {
+ 
+  .block {
+   .quill-wrapper {
+     width: 90%;
+     padding-left: 5%;
+     padding-right: 5%;
+   }
+  } 
+ }

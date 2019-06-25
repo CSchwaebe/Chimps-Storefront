@@ -121,7 +121,7 @@ body {
   font-family: "Montserrat";
 }
 .ql-editor > * {
-  cursor: default;
+  cursor: text;
 }
 
 .ql-editor {
