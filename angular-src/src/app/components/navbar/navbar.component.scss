@@ -7,9 +7,9 @@ button:focus {
 }
 
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
+  //position: fixed;
+  //top: 0;
+  //left: 0;
 
   display: inline-grid;
   width: 100vw;
@@ -121,15 +121,16 @@ button:focus {
     }
   }
 
-  /* The right side of the navbar */
+  /* The right side of the navbar 
   .logo {
     grid-area: left;
 
     width: 66px;
     height: 66px;
   }
+  */
 
-  /* THe right side of the navbar */
+  /* THe right side of the navbar 
   .cart-container {
     grid-area: right;
 
@@ -170,26 +171,25 @@ button:focus {
       }
     }
   }
+  */
 }
 
 .mobile-dropdown-background {
   display: none;
 }
 
-/* FOR MOBILE AND IPAD */
+/* FOR MOBILE AND IPAD 
 @media only screen and (max-width: 1024px) {
+  */
   .navbar {
-    justify-content: center;
-    position: fixed;
-    width: 100%;
-    margin: 0;
-    top: 0;
+    //justify-content: center;
+    //position: fixed;
+    //width: 100%;
+    //margin: 0;
+    //top: 0;
 
     /* The center part of the navbar */
-    .logo {
-      grid-area: center;
-    }
-
+    
     /* The right side of the navbar */
     .dropdown-menu-container {
       display: none;
@@ -205,18 +205,13 @@ button:focus {
       height: 66px;
       width: 66px;
       background-color: inherit;
-      #mobile-dropdown-button {
-        width: 34px;
-        height: 34px;
-        padding: 16px;
-      }
     }
 
     /* The background for the mobile menu */
     .mobile-dropdown-background {
       display: block;
       position: fixed;
-      top: 66px;
+      //top: 66px;
       left: 0;
       width: 100vw;
 
@@ -271,13 +266,14 @@ button:focus {
             max-height: 0px;
             padding: 0;
             font-size: 0px;
+            overflow: hidden;
 
             transition-property: max-height font-size;
-            transition-duration: 0.4s;
+            transition-duration: 0.6s;
             transition-delay: 0s;
-            transition-timing-function: linear;
+            
             transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-
+            //transition-timing-function: linear;
             visibility: hidden;
             /*display: none;*/
 
@@ -361,9 +357,11 @@ button:focus {
                 max-height: 0;
                 padding: 0px;
                 font-size: 0;
+                overflow: hidden;
 
                 transition-property: max-height font-size padding;
                 transition-duration: 0.4s;
+                //transition-timing-function: linear;
                 transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
               }
 
@@ -374,41 +372,7 @@ button:focus {
                 font-size: 10px;
               }
 
-              .subcategory {
-                background: green;
-                .subcategory-link {
-                  display: block;
-
-                  font-size: 10px;
-                  color: white;
-
-                  background: rgb(116, 1, 116);
-                  margin-top: 0px;
-
-                  margin-bottom: 0px;
-
-                  text-decoration: none;
-                  font-weight: 100;
-                  text-transform: uppercase;
-                  font-family: "Montserrat";
-                  letter-spacing: 2px;
-
-                  max-height: 0;
-                  padding: 0px;
-                  font-size: 0;
-
-                  transition-property: max-height font-size padding;
-                  transition-duration: 0.4s;
-                  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-                }
-
-                .display-subcategory-link {
-                  padding: 15px;
-                  max-height: 100px;
-
-                  font-size: 10px;
-                }
-              }
+             
             }
           }
 
@@ -426,4 +390,4 @@ button:focus {
       }
     }
   }
-}
+

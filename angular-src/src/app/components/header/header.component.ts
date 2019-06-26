@@ -5,31 +5,34 @@ import { Collection } from 'src/app/models/admin/collection';
 import { Navbar, Col, Cat } from '../../models/navbar';
 import { CartService } from '../../services/cart.service';
 import { PageService } from 'src/app/services/page.service';
-import { Category } from 'src/app/models/admin/category';
-
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
-export class NavbarComponent implements OnInit {
-  @Input() parent: any;
-  showMobileMenu: boolean = true;
+export class HeaderComponent implements OnInit {
+
+  desktop: boolean = true;
   selected: number = -1;
-  previousCategoryId: string = '';
-  previousCollectionId: string = '';
-
   allGroups: Collection[];
-
- model: Navbar = new Navbar();
-
+  model: Navbar = new Navbar();
+  
   constructor(private CollectionService: CollectionService,
               public CartService: CartService,
               private PageService: PageService) {}
 
   async ngOnInit() {
     await this.getData(); 
+
+
+    window.addEventListener("resize", () => {
+      this.resize();
+    });
+
+    this.resize();
+
+
   }
 
   async getData() {
@@ -73,6 +76,7 @@ export class NavbarComponent implements OnInit {
     });
 
     await this.getPages()
+    console.log(this.model)
     return
   }
 
@@ -134,104 +138,17 @@ export class NavbarComponent implements OnInit {
     this.selected = index;
   }
 
-  toggleMobileMenu() {
-    //this.previousCategoryId = '';
-    //this.previousCollectionId = '';
-
-    //this.showMobileMenu = !this.showMobileMenu;
 
 
-    this.parent.sidenav.toggle();
-    this.parent.collapse();    
-  }
-
-
-  closeMobileMenu() {
-    this.previousCategoryId = '';
-    this.previousCollectionId = '';
-
-    this.showMobileMenu = false;
-  }
-
-  expandCollectionsMobile(id) {
-  
-    //If there is an open category, close it
-    if (this.previousCategoryId !== '') {
-      this.closeCategoryMobile(this.previousCategoryId);
-      this.previousCategoryId = '';
-    }
-    
-    
-    //If there is an open collection, close it
-    
-    if (this.previousCollectionId !== '') 
-      this.closeCollectionMobile(this.previousCollectionId)
-    
-
-    //If they double clicked the same category, dont open anything
-    if (this.previousCollectionId === id) {
-      this.previousCollectionId = '';
-      return;
-    }
-
-    //Open the category they clicked on
-    this.openCollectionMobile(id);
-   
-    //Store the newly activated category so we can use it next time
-    this.previousCollectionId = id;
-    
-  }
-
-  expandCategoriesMobile(id) {
-    
-    //If there is an open category, close it
-    if (this.previousCategoryId !== '') 
-      this.closeCategoryMobile(this.previousCategoryId);
-    
-
-    //If they double clicked the same category, dont open anything
-    if (this.previousCategoryId === id) {
-      this.previousCategoryId = '';
-      return;
-    }
-    
-
-
-    //Open the category they clicked on
-    this.openCategoryMobile(id);
-    
-    //Store the newly activated category so we can use it next time
-    this.previousCategoryId = id;
-  }
-
-  private closeCollectionMobile(id: string) {
-    let elements: HTMLCollectionOf<HTMLElement> = <HTMLCollectionOf<HTMLElement>>document.getElementsByClassName(id);
-    for (let i = 0; i < elements.length; i++) {
-      elements[i].classList.toggle('display-category-link');
+  resize() {
+    if (window.innerWidth <= 1024 ) {
+      this.desktop = false;
+    } else if (window.innerWidth > 1024) {
+      this.desktop = true;
     }
   }
 
-  private openCollectionMobile(id: string) {
-    let elements = <HTMLCollectionOf<HTMLElement>>document.getElementsByClassName(id);
-    for (let i = 0; i < elements.length; i++) {
-      elements[i].classList.toggle('display-category-link');
-    }
-  }
 
-  private closeCategoryMobile(id: string) {
-    let elements: HTMLCollectionOf<HTMLElement> = <HTMLCollectionOf<HTMLElement>>document.getElementsByClassName(id);
-      for (let i = 0; i < elements.length; i++) {
-        elements[i].classList.toggle('display-subcategory-link');
-      }
-    
-  }
-
-  private openCategoryMobile(id: string) {
-    let elements = <HTMLCollectionOf<HTMLElement>>document.getElementsByClassName(id);
-    for (let i = 0; i < elements.length; i++) {
-      elements[i].classList.toggle('display-subcategory-link');
-    }
-  }
 
 
 
@@ -240,3 +157,4 @@ export class NavbarComponent implements OnInit {
   
 
 }
+

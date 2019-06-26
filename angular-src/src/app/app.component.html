@@ -1,18 +1,35 @@
+<!--
 <div style="text-align:center">
- 
-    <!--
-      
-    -->
     <app-navbar></app-navbar>
-    
     <router-outlet></router-outlet>
-
-    
-
-
-  
-
 </div>
+-->
+<app-header></app-header>
+
+<button class="hamburger hamburger--spring menu-button" type="button" (click)=collapse() (click)=sidenav.toggle()>
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+
+
+<mat-sidenav-container style="text-align:center" class="example-container">
+
+  <mat-sidenav mode="over" #sidenav>
+
+    <app-navbar [parent]="this">
+    </app-navbar>
+
+
+  </mat-sidenav>
+  
+  <mat-sidenav-content>
+    <div class=router-outlet>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
 <!--
 <div id="shopping-cart">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Shopping cart">Shopping cart</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"     title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 

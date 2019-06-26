@@ -1,0 +1,62 @@
+<div class="header">
+
+  <a class="logo" routerLink="/"><img class="logo mobile-logo" src="../../../assets/icons/kat-logo.svg"
+      alt="Kat Logo"></a>
+
+
+
+
+
+  <div class="cart-container">
+    <div class="cart-number-container" [style.background]="(CartService.cartSize === 0) ? 'white' : 'crimson'">
+      <p class="cart-number">{{CartService.cartSize}}</p>
+    </div>
+    <a class="cart" routerLink="/cart"><img class="shopping-cart-icon"
+        src="../../../assets/icons/outline-shopping_cart-24px.svg"></a>
+  </div>
+
+
+
+  <ng-template [ngIf]=desktop>
+      <div class="dropdown-menu-container">
+          <div class="dropdown-item-container" *ngFor="let col of model.collections; index as i" (mouseenter)="show(i)" (mouseleave)="show(-1)">
+            <ng-template [ngIf]=col.collection>
+            <a class="drop-link" routerLink="/{{col.collection.stub}}">{{col.collection.name}}</a>
+            <div class="dropdown-content" [style.display]="selected === i ? 'inline' : 'none'">
+              <div class="category" *ngFor="let cat of col.categories">
+                <ng-template [ngIf]=cat.page>
+                    <a class="category-link" routerLink="/pages/{{cat.page.stub}}">
+                      {{ cat.page.title }}</a>
+                </ng-template>
+                <ng-template [ngIf]=cat.category>
+                    <a class="category-link" routerLink="/{{cat.category.stub}}">
+                      {{ cat.category.name }}</a>
+                    <div class="subcategory" *ngFor="let sub of cat.subcategories">
+                      <a class="subcategory-link" routerLink="/{{sub.stub}}">
+                        {{ sub.name }}</a>
+                    </div>
+                    <ng-template [ngIf]=cat.subcategoryPages>
+                        <div class="subcategory" *ngFor="let page of cat.subcategoryPages">
+                            <a class="subcategory-link" routerLink="/pages/{{page.stub}}">
+                              {{ page.title }}</a>
+                        </div>
+                    </ng-template>
+                    
+                </ng-template>
+               
+              </div>
+            </div>
+          </ng-template>
+      
+          <ng-template [ngIf]=col.page>
+              <a class="drop-link" routerLink="/pages/{{col.page.stub}}">{{col.page.title}}</a>
+          </ng-template>
+          </div>
+        </div>
+  </ng-template>
+ 
+  
+
+
+
+</div>

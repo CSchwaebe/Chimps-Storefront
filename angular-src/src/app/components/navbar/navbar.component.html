@@ -1,8 +1,5 @@
 <div class="navbar">
 
-  <a class="logo" routerLink="/" (click)=closeMobileMenu()><img class="logo mobile-logo" src="../../../assets/icons/kat-logo.svg" alt="Kat Logo"></a>
-
-
   <div class="dropdown-menu-container">
     <div class="dropdown-item-container" *ngFor="let col of model.collections; index as i" (mouseenter)="show(i)" (mouseleave)="show(-1)">
       <ng-template [ngIf]=col.collection>
@@ -39,10 +36,11 @@
     </div>
   </div>
 
-  <!-- The Container that is in the navbar-->
+  <!-- The Container that is in the navbar
   <div class="mobile-dropdown-menu-container">
     <img src='../../../assets/icons/round-menu-24px.svg' id="mobile-dropdown-button" (click)=toggleMobileMenu()>
   </div>
+  -->
 
   <!-- The content that appears if the mobile dopdown button is pressed -->
   <ng-template [ngIf]="showMobileMenu">
@@ -104,12 +102,5 @@
 
 
 
-  <div class="cart-container">
-    <div class="cart-number-container" [style.background]="(CartService.cartSize === 0) ? 'white' : 'crimson'">
-      <p class="cart-number">{{CartService.cartSize}}</p>
-    </div>
-    <a class="cart" routerLink="/cart" (click)=closeMobileMenu()><img class="shopping-cart-icon"
-        src="../../../assets/icons/outline-shopping_cart-24px.svg"></a>
-  </div>
 
 </div>

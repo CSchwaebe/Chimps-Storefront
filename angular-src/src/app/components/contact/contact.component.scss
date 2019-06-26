@@ -3,10 +3,10 @@ $color-silver: hsl(0, 0%, 62%);
 $color-white-blue: hsl(239, 43%, 99%);
 
 .main {
-  padding-top: 66px;
+  //padding-top: 66px;
   text-align: center;
   width: 100vw;
-  min-height: 100vh;
+  min-height: calc(100vh - 400px);
 
   .title-container {
     display: inline-block;

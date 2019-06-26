@@ -127,6 +127,7 @@ $font-primary: "Montserrat";
     vertical-align: top;
     width: 200px;
     padding-top: 25px;
+    padding-bottom: 75px;
 
     .header {
       display: block;
@@ -153,10 +154,18 @@ $font-primary: "Montserrat";
       display: inline-block;
       width: 200px;
       margin-top: 15px;
-      padding-bottom: 75px;
+     
     }
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 500px) {
+   
+   .footer {
+    .section {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+   } 
+
 }

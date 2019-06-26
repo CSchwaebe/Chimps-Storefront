@@ -39,6 +39,7 @@ import { ImageComponent } from './components/pages/blocks/image/image.component'
 import { SpacerComponent } from './components/pages/blocks/spacer/spacer.component';
 import { BlockService } from './services/block.service';
 import { PageService } from './services/page.service';
+import { HeaderComponent } from './components/header/header.component';
 
 const appRoutes: Routes = [
   {
@@ -112,7 +113,8 @@ const appRoutes: Routes = [
     PageComponent,
     BlockDirective,
     ImageComponent,
-    SpacerComponent
+    SpacerComponent,
+    HeaderComponent
   ],
   entryComponents: [ TextComponent, VideoComponent, ImageComponent, SpacerComponent ],
   imports: [

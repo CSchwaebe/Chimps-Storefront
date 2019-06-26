@@ -3,6 +3,7 @@ import { PayPalEnvironment } from 'ngx-paypal'
 export const environment = {
   production: true,
   baseURL: 'https://api.bigkatoriginal.com/',
+  //baseURL: 'http://localhost:3000/',
   square_locationID: '6MFVA4RWFS7J9',
   square_applicationID: 'sq0idp-Yak-9etL7lbKYvmvaebl9g',
   paypal_environment: PayPalEnvironment.Sandbox,
