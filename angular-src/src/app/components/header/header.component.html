@@ -17,7 +17,7 @@
 
 
 
-  <ng-template [ngIf]=desktop>
+  <ng-template [ngIf]="desktop && showDesktopNav">
       <div class="dropdown-menu-container">
           <div class="dropdown-item-container" *ngFor="let col of model.collections; index as i" (mouseenter)="show(i)" (mouseleave)="show(-1)">
             <ng-template [ngIf]=col.collection>

@@ -23,10 +23,37 @@ mat-sidenav-container {
     min-height: 120vh;
     mat-sidenav {
        // min-height: 120vh;
+       margin-top: 66px;
+       z-index: 1000000000;
+
     }
     mat-sidenav-content {
+        margin-top: 132px;
         min-height: 120vh;
+        background: white;
+
 
     }
 }
+
+
+/* FOR MOBILE AND IPAD */
+@media only screen and (max-width: 1024px) {
+
+mat-sidenav-container {
+
+    mat-sidenav {
+    
+
+    }
+    mat-sidenav-content {
+        margin-top: 66px;
+       
+    }
+}
+
+}
+
+
+
     

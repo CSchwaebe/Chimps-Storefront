@@ -40,6 +40,7 @@ import { SpacerComponent } from './components/pages/blocks/spacer/spacer.compone
 import { BlockService } from './services/block.service';
 import { PageService } from './services/page.service';
 import { HeaderComponent } from './components/header/header.component';
+import { NavbarService } from './services/navbar.service';
 
 const appRoutes: Routes = [
   {
@@ -138,7 +139,8 @@ const appRoutes: Routes = [
     TitleService,
     CartService,
     BlockService,
-    PageService
+    PageService,
+    NavbarService
   ],
   bootstrap: [AppComponent]
 })

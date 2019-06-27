@@ -1,4 +1,5 @@
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { NavbarService } from './services/navbar.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent {
   @ViewChild('sidenav') sidenav;
   @ViewChild('app-navbar') navbar;
 
-  constructor() {
+  constructor(private NavbarService: NavbarService) {
+
 
   }
 
@@ -23,17 +25,34 @@ export class AppComponent {
     // Look for .hamburger
     this.hamburger = document.querySelector(".hamburger");
     // On click
+    /*
     this.hamburger.addEventListener("click", () => {
       // Toggle class "is-active"
       this.hamburger.classList.toggle("is-active");
       // Do something else, like open/close menu
-      this.collapse();
+      this.toggleSideNav();
     });
+    */
+    
   }
 
-  collapse() {
-    this.open = !this.open;
+  toggleSideNav() {
+    this.sidenav.toggle();
     this.hamburger.classList.toggle("is-active");
+    this.open = !this.open;
+    console.log('Toggle Sidenav')
+    
+    if (this.open) {
+      this.NavbarService.hideDesktopNavbar();
+    } else {
+      this.NavbarService.showDesktopNavbar();
+    }
+    
   }
+
+  toggleHamburger() {
+  }
+
+
 
 }

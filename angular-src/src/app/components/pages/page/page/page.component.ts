@@ -97,6 +97,9 @@ export class PageComponent implements OnInit, OnDestroy {
     window.addEventListener("resize", () => {
       this.resize();
     });
+
+    window.scrollTo(0,0);
+
   }
 
   ngOnDestroy() {

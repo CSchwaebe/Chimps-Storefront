@@ -140,9 +140,8 @@ export class NavbarComponent implements OnInit {
 
     //this.showMobileMenu = !this.showMobileMenu;
 
-
-    this.parent.sidenav.toggle();
-    this.parent.collapse();    
+    //this.parent.sidenav.toggle();
+    this.parent.toggleSideNav();    
   }
 
 

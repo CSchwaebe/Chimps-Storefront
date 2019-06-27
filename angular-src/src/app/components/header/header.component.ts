@@ -1,38 +1,56 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { CollectionService } from 'src/app/services/collection.service';
 
 import { Collection } from 'src/app/models/admin/collection';
 import { Navbar, Col, Cat } from '../../models/navbar';
 import { CartService } from '../../services/cart.service';
 import { PageService } from 'src/app/services/page.service';
+import { Subscription } from 'rxjs';
+import { NavbarService } from 'src/app/services/navbar.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
-  desktop: boolean = true;
+  desktop: boolean;
+  showDesktopNav: boolean;
+
   selected: number = -1;
   allGroups: Collection[];
   model: Navbar = new Navbar();
-  
+  widthSubscription: Subscription;
+  desktopNavSubscription: Subscription;
+
   constructor(private CollectionService: CollectionService,
               public CartService: CartService,
-              private PageService: PageService) {}
+              private PageService: PageService,
+              private NavbarService: NavbarService) {
+
+                this.widthSubscription = this.NavbarService.getWidth().subscribe(desktop => {
+                console.log('Get Width: ' + desktop);
+                this.desktop = desktop;
+              });
+          
+              this.desktopNavSubscription = this.NavbarService.getDesktopNavbar().subscribe(status => {
+                console.log('Get Desktop Nav Status: ' + status);
+                this.showDesktopNav = status;
+              });
+            }
 
   async ngOnInit() {
     await this.getData(); 
 
-
-    window.addEventListener("resize", () => {
-      this.resize();
-    });
-
-    this.resize();
+    this.desktop = this.NavbarService.width.getValue();
+    this.showDesktopNav = this.NavbarService.desktopNavbar.getValue();
+  }
 
 
+  ngOnDestroy() {
+    this.widthSubscription.unsubscribe();
+    this.desktopNavSubscription.unsubscribe();
   }
 
   async getData() {
@@ -139,14 +157,6 @@ export class HeaderComponent implements OnInit {
   }
 
 
-
-  resize() {
-    if (window.innerWidth <= 1024 ) {
-      this.desktop = false;
-    } else if (window.innerWidth > 1024) {
-      this.desktop = true;
-    }
-  }
 
 
 
