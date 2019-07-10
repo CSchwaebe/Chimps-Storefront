@@ -5,6 +5,7 @@ $color-text: hsl(239, 43%, 99%);
 $font-accent: "Lato";
 $font-primary: "Montserrat";
 
+
 .footer {
   min-width: 100vw;
   align-content: center;
@@ -56,14 +57,13 @@ $font-primary: "Montserrat";
     .content {
       .page-link {
         display: block;
-        color: $color-text;
         cursor: pointer;
         text-decoration: none;
         height: 30px;
         padding: 5px;
         box-sizing: border-box;
         font-size: 15px;
-        color: #9e9e9e;
+        color: #bdbdbd;
       }
     }
   }

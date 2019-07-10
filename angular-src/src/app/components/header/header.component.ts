@@ -7,6 +7,7 @@ import { CartService } from '../../services/cart.service';
 import { PageService } from 'src/app/services/page.service';
 import { Subscription } from 'rxjs';
 import { NavbarService } from 'src/app/services/navbar.service';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-header',
@@ -14,34 +15,50 @@ import { NavbarService } from 'src/app/services/navbar.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-
+  @Input() parent: any;
   desktop: boolean;
   showDesktopNav: boolean;
+  yOffset: number;
 
   selected: number = -1;
   allGroups: Collection[];
   model: Navbar = new Navbar();
   widthSubscription: Subscription;
   desktopNavSubscription: Subscription;
+  yOffsetSubscription: Subscription;
+
+  logo: string;
 
   constructor(private CollectionService: CollectionService,
               public CartService: CartService,
               private PageService: PageService,
-              private NavbarService: NavbarService) {
+              private NavbarService: NavbarService,
+              private AccountService: AccountService) {
 
                 this.widthSubscription = this.NavbarService.getWidth().subscribe(desktop => {
-                console.log('Get Width: ' + desktop);
+                //console.log('Get Width: ' + desktop);
                 this.desktop = desktop;
               });
           
               this.desktopNavSubscription = this.NavbarService.getDesktopNavbar().subscribe(status => {
-                console.log('Get Desktop Nav Status: ' + status);
+                //console.log('Get Desktop Nav Status: ' + status);
                 this.showDesktopNav = status;
               });
+
+              this.yOffsetSubscription = this.NavbarService.getYOffset().subscribe(offset => {
+                //console.log('Get Y Offset: ' + offset);
+                this.yOffset = offset;
+              });
+
+              
             }
 
   async ngOnInit() {
     await this.getData(); 
+    let acct = this.AccountService.account;
+    console.log(acct)
+    this.logo = acct.logo;
+    
 
     this.desktop = this.NavbarService.width.getValue();
     this.showDesktopNav = this.NavbarService.desktopNavbar.getValue();
@@ -155,6 +172,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   show(index: number) {
     this.selected = index;
   }
+
 
 
 

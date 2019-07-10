@@ -30,6 +30,7 @@ import { TitleService } from './services/title.service';
 import { ContactComponent } from './components/contact/contact.component';
 import { SquareComponent } from './components/square/square.component';
 import { CartService } from './services/cart.service';
+import { AccountService } from './services/account.service';
 
 import { VideoComponent } from './components/pages/blocks/video/video.component';
 import { TextComponent } from './components/pages/blocks/text/text.component';
@@ -140,7 +141,8 @@ const appRoutes: Routes = [
     CartService,
     BlockService,
     PageService,
-    NavbarService
+    NavbarService,
+    AccountService
   ],
   bootstrap: [AppComponent]
 })

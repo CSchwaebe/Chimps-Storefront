@@ -10,6 +10,7 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { Collection } from 'src/app/models/admin/collection';
 import { CollectionService } from 'src/app/services/collection.service';
+import { TitleService } from 'src/app/services/title.service';
 
 @Component({
   selector: 'app-page',
@@ -64,7 +65,8 @@ export class PageComponent implements OnInit, OnDestroy {
     public PageService: PageService,
     private SnackbarService: SnackbarService,
     private Router: Router,
-    private CollectionService: CollectionService
+    private CollectionService: CollectionService,
+    private TitleService: TitleService
   ) {
     this.subscription = this.PageService.isDirty().subscribe(status => {
       this.model.blocks = this.PageService.blocks;
@@ -75,6 +77,8 @@ export class PageComponent implements OnInit, OnDestroy {
       if (event instanceof NavigationEnd)
           this.load();
     })
+
+    
   }
 
 
@@ -99,7 +103,7 @@ export class PageComponent implements OnInit, OnDestroy {
     });
 
     window.scrollTo(0,0);
-
+    this.TitleService.setTitle(this.model.title)
   }
 
   ngOnDestroy() {

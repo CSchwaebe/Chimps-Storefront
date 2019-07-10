@@ -8,6 +8,7 @@ export class NavbarService {
 
   public width: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   public desktopNavbar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  public yOffset: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
 
   constructor() { 
@@ -15,7 +16,12 @@ export class NavbarService {
       this.resize();
     });
 
+    window.addEventListener("scroll", () => {
+      this.calcYOffset();
+    });
+
     this.resize();
+    this.calcYOffset();
   }
 
   
@@ -43,5 +49,15 @@ export class NavbarService {
   getDesktopNavbar() {
     return this.desktopNavbar.asObservable();
   }
+
+
+  calcYOffset() {
+    this.yOffset.next(window.pageYOffset);
+  }
+
+  getYOffset() {
+    return this.yOffset.asObservable();
+  }
+
 
 }

@@ -5,9 +5,13 @@ button:focus {
     outline: 0;
   }
 
+  $color-dark-blue: hsl(239, 100%, 9%);
+$color-silver: hsl(0, 0%, 62%);
+$color-white-blue: hsl(239, 43%, 99%);
+
 .menu-button {
     position: fixed;
-    left: 5px;
+    left: 0px;
     top: 0;
     width: 66px;
     height: 66px;
@@ -16,21 +20,23 @@ button:focus {
     color: #1d1d1d;
     border: none;
     z-index: 1000000000;
+    background: $color-white-blue;
 }
 
 
 mat-sidenav-container {
-    min-height: 120vh;
+    min-height: 10vh;
     mat-sidenav {
        // min-height: 120vh;
-       margin-top: 66px;
+       top: 66px;
+    position: fixed;
        z-index: 1000000000;
 
     }
     mat-sidenav-content {
-        margin-top: 132px;
-        min-height: 120vh;
-        background: white;
+        //margin-top: 132px;
+        min-height: 10vh;
+        
 
 
     }

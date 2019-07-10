@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PageService } from 'src/app/services/page.service';
 import { Page } from 'src/app/components/pages/models/page';
+import { Account } from 'src/app/models/admin/account';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-footer',
@@ -9,10 +11,11 @@ import { Page } from 'src/app/components/pages/models/page';
 })
 export class FooterComponent implements OnInit {
 
-  storeName: string = 'Big Kat Original';
+  account: Account;
   pages: Page[];
 
-  constructor(private PageService: PageService) { }
+  constructor(private PageService: PageService,
+    private AccountService: AccountService) { }
 
   async ngOnInit() {
     this.pages = [];
@@ -21,6 +24,8 @@ export class FooterComponent implements OnInit {
       if (pages[i].menu.location === 'Footer')
         this.pages.push(pages[i]);
     }
+
+    this.account = await this.AccountService.get();
   }
 
 }

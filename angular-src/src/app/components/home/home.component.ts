@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     private ProductService: ProductService,
     private CollectionService: CollectionService,
     ) {
-    this.TitleService.setTitle(this.shopName);
+    this.TitleService.setTitle("Home");
     window.scrollTo(0,0);
   }
 
