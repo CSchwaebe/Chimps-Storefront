@@ -203,6 +203,11 @@ $font-accent: "Lato";
           width: 225px;
           height: 60px;
           line-height: 60px;
+
+          width: 100vw;
+          height: calc(100vw * .2666);
+          line-height: calc(100vw * .2666);
+          margin: 0px 0px 1px 0px;
           .collection-box {
             .overlay {
             }

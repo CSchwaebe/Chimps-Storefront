@@ -1,16 +1,17 @@
 <div class="navbar">
 
   <div class="dropdown-menu-container">
-    <div class="dropdown-item-container" *ngFor="let col of model.collections; index as i" (mouseenter)="show(i)" (mouseleave)="show(-1)">
+    <div class="dropdown-item-container" *ngFor="let col of model.collections; index as i" (mouseenter)="show(i)"
+      (mouseleave)="show(-1)">
       <ng-template [ngIf]=col.collection>
-      <a class="drop-link" routerLink="/{{col.collection.stub}}">{{col.collection.name}}</a>
-      <div class="dropdown-content" [style.display]="selected === i ? 'inline' : 'none'">
-        <div class="category" *ngFor="let cat of col.categories">
-          <ng-template [ngIf]=cat.page>
+        <a class="drop-link" routerLink="/{{col.collection.stub}}">{{col.collection.name}}</a>
+        <div class="dropdown-content" [style.display]="selected === i ? 'inline' : 'none'">
+          <div class="category" *ngFor="let cat of col.categories">
+            <ng-template [ngIf]=cat.page>
               <a class="category-link" routerLink="/pages/{{cat.page.stub}}">
                 {{ cat.page.title }}</a>
-          </ng-template>
-          <ng-template [ngIf]=cat.category>
+            </ng-template>
+            <ng-template [ngIf]=cat.category>
               <a class="category-link" routerLink="/{{cat.category.stub}}">
                 {{ cat.category.name }}</a>
               <div class="subcategory" *ngFor="let sub of cat.subcategories">
@@ -18,21 +19,21 @@
                   {{ sub.name }}</a>
               </div>
               <ng-template [ngIf]=cat.subcategoryPages>
-                  <div class="subcategory" *ngFor="let page of cat.subcategoryPages">
-                      <a class="subcategory-link" routerLink="/pages/{{page.stub}}">
-                        {{ page.title }}</a>
-                  </div>
+                <div class="subcategory" *ngFor="let page of cat.subcategoryPages">
+                  <a class="subcategory-link" routerLink="/pages/{{page.stub}}">
+                    {{ page.title }}</a>
+                </div>
               </ng-template>
-              
-          </ng-template>
-         
-        </div>
-      </div>
-    </ng-template>
 
-    <ng-template [ngIf]=col.page>
+            </ng-template>
+
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template [ngIf]=col.page>
         <a class="drop-link" routerLink="/pages/{{col.page.stub}}">{{col.page.title}}</a>
-    </ng-template>
+      </ng-template>
     </div>
   </div>
 
@@ -49,50 +50,53 @@
 
         <div class="button-container" *ngFor="let col of model.collections; index as i">
           <ng-template [ngIf]=!col.page>
-              <button class="mobile-collection-button" id="{{col.collection.stub}}"
+            <button class="mobile-collection-button" id="{{col.collection.stub}}"
               (click)="expandCollectionsMobile($event.target.id)">{{col.collection.name}}</button>
-  
+
             <div class="dropdown-content {{col.collection.stub}}">
               <a class="collection-link" routerLink="/{{col.collection.stub}}" (click)=toggleMobileMenu()>View all</a>
-  
+
               <div class="category" *ngFor="let cat of col.categories">
                 <ng-template [ngIf]="cat.category">
-                    <button class="mobile-category-button" id="{{cat.category.stub}}"
+                  <button class="mobile-category-button" id="{{cat.category.stub}}"
                     (click)="expandCategoriesMobile($event.target.id)">{{
                         cat.category.name }}</button>
-                  <a class="subcategory-link {{cat.category.stub}}" routerLink="/{{cat.category.stub}}" (click)=toggleMobileMenu()>View
+                  <a class="subcategory-link {{cat.category.stub}}" routerLink="/{{cat.category.stub}}"
+                    (click)=toggleMobileMenu()>View
                     all</a>
-    
+
                   <div class="subcategory" *ngFor="let sub of cat.subcategories">
-                    <a class="subcategory-link {{cat.category.stub}}" routerLink="/{{sub.stub}}" (click)=toggleMobileMenu()>
+                    <a class="subcategory-link {{cat.category.stub}}" routerLink="/{{sub.stub}}"
+                      (click)=toggleMobileMenu()>
                       {{ sub.name }}</a>
                   </div>
-    
+
                   <div class="subcategory" *ngFor="let page of cat.subcategoryPages">
-                      <a class="subcategory-link {{cat.category.stub}}" routerLink="/pages/{{page.stub}}" (click)=toggleMobileMenu()>
-                        {{ page.title }}</a>
-                    </div>
+                    <a class="subcategory-link {{cat.category.stub}}" routerLink="/pages/{{page.stub}}"
+                      (click)=toggleMobileMenu()>
+                      {{ page.title }}</a>
+                  </div>
                 </ng-template>
 
                 <ng-template [ngIf]="cat.page">
-                    <a class="mobile-category-button" id="{{cat.page.stub}}" [style.paddingLeft.px]="0" [style.paddingRight.px]="0"
-                    routerLink='/pages/{{cat.page.stub}}' (click)="toggleMobileMenu()">{{
+                  <a class="mobile-category-button" id="{{cat.page.stub}}" [style.paddingLeft.px]="0"
+                    [style.paddingRight.px]="0" routerLink='/pages/{{cat.page.stub}}' (click)="toggleMobileMenu()">{{
                         cat.page.title }}</a>
 
                 </ng-template>
 
-               
-  
+
+
               </div>
-  
+
             </div>
           </ng-template>
 
           <ng-template [ngIf]=col.page>
-              <a class="mobile-collection-button" id="{{col.page.title}}"
-              routerLink="/pages/{{col.page.stub}}" (click)=toggleMobileMenu()>{{col.page.title}}</a>
+            <a class="mobile-collection-button" id="{{col.page.title}}" routerLink="/pages/{{col.page.stub}}"
+              (click)=toggleMobileMenu()>{{col.page.title}}</a>
           </ng-template>
-         
+
 
         </div>
       </div>

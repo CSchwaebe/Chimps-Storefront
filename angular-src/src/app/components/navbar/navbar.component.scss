@@ -3,12 +3,14 @@ $color-silver: hsl(0, 0%, 62%);
 $color-white-blue: hsl(239, 43%, 99%);
 
 $navbar-primary-background: hsl(239, 43%, 99%);
-$navbar-secondary-background: hsl(239, 43%, 99%);
+$navbar-secondary-background: hsl(239, 43%, 98%);
 $navbar-tertiary-background: hsl(239, 100%, 9%);
+
 
 $navbar-primary-text: hsl(239, 100%, 9%);
 $navbar-secondary-text: hsl(239, 100%, 9%);
 $navbar-tertiary-text:hsl(239, 43%, 99%);
+
 
 
 button:focus {
@@ -233,6 +235,7 @@ button:focus {
             position: relative;
             display: block;
             height: 66px;
+            line-height: 66px;
             width: 100vw;
             border: none;
             background: $navbar-primary-background;

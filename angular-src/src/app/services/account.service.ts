@@ -24,7 +24,9 @@ export class AccountService {
   }
 
   async getAcct() {
-    this.account = await this.get();
+    if (!this.account)
+      this.account = await this.get();
+    return this.account;
   }
 
   /*
