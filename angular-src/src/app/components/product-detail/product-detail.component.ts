@@ -5,6 +5,7 @@ import { CartProduct } from '../../models/cartProduct';
 import { CartService } from '../../services/cart.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { TitleService } from 'src/app/services/title.service';
+import { StyleService } from 'src/app/services/style.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -20,12 +21,14 @@ export class ProductDetailComponent implements OnInit {
   availableQty = [1];
   images: string[] = [];
   selectedImage: string = '';
+ 
   constructor(private router: Router,
     private ProductService: ProductService,
     public CartService: CartService,
     private SnackbarService: SnackbarService,
     public TitleService: TitleService,
-    private Router: Router) {
+    private Router: Router,
+    public StyleService: StyleService) {
 
     this.model.selectedSize = undefined;
     this.model.quantity = 1;
@@ -35,6 +38,7 @@ export class ProductDetailComponent implements OnInit {
 
   async ngOnInit() {
     window.scrollTo(0,0);
+   
   }
 
   async getProduct() {
@@ -58,6 +62,10 @@ export class ProductDetailComponent implements OnInit {
     this.TitleService.setTitle(this.model.product.name);
   }
 
+  /**
+   * 
+   * @param size 
+   */
   getAvailableQty(size: string) {
     let tmp = this.inventory[size];
     this.availableQty = [];
@@ -66,6 +74,9 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
+  /**
+   * Add to Cart
+   */
   onSubmit() {
     if (this.model.selectedSize === undefined)
       alert('Please Select a Size');
@@ -77,6 +88,23 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
+  /**
+   * If the user clicks 'Buy Now'
+   */
+  buyNow() {
+    if (this.model.selectedSize === undefined)
+      alert('Please Select a Size');
+    else {
+      let tmp = new CartProduct(this.model.product, this.model.selectedSize, this.model.quantity);
+
+      this.CartService.addItem(tmp);
+      this.Router.navigate(['/cart']);
+    }
+  }
+
+  /**
+   * Changes the image
+   */
   changeImage(index: number) {
     this.selectedImage = this.images[index];
   }

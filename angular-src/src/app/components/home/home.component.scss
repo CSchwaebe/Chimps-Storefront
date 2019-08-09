@@ -8,7 +8,6 @@ $font-accent: "Lato";
 }
 .main {
   display: block;
- // margin-top: 66px;
   min-height: 100vh;
   width: 100vw;
 
@@ -36,15 +35,6 @@ $font-accent: "Lato";
 
   .featured-products-container {
     width: 100%;
-    .title {
-      font-size: 32px;
-      color: rgb(158, 158, 158);
-
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-weight: 100;
-      text-decoration: none;
-    }
     .grid {
       width: 100%;
       height: auto;
@@ -68,7 +58,7 @@ $font-accent: "Lato";
           width: 100%;
           height: auto;
           line-height: 25px;
-          color: #1d1d1d;
+          color: inherit;
           font-family: $font-secondary;
           font-weight: 800;
           letter-spacing: 0.2px;
@@ -84,7 +74,7 @@ $font-accent: "Lato";
           width: 100%;
           height: 50px;
           line-height: 30px;
-          color: #1d1d1d;
+          color: inherit;
           font-family: $font-secondary;
           font-size: 16px;
           text-decoration: none;
@@ -97,7 +87,6 @@ $font-accent: "Lato";
     width: 100%;
     .title {
       font-size: 32px;
-      color: rgb(158, 158, 158);
 
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -207,7 +196,7 @@ $font-accent: "Lato";
           width: 100vw;
           height: calc(100vw * .2666);
           line-height: calc(100vw * .2666);
-          margin: 0px 0px 1px 0px;
+          margin: 0px 0px 2px 0px;
           .collection-box {
             .overlay {
             }

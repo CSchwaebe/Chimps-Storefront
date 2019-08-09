@@ -4,6 +4,7 @@ import { Collection } from 'src/app/models/admin/collection';
 import { Navbar, Col, Cat } from '../../models/navbar';
 import { CartService } from '../../services/cart.service';
 import { NavbarService } from 'src/app/services/navbar.service';
+import { StyleService } from 'src/app/services/style.service';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class NavbarComponent implements OnInit {
   model: Navbar = new Navbar();
 
   constructor(public CartService: CartService,
-    public NavbarService: NavbarService) { }
+    public NavbarService: NavbarService,
+    public StyleService: StyleService) { }
 
   async ngOnInit() {
     this.model = this.NavbarService.model;

@@ -8,6 +8,7 @@ import { Product } from 'src/app/models/admin/product';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TitleService } from 'src/app/services/title.service';
+import { StyleService } from 'src/app/services/style.service';
 
 @Component({
   selector: 'app-cart',
@@ -19,18 +20,22 @@ export class CartComponent implements OnInit, OnDestroy {
   cart: Cart;
   paymentRecieved: boolean = false;
   subscription: Subscription;
+
+
   
   constructor(public CartService: CartService,
     public ShippingService: ShippingService,
     private ProductService: ProductService,
     private Router: Router,
-    private TitleService: TitleService) {
+    private TitleService: TitleService,
+    public StyleService: StyleService) {
       this.TitleService.setTitle('Cart');
     this.subscription = this.CartService.paid.subscribe(paymentReceived => { this.paymentRecieved = paymentReceived; });
   }
 
   ngOnInit() {
     window.scrollTo(0,0);
+   
 
   }
 

@@ -10,9 +10,7 @@ $font-secondary: "Open Sans";
   width: 100vw;
   
   min-height: 100vh;
-
-  background: $color-background;
-  color: $color-text;
+  background: transparent;
 
   .header {
     .header-image {
@@ -28,7 +26,7 @@ $font-secondary: "Open Sans";
       margin: 0;
 
       /*color: rgb(158, 158, 158);*/
-      color: $color-dark-grey;
+     
       font-family: $font-primary;
       font-weight: 100;
       text-transform: uppercase;
@@ -91,9 +89,9 @@ $font-secondary: "Open Sans";
           font-family: $font-secondary;
           font-size: 16px;
           font-weight: 800;
-          color: $color-text;
-          text-decoration: none;
+          color: inherit;
           letter-spacing: 1px;
+          text-decoration: none;
         }
         .price {
           display: inline-block;
@@ -105,9 +103,7 @@ $font-secondary: "Open Sans";
           text-align: center;
           font-family: $font-secondary;
           font-size: 15px;
-          color: $color-text;
-          text-decoration: none;
-          
+          color: inherit;
         }
       }
     }

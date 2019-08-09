@@ -1,8 +1,8 @@
-  <ng-template [ngIf]="model && logo">
+<ng-template [ngIf]="model && logo">
 
 
-  
-  <div class=logo-container>
+
+  <div class=logo-container [ngStyle]="{ 'box-shadow': showDesktopNav ? '0px 3px 4px rgba(0, 0, 0, 0.1)' : 'none', 'background': StyleService.style.nav_primary_background }">
 
     <ng-template [ngIf]="showDesktopNav">
       <a class="logo" routerLink="/">
@@ -17,20 +17,19 @@
   </div>
 
 
-  <div class=cart-container>
+  <div class=cart-container [ngStyle]="{ 'background': StyleService.style.nav_primary_background }">
     <div class=cart>
       <ng-template [ngIf]="CartService.cartSize">
-          <mat-icon routerLink="/cart" matBadge="{{CartService.cartSize}}" inline=true matBadgeColor="primary"
+        <mat-icon routerLink="/cart" matBadge="{{CartService.cartSize}}" inline=true matBadgeColor="warn"
           class="material-icons-outlined">shopping_cart</mat-icon>
 
       </ng-template>
 
       <ng-template [ngIf]="!CartService.cartSize">
-          <mat-icon routerLink="/cart" inline=true
-          class="material-icons-outlined">shopping_cart</mat-icon>
+        <mat-icon routerLink="/cart" inline=true class="material-icons-outlined">shopping_cart</mat-icon>
 
       </ng-template>
-      
+
     </div>
   </div>
 
@@ -38,56 +37,58 @@
 
   <ng-template [ngIf]=desktop>
 
+    
 
-    <div class="dropdown-menu-container" [style.minHeight]="(yOffset >= 66) ? '66px' : '66px'"
-      [ngStyle]="{'box-shadow': showDesktopNav ? '0px 3px 4px rgba(0, 0, 0, 0.1)' : 'none'}">
+      <div class="dropdown-menu-container"
+        [ngStyle]="{'box-shadow': showDesktopNav ? '0px 3px 4px rgba(0, 0, 0, 0.1)' : 'none', 'background': StyleService.style.nav_primary_background}">
 
 
-      <ng-template [ngIf]="showDesktopNav">
+        <ng-template [ngIf]="showDesktopNav">
 
-        <div class="dropdown-item-container" *ngFor="let col of model.collections; index as i" (mouseenter)="show(i)"
-          (mouseleave)="show(-1)">
-          <ng-template [ngIf]=col.collection>
-            <a class="drop-link" routerLink="/{{col.collection.stub}}">{{col.collection.name}}</a>
-            <div class="dropdown-content" [style.display]="selected === i ? 'inline' : 'none'"
-              [style.top]="(yOffset >= 66) ? '66px' : '132px'">
-              <div class="category" *ngFor="let cat of col.categories">
-                <ng-template [ngIf]=cat.page>
-                  <a class="category-link" routerLink="/pages/{{cat.page.stub}}">
-                    {{ cat.page.title }}</a>
-                </ng-template>
-                <ng-template [ngIf]=cat.category>
-                  <a class="category-link" routerLink="/{{cat.category.stub}}">
-                    {{ cat.category.name }}</a>
-                  <div class="subcategory" *ngFor="let sub of cat.subcategories">
-                    <a class="subcategory-link" routerLink="/{{sub.stub}}">
-                      {{ sub.name }}</a>
-                  </div>
-                  <ng-template [ngIf]=cat.subcategoryPages>
-                    <div class="subcategory" *ngFor="let page of cat.subcategoryPages">
-                      <a class="subcategory-link" routerLink="/pages/{{page.stub}}">
-                        {{ page.title }}</a>
+          <div class="dropdown-item-container" *ngFor="let col of model.collections; index as i" (mouseenter)="show(i)"
+            (mouseleave)="show(-1)">
+            <ng-template [ngIf]=col.collection>
+              <a class="drop-link" routerLink="/{{col.collection.stub}}">{{col.collection.name}}</a>
+              <div class="dropdown-content" [style.display]="selected === i ? 'inline' : 'none'"
+                [style.top]="(yOffset >= 66) ? '66px' : '132px'" [ngStyle]="{ 'background': StyleService.style.topnav_dropdown_background }">
+                <div class="category" *ngFor="let cat of col.categories">
+                  <ng-template [ngIf]=cat.page>
+                    <a class="category-link" routerLink="/pages/{{cat.page.stub}}" [ngStyle]="{ 'color': StyleService.style.topnav_category_text }">
+                      {{ cat.page.title }}</a>
+                  </ng-template>
+                  <ng-template [ngIf]=cat.category>
+                    <a class="category-link" routerLink="/{{cat.category.stub}}" [ngStyle]="{ 'color': StyleService.style.topnav_category_text }">
+                      {{ cat.category.name }}</a>
+                    <div class="subcategory" *ngFor="let sub of cat.subcategories">
+                      <a class="subcategory-link" routerLink="/{{sub.stub}}" [ngStyle]="{ 'color': StyleService.style.topnav_subcategory_text }">
+                        {{ sub.name }}</a>
                     </div>
+                    <ng-template [ngIf]=cat.subcategoryPages>
+                      <div class="subcategory" *ngFor="let page of cat.subcategoryPages">
+                        <a class="subcategory-link" routerLink="/pages/{{page.stub}}" [ngStyle]="{ 'color': StyleService.style.topnav_subcategory_text }">
+                          {{ page.title }}</a>
+                      </div>
+                    </ng-template>
+
                   </ng-template>
 
-                </ng-template>
-
+                </div>
               </div>
-            </div>
-          </ng-template>
+            </ng-template>
 
-          <ng-template [ngIf]=col.page>
-            <a class="drop-link" routerLink="/pages/{{col.page.stub}}">{{col.page.title}}</a>
-          </ng-template>
-        </div>
-
+            <ng-template [ngIf]=col.page>
+              <a class="drop-link" routerLink="/pages/{{col.page.stub}}">{{col.page.title}}</a>
+            </ng-template>
+          </div>
 
 
 
 
-      </ng-template>
 
-    </div>
+        </ng-template>
+
+      </div>
+    
   </ng-template>
 
 </ng-template>

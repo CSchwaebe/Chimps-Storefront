@@ -5,6 +5,7 @@ import { MessageService } from 'src/app/services/message.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { Router } from '@angular/router';
 import { TitleService } from 'src/app/services/title.service';
+import { StyleService } from 'src/app/services/style.service';
 
 @Component({
   selector: 'app-contact',
@@ -19,7 +20,8 @@ export class ContactComponent implements OnInit {
   constructor( private FormBuilder: FormBuilder,
     private MessageService: MessageService,
     private SnackbarService: SnackbarService,
-    private TitleService: TitleService
+    private TitleService: TitleService,
+    public StyleService: StyleService
 ) { 
   this.TitleService.setTitle("Contact");
     window.scrollTo(0,0);

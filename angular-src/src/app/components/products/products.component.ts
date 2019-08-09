@@ -5,6 +5,7 @@ import { Product } from 'src/app/models/admin/product';
 import { HeaderService } from '../../services/header.service';
 import { Subscription } from 'rxjs';
 import { TitleService } from 'src/app/services/title.service';
+import { StyleService } from 'src/app/services/style.service';
 
 @Component({
   selector: 'app-products',
@@ -20,10 +21,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
   header: string;
   subscription: Subscription;
 
+
   constructor(private router: Router,
     private ProductService: ProductService,
     private HeaderService: HeaderService,
-    public TitleService: TitleService) {
+    public TitleService: TitleService,
+    public StyleService: StyleService) {
     this.subscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd)
           this.load();
@@ -32,6 +35,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     window.scrollTo(0,0);
+    
   }
 
   ngOnDestroy() {
@@ -58,7 +62,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     for (let i = 0; i < tmpProductArray.length; i++) {
    
       //Checking to see if its sold out
-      // If every vairant has a quantity of 0, then its sold
+      // If every vairant has a quantity of 0, then its sold out
       // If any variant has a quantity greater than 0, not sold out
       let soldOut = true;
       for (let j = 0; j < tmpProductArray[i].inventory.length; j++) {

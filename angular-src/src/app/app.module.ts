@@ -42,6 +42,7 @@ import { BlockService } from './services/block.service';
 import { PageService } from './services/page.service';
 import { HeaderComponent } from './components/header/header.component';
 import { NavbarService } from './services/navbar.service';
+import { StyleService } from './services/style.service';
 
 const appRoutes: Routes = [
   {
@@ -142,7 +143,8 @@ const appRoutes: Routes = [
     BlockService,
     PageService,
     NavbarService,
-    AccountService
+    AccountService,
+    StyleService
   ],
   bootstrap: [AppComponent]
 })

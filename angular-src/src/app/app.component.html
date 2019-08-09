@@ -6,7 +6,7 @@
 -->
 <app-header [parent]=this></app-header>
 
-<button class="hamburger hamburger--spring menu-button" type="button" (click)=toggleSideNav()>
+<button class="hamburger hamburger--spring menu-button" type="button" (click)=toggleSideNav() [ngStyle]="{ 'background': StyleService.style.nav_primary_background }">
   <span class="hamburger-box">
     <span class="hamburger-inner"></span>
   </span>
@@ -23,14 +23,11 @@
 
   </mat-sidenav>
   
-  <mat-sidenav-content>
+  <mat-sidenav-content [ngStyle]="{ 'background': StyleService.style.background }">
     <div class=router-outlet>
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
 
 </mat-sidenav-container>
-<!--
-<div id="shopping-cart">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Shopping cart">Shopping cart</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"     title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 
--->

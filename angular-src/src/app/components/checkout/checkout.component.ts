@@ -12,6 +12,8 @@ import { TitleService } from 'src/app/services/title.service';
 import { MailingListService } from 'src/app/services/mailing-list.service';
 import * as countryList from 'country-list';
 import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
+import { MatButton } from '@angular/material';
+import { StyleService } from 'src/app/services/style.service';
 
 @Component({
   selector: 'app-checkout',
@@ -21,7 +23,7 @@ import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group
 
 export class CheckoutComponent implements OnInit, OnDestroy {
   @ViewChild('stepper') stepper: MatStepper;
-  @ViewChild('submitButton') submitButton: ElementRef;
+  @ViewChild('submitButton') submitButton: MatButton;
   cart: Cart;
   showAddressForm: boolean = false;
   addressValidated: boolean = false;
@@ -47,6 +49,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   loadingSubscription: Subscription;
 
   countryOptions = countryList.getNames();
+  style;
   
 
 
@@ -55,7 +58,9 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     private ProductService: ProductService,
     public LoadingScreenService: LoadingScreenService,
     public TitleService: TitleService,
-    private MailingListService: MailingListService) {
+    private MailingListService: MailingListService,
+    private StyleService: StyleService) {
+      this.style = this.StyleService.style;
       this.TitleService.setTitle('Checkout');
       
     this.subscription = this.CartService.getPaymentStatus().subscribe(paymentStatus => {
@@ -99,7 +104,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
    */
   async submitAddress() {
     this.LoadingScreenService.on();
-    this.submitButton.nativeElement.disabled = true;
+    console.log(this.submitButton);
+    this.submitButton._elementRef.nativeElement.disabled = true;
     let weight = await this.CartService.calcWeight();
     //console.log(this.CartService.cart);
     //PROBLEM - WHAT IF TEMP SHIPMENT is wrong, does it retun null or waht????
@@ -108,7 +114,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     if (this.model.country !== "United States" || tempShipment === null) {
       this.LoadingScreenService.off();
       alert('We were unable to veriy your address. Please ensure that it is correct and try again.')
-      this.submitButton.nativeElement.disabled = false;
+      this.submitButton._elementRef.nativeElement.disabled = false;
       return;
     }
     this.shippingRates = tempShipment.rate_objects;

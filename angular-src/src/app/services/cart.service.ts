@@ -38,7 +38,7 @@ export class CartService {
     private Router: Router,
     public LoadingScreenService: LoadingScreenService,
     private ProductService: ProductService) {
-    Big.RM = 3;
+      Big.RM = 3;
 
     let tmp = this.SessionStorage.retrieve('cart');
     if (tmp === null || tmp === undefined) {

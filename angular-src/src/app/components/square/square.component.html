@@ -42,7 +42,7 @@
 
 
       
-      <button type=button id="sq-creditcard" class="submit-button" (click)="requestCardNonce($event)">Pay</button>
+      <button mat-raised-button [ngStyle]="{'background': StyleService.style.button_background, 'color': StyleService.style.button_text}" type=button id="sq-creditcard" class="submit-button" (click)="requestCardNonce($event)">Pay</button>
 
 
 

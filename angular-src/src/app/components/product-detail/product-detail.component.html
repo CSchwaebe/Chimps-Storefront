@@ -12,7 +12,7 @@
             </div>
           </div>
       
-          <div class="product-box">
+          <div class="product-box" [ngStyle]="{ 'color': StyleService.style.primary_font_color }">
             <p class="product-name">{{model.product.name}}</p>
             <p class="price">${{model.product.price}}</p>           
             <p class="color">{{model.product.color}}</p>
@@ -44,10 +44,18 @@
               <quill-editor class=description [(ngModel)]=model.product.description [ngModelOptions]="{standalone: true}" 
               [modules]="{toolbar: false}" theme=bubble readOnly=true format=object placeholder=''></quill-editor>
 
-              <div class=submit-background>
+              <!--
+                <div class=submit-background>
                   <button type="submit" class="add-to-cart purple-button">ADD TO CART</button>
                 </div>
-             
+              -->
+              
+
+              <div class=submit-container>
+                <button mat-flat-button type="button" [ngStyle]="{'background': StyleService.style.button_background, 'color': StyleService.style.button_text}" class="buy-now" (click)=buyNow()>BUY NOW</button>
+                <button mat-stroked-button type="submit" [ngStyle]="{'background': StyleService.style.background, 'color': StyleService.style.button_background}" class="add-to-cart">ADD TO CART</button>
+              </div>
+               
             </form>
           </div>
       

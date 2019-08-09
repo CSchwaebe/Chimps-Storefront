@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { NavbarService } from './services/navbar.service';
+import { StyleService } from './services/style.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,7 @@ import { NavbarService } from './services/navbar.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   title = 'angular-src';
   open = false;
   desktop: boolean = true;
@@ -14,9 +16,13 @@ export class AppComponent {
   @ViewChild('sidenav') sidenav;
   @ViewChild('app-navbar') navbar;
 
-  constructor(private NavbarService: NavbarService) {
+  
+  constructor(private NavbarService: NavbarService, 
+    public StyleService: StyleService) {
+  }
 
-
+  async ngOnInit() {
+    await this.StyleService.get();
   }
 
  

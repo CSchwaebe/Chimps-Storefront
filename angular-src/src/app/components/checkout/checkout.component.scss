@@ -1,6 +1,6 @@
 .stepper-container {
   display: inline-block;
-  //margin-top: 66px;
+  min-height: 100vh;
   width: 100%;
 }
 
@@ -80,9 +80,10 @@
         border: none;
         //background-color: rgb(82, 82, 82);
         height: 60px;
-        //font-family: "Montserrat";
+        width: inherit;
+        font-family: "Montserrat";
         text-transform: uppercase;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
         font-size: 16px;
         font-weight: 100;
         width: 300px;

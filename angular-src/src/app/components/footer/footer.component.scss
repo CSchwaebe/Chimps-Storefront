@@ -14,8 +14,6 @@ $font-primary: "Montserrat";
   height: auto;
   width: 100vw;
 
-  background: $color-dark-blue;
-
   .payments {
     .header {
       .header-inner-container {
@@ -63,7 +61,8 @@ $font-primary: "Montserrat";
         padding: 5px;
         box-sizing: border-box;
         font-size: 15px;
-        color: #bdbdbd;
+        //color: #bdbdbd;
+        color: inherit;
       }
     }
   }
@@ -91,7 +90,7 @@ $font-primary: "Montserrat";
       .header-inner-container {
         a.contact {
           display: inline-block;
-          color: $color-text;
+          color: inherit;
           width: 100%;
           font-size: 18px;
           cursor: pointer;
@@ -115,7 +114,7 @@ $font-primary: "Montserrat";
         padding-top: 0px;
         padding-bottom: 25px;
         font-family: "Montserrat";
-        color: $color-text;
+        color: inherit;
         font-weight: 100;
         font-size: 16px;
       }
@@ -136,13 +135,14 @@ $font-primary: "Montserrat";
 
       .header-inner-container {
         display: inline-block;
-        border-bottom: 1px solid #fbfbfe;
+        border-bottom: 1px solid;
+        // #fbfbfe;
         //border-bottom: 1px solid #9e9e9e;
         box-sizing: border-box;
         height: 50px;
         p {
           font-family: $font-primary;
-          color: $color-text;
+          color: inherit;
           //color: #9e9e9e;
           font-size: 16px;
           padding: 0px 10px;

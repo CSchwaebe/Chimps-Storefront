@@ -6,6 +6,7 @@ import { TitleService } from 'src/app/services/title.service';
 import { Product } from 'src/app/models/admin/product';
 import { ProductService } from 'src/app/services/product.service';
 import { CollectionService } from 'src/app/services/collection.service';
+import { StyleService } from 'src/app/services/style.service';
 
 @Component({
   selector: 'app-home',
@@ -27,12 +28,15 @@ export class HomeComponent implements OnInit {
   featuredGroups: boolean = true;
   featuredGroupsTitle: string = 'Collections';
 
+  
+
 
   constructor(private SessionStorage: SessionStorageService,
     private HomeService: HomeService,
     public TitleService: TitleService,
     private ProductService: ProductService,
     private CollectionService: CollectionService,
+    public StyleService: StyleService,
     ) {
     this.TitleService.setTitle("Home");
     window.scrollTo(0,0);
@@ -40,6 +44,7 @@ export class HomeComponent implements OnInit {
 
 
   async ngOnInit() {
+   
     this.initSlideshow();
     this.model = await this.HomeService.get();
     this.getFeatured();

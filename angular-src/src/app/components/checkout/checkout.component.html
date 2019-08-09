@@ -6,7 +6,7 @@
     </ng-template>
 
 
-    <mat-horizontal-stepper [@.disabled]="true" [linear]=true labelPosition="bottom" #stepper>
+    <mat-horizontal-stepper [@.disabled]="true" [linear]=true labelPosition="bottom" #stepper [ngStyle]="{ background: 'inherit'}">
 
         <ng-template matStepperIcon="number" let-index="index">
             <ng-template [ngIf]="index===0">
@@ -93,11 +93,9 @@
                     <mat-checkbox class=checbox color='primary' checked=true [(ngModel)]=addToMailingList
                         [ngModelOptions]="{standalone: true}"></mat-checkbox>
                     <span class=checkbox-text> Sign up for exclusive deals and product updates</span>
-                    <div class="submit-div submit-background">
+                    <div class="submit-div">
                         <!-- Submit -->
-
-                        <button type=submit #submitButton class="submit-button grey-button" [disabled]="!model.country">Continue to Payment</button>
-
+                        <button #submitButton mat-raised-button [ngStyle]="{'background': style.button_background, 'color': style.button_text}" type=submit class="submit-button" [disabled]="!model.country">Continue to Payment</button>
                     </div>
 
                 </form>

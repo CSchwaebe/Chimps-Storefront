@@ -6,6 +6,7 @@ import { CartService } from '../../services/cart.service';
 import { Subscription } from 'rxjs';
 import { NavbarService } from 'src/app/services/navbar.service';
 import { AccountService } from 'src/app/services/account.service';
+import { StyleService } from 'src/app/services/style.service';
 
 @Component({
   selector: 'app-header',
@@ -30,7 +31,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(
               public CartService: CartService,
-              
+              public StyleService: StyleService,
               private NavbarService: NavbarService,
               private AccountService: AccountService) {
 

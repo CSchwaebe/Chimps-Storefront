@@ -20,7 +20,6 @@ button:focus {
   margin-right: 66px;
   max-height: 66px;
   
-  background: $navbar-background;
   .logo {
     display: inline-block;
     width: 100%;
@@ -33,7 +32,6 @@ button:focus {
   .logo-overlay {
     width: 100%;
     height: 0px;
-    background: $navbar-background;
   }
 }
 
@@ -47,7 +45,6 @@ button:focus {
   width: 66px;
   height: 66px;
   cursor: pointer;
-  background: $navbar-background;
   z-index: 100000;
   
 
@@ -66,7 +63,6 @@ button:focus {
   text-align: center;
   width: calc(100vw - 132px);
   z-index: 1000;
-  background: $navbar-background;
   min-height: 66px;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1);
   padding-left: 66px;
@@ -102,7 +98,7 @@ button:focus {
       width: 100vw;
 
       z-index: 1000;
-      background: $dropdown-background;
+      //background: $dropdown-background;
       opacity: 0.99;
       box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.18);
 
@@ -126,7 +122,7 @@ button:focus {
           padding-top: 20px;
           padding-bottom: 20px;
           margin: 0;
-          color: $category-link;
+          //color: $category-link;
 
           text-decoration: none;
           font-size: 12px;
@@ -147,7 +143,7 @@ button:focus {
           font-family: "Lato";
           display: block;
           font-size: 12px;
-          color: $subcategory-link;
+          //color: $subcategory-link;
           padding-top: 0px;
           padding-bottom: 10px;
           margin: 0px;
@@ -167,21 +163,18 @@ button:focus {
 @media only screen and (max-width: 1024px) {
   .logo-container {
     width: calc(100vw - 132px);
-    margin-left: 0px;
-    margin-right: 66px;
+    padding-left: 66px;
+    padding-right: 66px;
     height: 66px;
-    background: $navbar-background;
+    background: #fbfbfe;
     position: fixed;
     top: 0;
-    z-index: 1000000000;
-    left: 66px;
+    z-index: 1000;
+    box-shadow: 0px 3px 4px rgba(0,0,0,.1);
+    left: 0px;
+    margin: 0px;
   
   }
  
 }
 
-.header {
-  height: 1px;
-  width: 100%;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
-}

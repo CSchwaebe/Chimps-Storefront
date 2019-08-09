@@ -3,6 +3,7 @@ import { PageService } from 'src/app/services/page.service';
 import { Page } from 'src/app/components/pages/models/page';
 import { Account } from 'src/app/models/admin/account';
 import { AccountService } from 'src/app/services/account.service';
+import { StyleService } from 'src/app/services/style.service';
 
 @Component({
   selector: 'app-footer',
@@ -15,7 +16,8 @@ export class FooterComponent implements OnInit {
   pages: Page[];
 
   constructor(private PageService: PageService,
-    private AccountService: AccountService) { }
+    private AccountService: AccountService,
+    public StyleService: StyleService) { }
 
   async ngOnInit() {
     this.pages = [];

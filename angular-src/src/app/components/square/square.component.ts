@@ -9,6 +9,7 @@ import { LoadingScreenService } from 'src/app/services/loading-screen.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { environment } from 'src/environments/environment';
 import { Big } from 'big.js';
+import { StyleService } from 'src/app/services/style.service';
 
 declare var SqPaymentForm: any;
 
@@ -22,12 +23,14 @@ export class SquareComponent implements OnInit, AfterViewInit {
   applicationId = environment.square_applicationID;
   paymentForm; //this is our payment form object
   nonce: any;
+ 
 
   constructor(private SquareService: SquareService,
               public CartService: CartService,
               private ShippingService: ShippingService,
               private LoadingScreenService: LoadingScreenService,
-              private SnackbarService: SnackbarService){}
+              private SnackbarService: SnackbarService,
+              public StyleService: StyleService){}
 
   
 

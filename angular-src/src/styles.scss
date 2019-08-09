@@ -1,0 +1,254 @@
+@import '~@angular/material/theming';
+@include mat-core;
+
+$md-darkblue: (
+    50 : #e0e1e6,
+    100 : #b3b3c0,
+    200 : #808097,
+    300 : #4d4d6d,
+    400 : #26274d,
+    500 : #00012e,
+    600 : #000129,
+    700 : #000123,
+    800 : #00011d,
+    900 : #000012,
+    A100 : #5353ff,
+    A200 : #2020ff,
+    A400 : #0000ec,
+    A700 : #0000d3,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$md-silver: (
+    50 : #f7f7f7,
+    100 : #ebebeb,
+    200 : #dedede,
+    300 : #d1d1d1,
+    400 : #c7c7c7,
+    500 : #bdbdbd,
+    600 : #b7b7b7,
+    700 : #aeaeae,
+    800 : #a6a6a6,
+    900 : #989898,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffd4d4,
+    A700 : #ffbbbb,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+// mandatory stuff for theming
+//$palette-primary: mat-palette($md-darkblue);
+//$palette-accent:  mat-palette($md-silver);
+$palette-primary: mat-palette($mat-grey, 600, 400, 900);
+$palette-accent: mat-palette($mat-grey, 900, 900, 900);
+
+
+// include the custom theme components into a theme object
+$theme: mat-light-theme($palette-primary, $palette-accent);
+$theme: mat-dark-theme($palette-primary, $palette-accent);
+
+// include the custom theme object into the angular material theme
+@include angular-material-theme($theme);
+/*
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core;
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$primary: mat-palette($mat-grey, 600, 400, 900);
+$accent: mat-palette($mat-grey, 900, 900, 900);
+$background-color: map_get($mat-grey, 50);
+
+// The warn palette is optional (defaults to red).
+$warn: mat-palette($mat-grey);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$theme: mat-light-theme($primary, $accent, $warn);
+
+// Insert custom background color
+$background: map-get($theme, background);
+$background: map_merge($background, (background: $background-color));
+$theme: map_merge($theme, (background: $background));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($theme);
+//@include my-app-theme($theme);
+*/
+
+
+/*
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+*/
+
+//@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "../src/assets/hamburgers/hamburgers.css";
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+button:active {
+  outline: none;
+}
+
+
+mat-icon:focus {
+  outline: none;
+}
+
+
+
+
+/* Buttons */
+
+.submit-background {
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+
+ background-image: radial-gradient(circle, #24243e 0%, #302b63 66%, #0f0c29 160%);
+
+}
+
+.purple-button {
+  display: inline-block;
+  cursor: pointer;
+  color:  hsl(0, 0%, 100%);
+  
+  font-family: "Lato";
+  text-align: center;
+  
+  
+  background-color: transparent;
+  background-image: radial-gradient(circle, #24243e 0%, #302b63 66%, #0f0c29 160%);
+
+
+  background-position: center;
+  background-size: 100%;
+ background-repeat: no-repeat;
+ 
+  
+  transition: background .8s; 
+ /* transition-timing-function: ease-in-out; */
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1), 2px -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.purple-button:active {
+  background-size: 0%;
+  transition: background 0s;
+}
+
+
+.grey-button {
+  display: inline-block;
+  color:  hsl(0, 0%, 100%);
+  
+  font-family: "Lato";
+  text-align: center;
+  
+  
+  background-color: transparent;
+  background-image: radial-gradient(circle, #24243e 0%, #302b63 66%, #0f0c29 160%);
+
+
+  background-position: center;
+  background-size: 100%;
+ background-repeat: no-repeat;
+ 
+  
+  transition: background .8s; 
+ /* transition-timing-function: ease-in-out; */
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1), 2px -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.grey-button:active {
+  background-size: 0%;
+  transition: background 0s;
+}
+
+
+
+/* SnackBar Notifications */
+.snackbar-success {
+    background-color: white;
+    color: #24243e;
+   
+    letter-spacing: .75px;
+    font-family: 'Lato';
+}
+
+  .snackbar-success .mat-simple-snackbar-action  {
+    font-family: 'Lato';
+    color: #302b63;
+    background: transparent;
+  }
+  
+  .snackbar-error {
+    background-color: red;
+    color: white;
+    z-index: 1000;
+    letter-spacing: .75px;
+    font-family: 'Lato';
+  }
+
+
+/* Quill Editor */
+
+.ql-editor {
+  font-family: "Montserrat";
+}
+.ql-editor > * {
+  cursor: text;
+}
+
+.ql-editor {
+  padding: 0px;
+}
+
+/* Square */

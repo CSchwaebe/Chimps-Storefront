@@ -5,7 +5,7 @@
   .centered-content-container {
     font-family: "Montserrat";
     font-weight: 100;
-    color: black;
+  
     #left-panel {
       display: inline-block;
       float: left;
@@ -28,6 +28,7 @@
           text-align: left;
           letter-spacing: 1px;
           box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.2);
+          
           .image-container {
             display: inline-block;
             vertical-align: top;
@@ -56,7 +57,6 @@
               margin-top: 10px;
               padding: 0px;
               text-decoration: none;
-              color: black;
               
               display: inline-block;
               vertical-align: top;
@@ -85,15 +85,47 @@
             }
             .qty {
               display: inline-block;
-              font-size: 12px;
+            
               margin: 0px;
               padding: 0px;
-              border: 1px solid #302b63;
+              //border: 1px solid #302b63;
+              // /  font-size: 12px;
+              
               border-radius: 3px;
+              
+              height: 40px;
+              //border: 1px solid #4c4d80;
+              //background: #00012e;
+
+              button {
+                display: inline-block;
+                
+                padding: 0px;
+               
+                mat-icon {
+               
+                }
+              }
              
+             
+              .qty-text {
+                display: inline-block;
+                vertical-align: top;
+                height: 40px;
+                line-height: 40px;
+                width: 50px;
+                margin: 0px;
+                padding: 0px;
+                text-align: center;
+                font-size: 16px;
+                
+                color: #302b63;               
+              }
+
               .icon-button-container {
                 display: inline-block;
                 width: 25px;
+                height: 25px;
 
                 button {
                   display: inline-block;
@@ -102,42 +134,16 @@
                   font-size: 20px;
                   padding: 0px;
                   line-height: 25px;
+                  mat-icon {
+                    width: inherit;
+                    height: inherit;
+                    box-sizing: border-box;
+                  }
                 }
-              }
-              .qty-text {
-                display: inline-block;
-                vertical-align: top;
-                height: 25px;
-                line-height: 25px;
-                width: 50px;
-                margin: 0px;
-                padding: 0px;
-                text-align: center;
-                font-size: 14px;
-                
-                color: #302b63;
-                background: white;
-               
               }
             }
           }
-          .remove-button {
-            float: right;
-            width: 25px;
-            height: 25px;
-            line-height: 25px;
-            margin: 0px;
-            padding: 0px;
-
-            font-family: "Montserrat";
-
-            font-size: 14px;
-
-            border: none;
-            background: white;
-            color: purple;
-            cursor: pointer;
-          }
+         
         }
       }
     }
@@ -214,49 +220,6 @@
         .grid {
           width: 100%;
 
-          /*
-          .product-box {
-            height: 110px;
-            .product-name {
-              font-size: 14px;
-              padding: 5px;
-              padding-bottom: 0px;
-              margin: 0px;
-              width: 43%;
-              height: 18px;
-            }
-            .price {
-              font-size: 12px;
-              width: 60%;
-              height: 15px;
-              margin: 0px;
-              padding: 5px;
-              padding-bottom: 0px;
-            }
-            .size {
-              font-size: 12px;
-              margin: 0px;
-              padding: 5px;
-
-              padding-bottom: 0px;
-              height: 40px;
-              line-height: 40px;
-              width: 30%;
-            }
-            .qty {
-              float: right;
-              width: 30%;
-
-              margin: 0px;
-              height: 40px;
-              line-height: 40px;
-
-              padding: 5px;
-
-              font-size: 12px;
-            }
-          }
-          */
         }
       }
 
@@ -267,7 +230,7 @@
         width: 90vw;
         margin-left: 5vw;
         margin-right: 5vw;
-        background: white;
+       
         .subtotal-box {
           display: block;
           width: 90vw;
@@ -330,7 +293,7 @@
   .main {
     .centered-content-container {
       width: 900px;
-      background: none;
+       
       margin-left: calc((100vw - 900px) / 2);
 
       #left-panel {
@@ -363,7 +326,7 @@
           border: 0px solid black;
 
           height: auto;
-          background: none;
+           
 
         }
       }
@@ -371,7 +334,7 @@
         display: block;
         float: left;
         width: 300px;
-        background: none;
+         
         margin: 0;
         height: auto;
         font-family: "Montserrat";
@@ -385,16 +348,16 @@
           margin: 10px;
           margin-top: 100px;
 
-          background: none;
+           
           .subt-row {
             float: left;
-            background: none;
+             
             width: 270px;
             height: 20px;
             font-size: 14px;
             margin: 5px;
             .subt-name {
-              background: none;
+               
               float: left;
 
               height: 20px;
@@ -408,12 +371,12 @@
               width: 75px;
               margin: 0px;
               text-align: end;
-              background: none;
+               
             }
           }
 
           .total-row {
-            background: none;
+             
             float: left;
             width: 270px;
             height: 25px;
@@ -421,7 +384,7 @@
             margin-top: 75px;
 
             .total-name {
-              background: none;
+               
               float: left;
               text-align: end;
               height: 25px;
@@ -431,7 +394,7 @@
             }
 
             .total-value {
-              background: none;
+               
               float: right;
               text-align: end;
               height: 25px;

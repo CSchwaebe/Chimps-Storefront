@@ -11,6 +11,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Collection } from 'src/app/models/admin/collection';
 import { CollectionService } from 'src/app/services/collection.service';
 import { TitleService } from 'src/app/services/title.service';
+import { StyleService } from 'src/app/services/style.service';
 
 @Component({
   selector: 'app-page',
@@ -66,7 +67,8 @@ export class PageComponent implements OnInit, OnDestroy {
     private SnackbarService: SnackbarService,
     private Router: Router,
     private CollectionService: CollectionService,
-    private TitleService: TitleService
+    private TitleService: TitleService,
+    public StyleService: StyleService
   ) {
     this.subscription = this.PageService.isDirty().subscribe(status => {
       this.model.blocks = this.PageService.blocks;

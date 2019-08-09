@@ -2,9 +2,9 @@
 
     <div class="centered-content-container">
         <div id="left-panel">
-            <h3 class="title">Cart</h3>
+            <h3 class="title"  [ngStyle]="{ 'color': StyleService.style.header_font_color }">Cart</h3>
             <div class="grid">
-                <div *ngFor="let prod of CartService.cart.products; index as i" class="product-box">
+                <div *ngFor="let prod of CartService.cart.products; index as i" class="product-box"  [ngStyle]="{ 'color': StyleService.style.primary_font_color }">
                     <div class=image-container>
                         <a routerLink="{{'/detail/' + prod.product.stub + '-' + prod.product._id}}"><img src="{{prod.product.images[0]}}"></a>
                     </div>
@@ -13,14 +13,25 @@
                         <p class="price">${{prod.product.price}}</p>
                         <p class="size">Size: {{prod.selectedSize}}</p>
 
-                        <div class="qty submit-background">
-                            <div class=icon-button-container>
-                                <button class=purple-button (click)=changeQty(i,prod.quantity-1)>-</button>
-                            </div>
+                    
+                        <div class="qty">
+                            
+                                <button mat-icon-button disableRipple=false color=primary (click)=changeQty(i,prod.quantity-1)>
+                                        <mat-icon>remove</mat-icon>
+                                </button>
+                          
                             <p class=qty-text>{{prod.quantity}}</p>
-                            <div class=icon-button-container>
-                                <button class=purple-button (click)=changeQty(i,prod.quantity+1)>+</button>
-                            </div>
+                           
+
+                           
+
+                           
+                                <button mat-icon-button disableRipple=false color=primary (click)=changeQty(i,prod.quantity+1)>
+                                    <mat-icon>add</mat-icon>
+                                </button>
+
+                            
+                           
                         </div>
 
 
@@ -30,7 +41,7 @@
             </div>
         </div>
 
-        <div id="right-panel">
+        <div id="right-panel" [ngStyle]="{ 'color': primary_font_color }">
             <div class="subtotal-box">
                 <div class="subt-row">
                     <p class="subt-name">Subtotal </p><span
@@ -47,9 +58,17 @@
                 </div>
             </div>
 
+            <!--
+
+            
             <div class=submit-background>
                 <button class="checkout-button purple-button" (click)="checkout()">Checkout</button>
             </div>
+-->
+
+            <div class=submit-background>
+                    <button mat-raised-button [ngStyle]="{'background': StyleService.style.button_background, 'color': StyleService.style.button_text}" class="checkout-button" (click)="checkout()">Checkout</button>
+                </div>
         </div>
     </div>
 

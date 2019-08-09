@@ -6,11 +6,11 @@
 
     <!-- TITLE -->
     <div class=title-container>
-      <h1 class=title>{{model.title}}</h1>
+      <h1 class=title [ngStyle]="{ 'color': StyleService.style.header_font_color }">{{model.title}}</h1>
     </div>
 
 
-    <div class="content-container draggable-container">
+    <div class="content-container draggable-container" [ngStyle]="{ 'color': StyleService.style.primary_font_color }">
       <ng-template Block></ng-template>
     </div>
   </div>
