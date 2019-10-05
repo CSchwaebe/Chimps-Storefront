@@ -2,9 +2,9 @@
 
     <div class="centered-content-container">
         <div id="left-panel">
-            <h3 class="title"  [ngStyle]="{ 'color': StyleService.style.header_font_color }">Cart</h3>
+            <h3 class="title"  [ngStyle]="{ 'color': StyleService.style.theme.title}">Cart</h3>
             <div class="grid">
-                <div *ngFor="let prod of CartService.cart.products; index as i" class="product-box"  [ngStyle]="{ 'color': StyleService.style.primary_font_color }">
+                <div *ngFor="let prod of CartService.cart.products; index as i" class="product-box"  [ngStyle]="{ 'color': StyleService.style.theme.text }">
                     <div class=image-container>
                         <a routerLink="{{'/detail/' + prod.product.stub + '-' + prod.product._id}}"><img src="{{prod.product.images[0]}}"></a>
                     </div>
@@ -16,7 +16,7 @@
                     
                         <div class="qty">
                             
-                                <button mat-icon-button disableRipple=false color=primary (click)=changeQty(i,prod.quantity-1)>
+                                <button mat-icon-button disableRipple=false [ngStyle]="{'background': StyleService.style.theme.background, 'color': StyleService.style.buttons.background}" (click)=changeQty(i,prod.quantity-1)>
                                         <mat-icon>remove</mat-icon>
                                 </button>
                           
@@ -26,7 +26,7 @@
                            
 
                            
-                                <button mat-icon-button disableRipple=false color=primary (click)=changeQty(i,prod.quantity+1)>
+                                <button mat-icon-button disableRipple=false [ngStyle]="{'background': StyleService.style.theme.background, 'color': StyleService.style.buttons.background}" (click)=changeQty(i,prod.quantity+1)>
                                     <mat-icon>add</mat-icon>
                                 </button>
 
@@ -41,7 +41,7 @@
             </div>
         </div>
 
-        <div id="right-panel" [ngStyle]="{ 'color': primary_font_color }">
+        <div id="right-panel" [ngStyle]="{ 'color': StyleService.style.theme.text }">
             <div class="subtotal-box">
                 <div class="subt-row">
                     <p class="subt-name">Subtotal </p><span
@@ -67,7 +67,7 @@
 -->
 
             <div class=submit-background>
-                    <button mat-raised-button [ngStyle]="{'background': StyleService.style.button_background, 'color': StyleService.style.button_text}" class="checkout-button" (click)="checkout()">Checkout</button>
+                    <button mat-raised-button [ngStyle]="{'background': StyleService.style.buttons.background, 'color': StyleService.style.buttons.text}" class="checkout-button" (click)="checkout()">Checkout</button>
                 </div>
         </div>
     </div>

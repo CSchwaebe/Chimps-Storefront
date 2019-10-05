@@ -76,7 +76,7 @@ $palette-accent: mat-palette($mat-grey, 900, 900, 900);
 
 // include the custom theme components into a theme object
 $theme: mat-light-theme($palette-primary, $palette-accent);
-$theme: mat-dark-theme($palette-primary, $palette-accent);
+//$theme: mat-dark-theme($palette-primary, $palette-accent);
 
 // include the custom theme object into the angular material theme
 @include angular-material-theme($theme);

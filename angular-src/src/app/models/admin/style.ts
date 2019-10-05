@@ -2,27 +2,43 @@ export interface StyleResponse {
   data: Style
 }
 
+export interface Theme {
+  background: string;
+  text: string;
+  title: string;
+}
+
+export interface Buttons {
+  background: string;
+  text: string;
+  dark_mode: boolean;
+}
+
+export interface Footer {
+  background: string;
+  text: string;
+}
+
+export interface Menu {
+  primary_background: string;
+  primary_text: string;
+
+  topnav_dropdown_background: string;
+  topnav_category_text: string;
+  topnav_subcategory_text: string;
+
+  sidenav_secondary_background: string;
+  sidenav_secondary_text: string;
+  sidenav_tertiary_background: string;
+  sidenav_tertiary_text: string;
+}
+
 export class Style {
-  public background: string;
-  public primary_font_color: string;
-  public header_font_color: string;
-  public button_background: string;
-  public button_text: string;
+  public theme: Theme;
+  public buttons: Buttons;
+  public footer: Footer;
+  public menu: Menu;
 
-  public nav_primary_background: string;
-  public nav_primary_text: string;
-  public topnav_dropdown_background: string;
-  public topnav_category_text: string;
-  public topnav_subcategory_text: string;
-
-  public sidenav_secondary_background: string;
-  public sidenav_secondary_text: string;
-  public sidenav_tertiary_background: string;
-  public sidenav_tertiary_text: string;
-
-  public footer_background: string;
-  public footer_text: string;
-  
   public _id?: string;
 
   constructor() {

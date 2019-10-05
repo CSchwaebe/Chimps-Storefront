@@ -56,8 +56,7 @@ export class AppComponent {
     
   }
 
-  toggleHamburger() {
-  }
+  
 
 
 

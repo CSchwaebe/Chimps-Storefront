@@ -1,4 +1,4 @@
-<div class="navbar" [ngStyle]="{ 'background': StyleService.style.nav_primary_background }">
+<div class="navbar" [ngStyle]="{ 'background': StyleService.style.menu.primary_background }">
 
   <!-- The content that appears if the hamburger button is pressed -->
   <ng-template [ngIf]="showMobileMenu">
@@ -7,10 +7,10 @@
 
         <div class="button-container" *ngFor="let col of model.collections; index as i">
           <ng-template [ngIf]=!col.page>
-            <button class="mobile-collection-button" id="{{col.collection.stub}}" [ngStyle]="{ 'color': StyleService.style.nav_primary_text}"
+            <button class="mobile-collection-button" id="{{col.collection.stub}}" [ngStyle]="{ 'color': StyleService.style.menu.primary_text}"
               (click)="expandCollectionsMobile($event.target.id)">{{col.collection.name}}</button>
 
-            <div class="dropdown-content {{col.collection.stub}}" [ngStyle]="{ 'background': StyleService.style.sidenav_secondary_background, 'color': StyleService.style.sidenav_secondary_text }">
+            <div class="dropdown-content {{col.collection.stub}}" [ngStyle]="{ 'background': StyleService.style.menu.sidenav_secondary_background, 'color': StyleService.style.menu.sidenav_secondary_text }">
               <a class="collection-link" routerLink="/{{col.collection.stub}}" (click)=toggleMobileMenu()>View all</a>
 
               <div class="category" *ngFor="let cat of col.categories">
@@ -18,18 +18,18 @@
                   <button class="mobile-category-button" id="{{cat.category.stub}}"
                     (click)="expandCategoriesMobile($event.target.id)">{{
                         cat.category.name }}</button>
-                  <a class="subcategory-link {{cat.category.stub}}" routerLink="/{{cat.category.stub}}" [ngStyle]="{ 'background': StyleService.style.sidenav_tertiary_background, 'color': StyleService.style.sidenav_tertiary_text }"
+                  <a class="subcategory-link {{cat.category.stub}}" routerLink="/{{cat.category.stub}}" [ngStyle]="{ 'background': StyleService.style.menu.sidenav_tertiary_background, 'color': StyleService.style.menu.sidenav_tertiary_text }"
                     (click)=toggleMobileMenu()>View
                     all</a>
 
                   <div class="subcategory" *ngFor="let sub of cat.subcategories">
-                    <a class="subcategory-link {{cat.category.stub}}" routerLink="/{{sub.stub}}" [ngStyle]="{ 'background': StyleService.style.sidenav_tertiary_background, 'color': StyleService.style.sidenav_tertiary_text }"
+                    <a class="subcategory-link {{cat.category.stub}}" routerLink="/{{sub.stub}}" [ngStyle]="{ 'background': StyleService.style.menu.sidenav_tertiary_background, 'color': StyleService.style.menu.sidenav_tertiary_text }"
                       (click)=toggleMobileMenu()>
                       {{ sub.name }}</a>
                   </div>
 
                   <div class="subcategory" *ngFor="let page of cat.subcategoryPages">
-                    <a class="subcategory-link {{cat.category.stub}}" routerLink="/pages/{{page.stub}}" [ngStyle]="{ 'background': StyleService.style.sidenav_tertiary_background, 'color': StyleService.style.sidenav_tertiary_text }"
+                    <a class="subcategory-link {{cat.category.stub}}" routerLink="/pages/{{page.stub}}" [ngStyle]="{ 'background': StyleService.style.menu.sidenav_tertiary_background, 'color': StyleService.style.menu.sidenav_tertiary_text }"
                       (click)=toggleMobileMenu()>
                       {{ page.title }}</a>
                   </div>
@@ -50,7 +50,7 @@
           </ng-template>
 
           <ng-template [ngIf]=col.page>
-            <a class="mobile-collection-button" id="{{col.page.title}}" routerLink="/pages/{{col.page.stub}}" [ngStyle]="{ 'color': StyleService.style.nav_primary_text}"
+            <a class="mobile-collection-button" id="{{col.page.title}}" routerLink="/pages/{{col.page.stub}}" [ngStyle]="{ 'color': StyleService.style.menu.primary_text}"
               (click)=toggleMobileMenu()>{{col.page.title}}</a>
           </ng-template>
 

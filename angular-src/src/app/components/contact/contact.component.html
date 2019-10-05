@@ -11,7 +11,7 @@
   <ng-template [ngIf]=!messageSent>
    
   <form #contactUsForm="ngForm" class=form [formGroup]="FormGroup" (ngSubmit)=onSubmit()>
-      <h1 class=title [ngStyle]="{ 'color': StyleService.style.header_font_color }">Contact Us</h1>
+      <h1 class=title [ngStyle]="{ 'color': StyleService.style.theme.title }">Contact Us</h1>
  
     <mat-form-field class="half" appearance=outline>
       <mat-label>Name</mat-label>
@@ -33,7 +33,7 @@
                     <textarea cdkTextareaAutosize matInput required formControlName=message></textarea>
                   </mat-form-field>
                   
-                <button mat-flat-button [ngStyle]="{ 'background': StyleService.style.button_background, 'color': StyleService.style.button_text }" class="submit-button" type="submit" [disabled]="!FormGroup.valid">Submit</button>
+                <button mat-flat-button [ngStyle]="{ 'background': StyleService.style.buttons.background, 'color': StyleService.style.buttons.text }" class="submit-button" type="submit" [disabled]="!FormGroup.valid">Submit</button>
 
 
               </form>

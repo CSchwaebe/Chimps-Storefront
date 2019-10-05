@@ -12,7 +12,7 @@
             </div>
           </div>
       
-          <div class="product-box" [ngStyle]="{ 'color': StyleService.style.primary_font_color }">
+          <div class="product-box" [ngStyle]="{ 'color': StyleService.style.theme.text }">
             <p class="product-name">{{model.product.name}}</p>
             <p class="price">${{model.product.price}}</p>           
             <p class="color">{{model.product.color}}</p>
@@ -52,8 +52,8 @@
               
 
               <div class=submit-container>
-                <button mat-flat-button type="button" [ngStyle]="{'background': StyleService.style.button_background, 'color': StyleService.style.button_text}" class="buy-now" (click)=buyNow()>BUY NOW</button>
-                <button mat-stroked-button type="submit" [ngStyle]="{'background': StyleService.style.background, 'color': StyleService.style.button_background}" class="add-to-cart">ADD TO CART</button>
+                <button mat-flat-button type="button" [ngStyle]="{'background': StyleService.style.buttons.background, 'color': StyleService.style.buttons.text}" class="buy-now" (click)=buyNow()>BUY NOW</button>
+                <button mat-stroked-button type="submit" [ngStyle]="{'background': StyleService.style.theme.background, 'color': StyleService.style.buttons.background}" class="add-to-cart">ADD TO CART</button>
               </div>
                
             </form>

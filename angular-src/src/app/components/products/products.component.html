@@ -1,22 +1,24 @@
-<ng-template [ngIf]="productArray.length || soldOutProductArray.length">
+<!--
+  <ng-template [ngIf]="productArray.length || soldOutProductArray.length">
+-->
 <div class="main">
   <div class="header">
     <ng-template [ngIf]=header>
         <img class="header-image" src="{{header}}">
     </ng-template>
-    <h3 class="title" [ngStyle]="{ 'color': StyleService.style.header_font_color }">{{title}}</h3>
+    <h3 class="title" [ngStyle]="{ 'color': StyleService.style.theme.title }">{{title}}</h3>
   </div>
   
   <div class="center-panel">
   
     <div class="grid">
-      <div *ngFor="let prod of productArray; index as i" class="product-box"  [ngStyle]="{ 'color': StyleService.style.primary_font_color }">
+      <div *ngFor="let prod of productArray; index as i" class="product-box"  [ngStyle]="{ 'color': StyleService.style.theme.text }">
         <a class=image-link routerLink="/detail/{{prod.stub + '-' + prod._id}}"><img class="product-image" src="{{prod.images[0]}}"></a>
         <a routerLink="/detail/{{prod.stub + '-' + prod._id}}" class="product-name">{{prod.name}}</a>
         <p class="price">${{prod.price}}</p>
       </div>
 
-      <div *ngFor="let prod of soldOutProductArray; index as i" class="product-box" [ngStyle]="{ 'color': StyleService.style.primary_font_color }">
+      <div *ngFor="let prod of soldOutProductArray; index as i" class="product-box" [ngStyle]="{ 'color': StyleService.style.theme.text }">
           <div class=image-link>
             <div class=sold-out-overlay>
                 <img class="product-image" src="{{prod.images[0]}}">
@@ -32,4 +34,6 @@
 </div>
 
 <app-footer></app-footer>
+<!--
 </ng-template>
+-->
